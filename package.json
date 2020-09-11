@@ -10,10 +10,19 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
+    "loadash": "^1.0.0",
     "nuxt": "^2.14.0",
-    "view-design": "^4.3.2"
+    "view-design": "^4.3.2",
+    "vue-navigation-bar": "^4.0.2",
+    "vueperslides": "^2.10.7"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.0.1"
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@nuxtjs/tailwindcss": "^3.0.1",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.0",
+    "nuxt-purgecss": "^1.0.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.1"
   }
 }

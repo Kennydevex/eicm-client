@@ -29,12 +29,19 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["view-design/dist/styles/iview.css"],
+  css: [
+    "view-design/dist/styles/iview.css",
+    "@/assets/css/navmenu.css",
+    {
+      src: "@/assets/less/index.less",
+      lang: "less"
+    }
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["@/plugins/view-design"],
+  plugins: ["@/plugins/view-design", "@/plugins/base"],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -43,7 +50,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/tailwindcss"],
+  buildModules: ["@nuxtjs/tailwindcss", "nuxt-purgecss"],
   /*
    ** Nuxt.js modules
    */
@@ -60,5 +67,25 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {}
+  build: {
+    // Este bloco foi adicionado por causa de erro de less ao ler arquivo de personalização de Iview
+    loaders: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true
+        }
+      }
+    }
+  },
+
+  tailwindcss: {
+    cssPath: "@/assets/css/tailwind.css",
+    configPath: "tailwind.config.js",
+    exposeConfig: true,
+    config: {}
+  },
+
+  purgeCSS: {
+    // your settings here
+  }
 };
