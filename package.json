@@ -10,14 +10,18 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
+    "gmap-vue": "^1.4.0",
     "loadash": "^1.0.0",
     "nuxt": "^2.14.0",
     "view-design": "^4.3.2",
+    "vue-easy-lightbox": "^0.14.0",
     "vue-navigation-bar": "^4.0.2",
+    "vue2-filters": "^0.11.0",
     "vueperslides": "^2.10.7"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/tailwindcss": "^3.0.1",
     "less": "^3.12.2",
     "less-loader": "^7.0.0",

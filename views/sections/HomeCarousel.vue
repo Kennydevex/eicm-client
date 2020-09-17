@@ -22,7 +22,7 @@
         >
           <template v-if="!lazy_progress" v-slot:content>
             <div class="w-full h-full bg-black opacity-75">
-              <div class="container m-auto px-24 h-full">
+              <div class="container m-auto px-3 h-full">
                 <div class="flex flex-col w-full h-full justify-center">
                   <div
                     class="text-white font-sans leading-tight text-xl font-light uppercase w-1/4 tracking-widest"

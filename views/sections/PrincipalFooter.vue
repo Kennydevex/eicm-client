@@ -87,7 +87,7 @@
             <div
               class="pb-5 mb-3 text-gray-400 font-medium text-center uppercase tracking-widest font-sans"
             >
-              <span class="text-lg">Ligações externar</span>
+              <span class="text-lg">Ligações externas</span>
             </div>
             <div>
               <div class="text-center flex flex-col ">

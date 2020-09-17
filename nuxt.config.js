@@ -41,7 +41,15 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["@/plugins/view-design", "@/plugins/base"],
+
+  plugins: [
+    "@/plugins/view-design",
+    "@/plugins/base",
+    "@/plugins/filters",
+    "@/mixins/aux",
+    { src: "@/plugins/g-map", ssr: false },
+    { src: "@/plugins/image-lightbox", ssr: false }
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -50,7 +58,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/tailwindcss", "nuxt-purgecss"],
+  buildModules: ["@nuxtjs/tailwindcss", "nuxt-purgecss", "@nuxtjs/moment"],
   /*
    ** Nuxt.js modules
    */
@@ -83,6 +91,12 @@ export default {
     configPath: "tailwind.config.js",
     exposeConfig: true,
     config: {}
+  },
+
+  moment: {
+    timezone: true,
+    locales: ["pt"],
+    defaultTimezone: "Atlantic/Cape_Verde"
   },
 
   purgeCSS: {
