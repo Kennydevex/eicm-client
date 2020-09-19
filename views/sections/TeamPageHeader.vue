@@ -6,14 +6,20 @@
     <div
       class="bg-black bg-opacity-50 p-3 uppercase text-xl text-gray-200 font-sans font-semibold tracking-wide leading-relaxed text-center border-2 border-white shadow-md"
     >
-      {{ course }}
+      {{ title }}
+    </div>
+    <div
+      class="italic text-sm w-56 text-center text-white pt-3 font-sans leading-snug tracking-wider"
+    >
+      <span class="text-lg text-gray-100">&#34;</span>Uma equipa dinâmica, qeu
+      trabalha com afinco para servir a comunidade educativa<span>&#34;</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["course"]
+  props: ["title"]
 };
 </script>
 

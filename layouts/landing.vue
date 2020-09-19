@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout antialiased text-gray-900 bg-gray-200">
     <div>
       <AppHeader></AppHeader>
       <Content>

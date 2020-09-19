@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: defaultTheme.colors.red,
+        // primary: "defaultTheme.colors.red",
+        primary: "defaultTheme.colors.red",
+        primary: "#3E4095",
         "band-red": "#f0f"
       },
       spacing: {
@@ -44,3 +46,15 @@ module.exports = {
     removeDeprecatedGapUtilities: true
   }
 };
+
+// primary: '#3E4095',
+//                 // primary: '#2698d9', rgb(62, 64, 149), hsl(239, 41%, 42%)
+//                 secondary: '#683e95',
+//                 info: '#3e6c95',
+//                 accent: '#3e6c95',
+//                 sucess: '#40953E',
+//                 warning: '#95933E',
+//                 error: '#953E40',
+//                 facebook: '#3b5998',
+//                 twitter: '#1DA1F2',
+//                 google: '#DB4437',
