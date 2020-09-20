@@ -32,6 +32,7 @@ export default {
   css: [
     "view-design/dist/styles/iview.css",
     "@/assets/css/navmenu.css",
+    "~/assets/css/main.css",
     {
       src: "@/assets/less/index.less",
       lang: "less"

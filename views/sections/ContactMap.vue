@@ -5,7 +5,7 @@
         :center="center"
         :zoom="9"
         map-type-id="roadmap"
-        style="width: 100%; height: 350px"
+        style="width: 100%; height: 250px"
       >
         <!--<gmap-cluster>-->
         <GmapMarker

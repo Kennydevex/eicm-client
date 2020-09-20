@@ -38,7 +38,7 @@ export default {
             arrowColor: "#659CC8",
             subMenuOptions: [
               {
-                isLinkAction: true,
+                // isLinkAction: true,
                 type: "link",
                 text: "SOBRE",
                 subText:

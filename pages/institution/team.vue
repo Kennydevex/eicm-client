@@ -5,7 +5,7 @@
     </div>
 
     <div class="container m-auto px-3">
-      <Row :gutter="24" type="flex" justify="center">
+      <Row :gutter="16" type="flex" justify="center">
         <Col
         class="mt-4"
           :xs="24"
