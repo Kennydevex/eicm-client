@@ -5,5 +5,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "PrincipalFooter",
+
+  data() {
+    return {
+    }
+  },
+
+};
 </script>
