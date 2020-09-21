@@ -14,9 +14,7 @@
               Lorem ipsum dolor sit amet consectetur adipiscing elit vehicula
               urna fermentum facilisis, orci dictumst gravida sociosqu nibh
               tempor suscipit fames semper. Ridiculus imperdiet turpis donec
-              sociosqu cum euismod, sagittis sapien arcu platea blandit id
-              class, lacus sem facilisi ultrices vulputate. Rhoncus nec
-              dignissim blandit torquent vestibulum sapien magnis cum quis.
+              sociosqu cum euismod, 
             </base-home-body>
           </div>
         </Col>
