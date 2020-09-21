@@ -13,16 +13,21 @@
 </template>
 
 <script>
+import HomeCarousel from "@/views/sections/HomeCarousel";
+import HomeTeams from "@/views/sections/HomeTeams";
+import HomeSchoolBanner from "@/views/sections/HomeSchoolBanner";
+import HomeFeaturedCourses from "@/views/sections/HomeFeaturedCourses";
+import PrincipalFooter from "@/views/sections/PrincipalFooter";
 export default {
   name: "HomePage",
   layout: "landing",
 
   components: {
-    HomeCarousel: () => import("@/views/sections/HomeCarousel"),
-    HomeTeams: () => import("@/views/sections/HomeTeams"),
-    HomeSchoolBanner: () => import("@/views/sections/HomeSchoolBanner"),
-    HomeFeaturedCourses: () => import("@/views/sections/HomeFeaturedCourses"),
-    PrincipalFooter: () => import("@/views/sections/PrincipalFooter")
+    HomeCarousel,
+    HomeTeams,
+    HomeSchoolBanner,
+    HomeFeaturedCourses,
+    PrincipalFooter
   }
 };
 </script>
