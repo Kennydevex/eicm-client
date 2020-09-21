@@ -24,7 +24,6 @@
     "@nuxtjs/tailwindcss": "^3.0.1",
     "less": "^3.12.2",
     "less-loader": "^7.0.0",
-    "nuxt-purgecss": "^1.0.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.1"
   }

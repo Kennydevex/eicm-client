@@ -59,7 +59,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/tailwindcss", "nuxt-purgecss", "@nuxtjs/moment"],
+  buildModules: ["@nuxtjs/tailwindcss", "@nuxtjs/moment"],
   /*
    ** Nuxt.js modules
    */
