@@ -3,7 +3,7 @@
     <HomeCarousel />
     <HomeSchoolBanner />
     <HomeFeaturedCourses />
-    <PrincipalFooter />
+    <principal-footer></principal-footer>
     <!-- <HomeGuidelines />
     <HomeTeams />
 
