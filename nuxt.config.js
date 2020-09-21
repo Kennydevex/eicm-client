@@ -98,9 +98,5 @@ export default {
     timezone: true,
     locales: ["pt"],
     defaultTimezone: "Atlantic/Cape_Verde"
-  },
-
-  purgeCSS: {
-    // your settings here
   }
 };
