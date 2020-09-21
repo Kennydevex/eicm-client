@@ -19,10 +19,8 @@ export default {
 
   components: {
     HomeCarousel: () => import("@/views/sections/HomeCarousel"),
-    // HomeGuidelines: () => import("@/views/sections/HomeGuidelines"),
     HomeTeams: () => import("@/views/sections/HomeTeams"),
     HomeSchoolBanner: () => import("@/views/sections/HomeSchoolBanner"),
-    // HomeStudentsBanner: () => import("@/views/sections/HomeStudentsBanner"),
     HomeFeaturedCourses: () => import("@/views/sections/HomeFeaturedCourses"),
     PrincipalFooter: () => import("@/views/sections/PrincipalFooter")
   }
