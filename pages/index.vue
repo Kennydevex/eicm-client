@@ -17,7 +17,7 @@ import HomeCarousel from "@/views/sections/HomeCarousel";
 import HomeTeams from "@/views/sections/HomeTeams";
 import HomeSchoolBanner from "@/views/sections/HomeSchoolBanner";
 import HomeFeaturedCourses from "@/views/sections/HomeFeaturedCourses";
-import PrincipalFooter from "@/views/sections/PrincipalFooter";
+import PrincipalFooter from "@/components/frontend/sections/PrincipalFooter";
 export default {
   name: "HomePage",
   layout: "landing",
