@@ -85,9 +85,9 @@
 </template>
 
 <script>
-import ContactMap from "@/views/sections/ContactMap";
+import ContactMap from "@/components/frontend/sections/ContactMap";
 import ContactForm from "@/components/frontend/ContactForm";
-import PrincipalFooter from "@/views/sections/PrincipalFooter";
+import PrincipalFooter from "@/components/frontend/sections/PrincipalFooter";
 
 export default {
   name: "ContactPage",
