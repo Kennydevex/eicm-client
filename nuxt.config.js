@@ -14,17 +14,19 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_name || "",
+    titleTemplate: "%s - EICM-GDC",
+    title: process.env.SITE_TITLE || "EICM-GDC",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        hid: "description",
-        name: "description",
-        content: process.env.npm_package_description || ""
+        hid: "eicm",
+        name: "EICM",
+        content: process.env.SITE_DESCRIPTION || "Escola Técnica do Mindelo"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/logo/tiny_logo.png" }]
+
   },
   /*
    ** Global CSS

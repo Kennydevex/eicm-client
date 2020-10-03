@@ -1,7 +1,10 @@
 <template>
   <div class="layout antialiased text-gray-900 bg-gray-200">
     <div>
-      <AppHeader></AppHeader>
+      <NavBar></NavBar>
+    </div>
+
+    <div>
       <Content>
         <div>
           <Nuxt />
@@ -15,7 +18,7 @@
 <script>
 export default {
   components: {
-    AppHeader: () => import("@/components/frontend/AppHeader"),
+    NavBar: () => import("@/components/frontend/AppNavBar"),
     AppFooter: () => import("@/components/frontend/AppFooter")
   }
 };

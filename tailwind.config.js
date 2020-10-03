@@ -1,8 +1,31 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 // No caso de ficar  fora de extend, iremos sobrepor todas as cores existentes
+
 module.exports = {
+  important: true,
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "1.5rem"
+      },
+
+      opacity: {
+        "0": "0",
+        "25": ".25",
+        "50": ".5",
+        "75": ".75",
+        "10": ".1",
+        "20": ".2",
+        "30": ".3",
+        "40": ".4",
+        "50": ".5",
+        "60": ".6",
+        "70": ".7",
+        "80": ".8",
+        "90": ".9",
+        "100": "1"
+      },
       colors: {
         // primary: "defaultTheme.colors.red",
         primary: "defaultTheme.colors.red",
@@ -35,26 +58,24 @@ module.exports = {
         "8/12": "66.666667%",
         "9/12": "75%",
         "10/12": "83.333333%",
-        "11/12": "91.666667%"
+        "11/12": "91.666667%",
+        "96": "24rem",
+        "112": "28rem",
+        "160": "40rem"
+        // "160": "40rem" => 160/4=40
       }
     }
   },
   variants: {
-    backgroundColor: ["responsive", "hover", "focus", "active"]
+    backgroundColor: ["responsive", "hover", "focus", "active", "group-hover"],
+    textColor: ["responsive", "hover", "focus", "active", "group-hover"],
+    fontWeight: ["responsive", "hover", "focus", "active", "group-hover"],
+    fontSize: ["responsive", "hover", "focus", "active", "group-hover"],
+    translate: ["responsive", "hover", "focus", "active", "group-hover"],
+    scale: ["responsive", "hover", "focus", "active", "group-hover"],
+    skew: ["responsive", "hover", "focus", "active", "group-hover"]
   },
   future: {
     removeDeprecatedGapUtilities: true
   }
 };
-
-// primary: '#3E4095',
-//                 // primary: '#2698d9', rgb(62, 64, 149), hsl(239, 41%, 42%)
-//                 secondary: '#683e95',
-//                 info: '#3e6c95',
-//                 accent: '#3e6c95',
-//                 sucess: '#40953E',
-//                 warning: '#95933E',
-//                 error: '#953E40',
-//                 facebook: '#3b5998',
-//                 twitter: '#1DA1F2',
-//                 google: '#DB4437',

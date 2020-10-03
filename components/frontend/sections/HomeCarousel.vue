@@ -21,22 +21,28 @@
           :image="slide.image"
         >
           <template v-if="!lazy_progress" v-slot:content>
-            <div class="w-full h-full bg-black opacity-75">
-              <div class="container m-auto px-3 h-full">
+            <div
+              class="transition duration-500 ease-in-out w-full h-full bg-black opacity-40 hover:opacity-75 group"
+            >
+              <div class="container m-auto ml-8 h-full">
                 <div class="flex flex-col w-full h-full justify-center">
                   <div
-                    class="text-white font-sans leading-tight text-xl font-light uppercase w-1/4 tracking-widest"
+                    class="transition duration-500 ease-in-out text-white font-sans leading-tight text-xl group-hover:text-md font-light uppercase w-1/4 tracking-widest transform group-hover:-translate-y-3 group-hover:scale-100 group-hover:skew-y-3"
                   >
-                    <span>Título</span>
+                    <span>ASISBD</span>
                     <div
                       class="mt-2 m-auto md:m-px md:mt-2 w-1/4 border-b-2 border-white"
                     ></div>
                   </div>
 
                   <div
-                    class="text-gray-300 mt-10 text-5xl font-semibold tracking-tight leading-tight w-1/2"
+                    class="transition duration-500 ease-in-out text-gray-200 group-hover:text-gray-500 mt-5 text-base tracking-wider leading-relaxed w-3/4 sm:w-1/3 transform group-hover:translate-y-5 group-hover:scale-110"
                   >
-                    Corpo do slide de teste para teste
+                    Um curso da família das TIC's, destinado para quem pretente
+                    formar em Informática. É um curso peetencente ao catálogo
+                    nacional de qualificações, que oferece vlencias adicionais,
+                    apar preparar os formandos para melhores se adaptarem ao
+                    mercado ou realizar cursos superiores.
                   </div>
                 </div>
               </div>
