@@ -16,6 +16,7 @@
           :draggable="false"
           @click="center = m.location"
         />
+        
         <!--</gmap-cluster>-->
       </GmapMap>
     </client-only>
