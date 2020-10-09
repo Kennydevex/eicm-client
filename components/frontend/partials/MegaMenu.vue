@@ -16,7 +16,7 @@
     <transition name="fade">
       <div
         v-if="isVisible"
-        class="mega-menu absolute normal-case font-normal bg-white shadow-lg rounded-lg overflow-hidden border w-full sm:w-160 mt-4 sm:right-0 lg:z-10"
+        class="mega-menu absolute normal-case font-normal bg-white shadow-lg rounded-lg overflow-hidden border w-full sm:w-160 mt-4 sm:right-0 z-10"
       >
         <div class="flex flex-col lg:flex-row p-6 border-b -mx-4">
           <template v-for="(item, i) in filterBy(items, true, 'mega')">
