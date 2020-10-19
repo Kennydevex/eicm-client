@@ -41,8 +41,8 @@
       </div>
 
       <div>
-        <dropdown-menu :dropdown_items="institutions"
-          >Instituição</dropdown-menu
+        <my-dropdown-menu :dropdown_items="institutions"
+          >Instituição</my-dropdown-menu
         >
       </div>
 
@@ -61,12 +61,16 @@
           >Contactos</nuxt-link
         >
       </div>
+
+      <div v-if="authenticated">
+        <user-dropdown></user-dropdown>
+      </div>
     </div>
   </header>
 </template>
 
 <script>
-
+import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
 
@@ -74,6 +78,7 @@ export default {
     return {
       menuOpen: false,
       isOpen: false,
+
       institutions: [
         { name: "Sobre", href: "/institution/about", divider: false },
         { name: "História", href: "/institution/histories", divider: false },
@@ -127,7 +132,8 @@ export default {
   components: {
     MegaMenuDrop: () => import("@/components/frontend/partials/MegaMenuDrop"),
     MegaMenu: () => import("@/components/frontend/partials/MegaMenu"),
-    DropdownMenu: () => import("@/components/frontend/partials/DropdownMenu")
+    MyDropdownMenu: () =>
+      import("@/components/frontend/partials/MyDropdownMenu")
   }
 };
 </script>

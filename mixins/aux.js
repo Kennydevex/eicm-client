@@ -22,6 +22,13 @@ const redirectPage = {
             name: name,
             params: { slug: slug }
           });
+        },
+
+        redirectToPageByName(name) {
+          console.log('yesyy');
+          // this.$router.push({
+          //   name: name
+          // });
         }
       }
     });

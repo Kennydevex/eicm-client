@@ -1,12 +1,14 @@
 <template>
   <div>
-    Admin
+    Utilizadores
   </div>
 </template>
 
 <script>
 export default {
-  name: "AdminIndex",
+  name: "UsersIndex",
   layout: "admin"
 };
 </script>
+
+<style lang="scss" scoped></style>

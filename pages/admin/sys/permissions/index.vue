@@ -1,12 +1,14 @@
 <template>
   <div>
-    Admin
+    Permissões
   </div>
 </template>
 
 <script>
 export default {
-  name: "AdminIndex",
+  name: "PermissionsIndex",
   layout: "admin"
 };
 </script>
+
+<style lang="scss" scoped></style>

@@ -1,12 +1,14 @@
 <template>
   <div>
-    Admin
+    Funções
   </div>
 </template>
 
 <script>
 export default {
-  name: "AdminIndex",
+  name: "RolesIndex",
   layout: "admin"
 };
 </script>
+
+<style lang="scss" scoped></style>

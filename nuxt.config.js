@@ -26,30 +26,57 @@ export default {
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/logo/tiny_logo.png" }]
-
   },
+
+  env: {
+    PUBLIC_URL: process.env.PUBLIC_URL || "https://eicm-gdc.ga/api",
+    SITE_URL: process.env.SITE_URL || "https://eicm-gdc.ga"
+  },
+
+  robots: {
+    UserAgent: "*",
+    Disallow: "/admin/*"
+  },
+
+  sitemap: {
+    hostname: process.env.SITE_URL || "https://eicm-gdc.ga",
+    gzip: true,
+    exclude: ["/admin/**"],
+    routes: ["/courses"]
+  },
+
   /*
    ** Global CSS
    */
   css: [
     "view-design/dist/styles/iview.css",
-    "@/assets/css/navmenu.css",
     "~/assets/css/main.css",
     {
       src: "@/assets/less/index.less",
       lang: "less"
     }
   ],
+
+  loading: { color: "#3E4095" },
+
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
+
+  pageTransition: {
+    name: "fade",
+    mode: "out-in"
+  },
 
   plugins: [
     "@/plugins/view-design",
     "@/plugins/base",
     "@/plugins/filters",
     "@/mixins/aux",
+    "@/mixins/handleForm",
+    "@/mixins/notifications",
+    "@/mixins/authentication",
     { src: "@/plugins/g-map", ssr: false },
     { src: "@/plugins/image-lightbox", ssr: false }
   ],
@@ -67,13 +94,36 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/robots",
+    "@nuxtjs/auth",
+    "@nuxtjs/sitemap"
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || "http://eicm_api.test:8000/api"
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "auth/login",
+            method: "post",
+            propertyName: "meta.token"
+          },
+          logout: { url: "auth/logout", method: "post" },
+          user: { url: "auth/user", method: "get", propertyName: "data" }
+        },
+        autoFetchUser: true
+      }
+    }
+  },
+
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

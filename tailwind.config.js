@@ -73,7 +73,9 @@ module.exports = {
     fontSize: ["responsive", "hover", "focus", "active", "group-hover"],
     translate: ["responsive", "hover", "focus", "active", "group-hover"],
     scale: ["responsive", "hover", "focus", "active", "group-hover"],
-    skew: ["responsive", "hover", "focus", "active", "group-hover"]
+    skew: ["responsive", "hover", "focus", "active", "group-hover"],
+    borderWidth: ["responsive", "hover", "focus", "active"],
+    borderColor: ["responsive", "hover", "focus", "active"]
   },
   future: {
     removeDeprecatedGapUtilities: true
