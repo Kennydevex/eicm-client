@@ -25,10 +25,9 @@ const redirectPage = {
         },
 
         redirectToPageByName(name) {
-          console.log('yesyy');
-          // this.$router.push({
-          //   name: name
-          // });
+          this.$router.push({
+            name: name
+          });
         }
       }
     });

@@ -150,6 +150,10 @@
 import Util from "@/utility";
 
 export default {
+  name: "AdminLayout",
+
+  middleware: ["auth"],
+
   data() {
     return {
       isCollapsed: false,
@@ -168,7 +172,7 @@ export default {
     handleUserDropdownEvents(ev) {
       switch (ev) {
         case "perfil":
-          this.testeper();
+          console.log("ver perfil");
           break;
         case "logout":
           this.logout();
@@ -177,9 +181,6 @@ export default {
         default:
           break;
       }
-    },
-    testeper() {
-      console.log("ver perfil");
     },
 
     collapsedSider() {

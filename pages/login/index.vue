@@ -13,17 +13,28 @@
           Autenticar
         </p>
       </div>
+      <div class="w-full mb-3" v-if="auth_401_errors">
+        <Alert type="error" show-icon>{{auth_401_errors}}</Alert>
+      </div>
       <div>
         <login-form :formData="formData"></login-form>
       </div>
       <div class="flex justify-between">
         <div>
-          <Button :to="'/'" type="text" class="text-xs text-left text-primary p-0" ghost
+          <Button
+            :to="'/'"
+            type="text"
+            class="text-xs text-left text-primary p-0"
+            ghost
             >Home</Button
           >
         </div>
         <div>
-          <Button :to="'/register'" type="text" class="text-xs text-left text-primary tracking-wide p-0" ghost
+          <Button
+            :to="'/register'"
+            type="text"
+            class="text-xs text-left text-primary tracking-wide p-0"
+            ghost
             >Registar</Button
           >
         </div>

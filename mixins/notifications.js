@@ -12,6 +12,13 @@ const alerts = {
 
         errorMsg(msg) {
           this.$Message.error(msg);
+        },
+
+        successNotify(title, desc) {
+          this.$Notice.success({
+            title: title ? title : "Sucesso",
+            desc: desc ? desc : "Operação efetuada com sucesso"
+          });
         }
       }
     });

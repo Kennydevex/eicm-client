@@ -69,6 +69,10 @@ export default {
     mode: "out-in"
   },
 
+  router: {
+    middleware: ["clearValidationFormErrors"]
+  },
+
   plugins: [
     "@/plugins/view-design",
     "@/plugins/base",
@@ -77,6 +81,8 @@ export default {
     "@/mixins/handleForm",
     "@/mixins/notifications",
     "@/mixins/authentication",
+    "@/mixins/validationErrors",
+    "@/plugins/axios",
     { src: "@/plugins/g-map", ssr: false },
     { src: "@/plugins/image-lightbox", ssr: false }
   ],

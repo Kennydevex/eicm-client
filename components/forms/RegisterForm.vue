@@ -5,23 +5,24 @@
     :rules="registerValidation"
     @keydown.enter.native="register('form')"
   >
-    <FormItem prop="name">
+    <FormItem prop="name" :error="showFormErrors('name')">
       <Input v-model="formData.name" placeholder="Nome de Utilizador">
         <span slot="prepend">
           <Icon :size="16" type="ios-person"></Icon>
         </span>
       </Input>
     </FormItem>
-    <FormItem prop="email">
+    <FormItem prop="email" :error="showFormErrors('email')">
       <Input v-model="formData.email" placeholder="Email">
         <span slot="prepend">
           <Icon :size="16" type="ios-mail"></Icon>
         </span>
       </Input>
     </FormItem>
-    <FormItem prop="password">
+    <FormItem prop="password" :error="showFormErrors('password')">
       <Input
         type="password"
+        password
         v-model="formData.password"
         placeholder="Palavra Passe"
       >
@@ -31,7 +32,10 @@
       </Input>
     </FormItem>
     <FormItem>
-      <Button @click="register('form')" type="primary" long>Registar</Button>
+      <Button :loading="sending" @click="register('form')" type="primary" long>
+        <span v-if="!sending">Registar</span>
+        <span v-else>Enviando...</span>
+      </Button>
     </FormItem>
   </Form>
 </template>
@@ -55,6 +59,7 @@ export default {
 
   data() {
     return {
+      sending: false,
       registerValidation: {
         name: [
           {
@@ -76,6 +81,12 @@ export default {
             required: true,
             message: "Campo necessário",
             trigger: "change"
+          },
+          {
+            type: "string",
+            min: 8,
+            message: "A palavra passe deve ter no mínimo 8 caracteres",
+            trigger: "blur"
           }
         ]
       }
@@ -86,14 +97,29 @@ export default {
     async register(formRef) {
       await this.$refs[formRef].validate(valid => {
         if (valid) {
+          this.sending = true;
           try {
-            this.$axios.post("auth/register", this.formData);
-            this.successMsg("Conta registada com sucesso");
-            this.resetFormFields("form");
-            this.$router.push({
-              path: "/"
-            });
+            this.$axios
+              .post("auth/register", this.formData)
+              .then(() => {
+                this.sending = false;
+
+                this.successNotify(
+                  "Conta Criada",
+                  "A sua conta foi criada com sucesso, aguarde a sua ativação"
+                );
+                this.resetFormFields("form");
+                this.$router.push({
+                  path: "/"
+                });
+              })
+              .catch(err => {
+                this.errorMsg("Algo Correu mal");
+                this.sending = false;
+              });
           } catch (error) {
+            this.sending = false;
+
             this.errorMsg("Algo Correu mal");
           }
         } else {

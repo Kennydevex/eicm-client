@@ -24,7 +24,10 @@
       </Input>
     </FormItem>
     <FormItem>
-      <Button @click="login('form')" type="primary" long>Login</Button>
+      <Button :loading="sending" @click="login('form')" type="primary" long>
+        <span v-if="!sending">Login</span>
+        <span v-else>Enviando...</span>
+      </Button>
     </FormItem>
   </Form>
 </template>
@@ -47,6 +50,8 @@ export default {
 
   data() {
     return {
+      sending: false,
+
       loginValidation: {
         email: [
           {
@@ -71,6 +76,7 @@ export default {
     async login(formRef) {
       await this.$refs[formRef].validate(valid => {
         if (valid) {
+          this.sending = true;
           try {
             this.$auth
               .loginWith("local", {
@@ -82,10 +88,16 @@ export default {
                   // path: this.$router.query.redirect || "/admin"
                 });
                 this.successMsg("Dados enviados com sucesso");
+                this.sending = false;
+              })
+              .catch(err => {
+                this.errorMsg("Algo Correu mal");
+                this.sending = false;
               });
             // this.resetFormFields(formRef);
           } catch (error) {
             this.errorMsg("Algo Correu mal");
+            this.sending = false;
           }
         } else {
           this.errorMsg("Verefique os campos!");
