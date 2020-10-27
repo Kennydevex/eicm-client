@@ -26,7 +26,7 @@
           />-->
         </div>
         <Menu
-          theme="dark"
+          theme="light"
           width="auto"
           class="bg-gray-900"
           :class="menuitemClasses"
@@ -45,14 +45,14 @@
               </span>
             </template>
             <MenuItem :to="{ name: 'admin-sys-users' }" name="sys-users">
-              Utilizadores</MenuItem
+              Gestão de Utilizadores</MenuItem
             >
             <MenuItem :to="{ name: 'admin-sys-permissions' }" name="sys-roles"
-              >Funções</MenuItem
+              >Gestão de Permissções de Acesso</MenuItem
             >
-            <MenuItem :to="{ name: 'admin-sys-roles' }" name="sys-permissions"
+            <!--<MenuItem :to="{ name: 'admin-sys-roles' }" name="sys-permissions"
               >Permissões</MenuItem
-            >
+            >-->
           </Submenu>
           <Submenu name="institution">
             <template slot="title">
@@ -153,6 +153,12 @@ export default {
   name: "AdminLayout",
 
   middleware: ["auth"],
+
+ 
+  created() {
+    process.client ? (window.getApp = this) : "";
+    this.vueGates(); // Uma opção crítica, mas no caso de problema é so chama-lo em cada componente explicitamente
+  },
 
   data() {
     return {

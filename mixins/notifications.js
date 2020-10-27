@@ -19,6 +19,13 @@ const alerts = {
             title: title ? title : "Sucesso",
             desc: desc ? desc : "Operação efetuada com sucesso"
           });
+        },
+
+        errorNotify(title, desc) {
+          this.$Notice.error({
+            title: title ? title : "Sucesso",
+            desc: desc ? desc : "Operação efetuada com sucesso"
+          });
         }
       }
     });

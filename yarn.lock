@@ -7552,6 +7552,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2@10.x:
+  version "10.8.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.8.1.tgz#4266bd84bcc19170bc8e1bd179f207c67f910ea4"
+  integrity sha512-CRTy1fODxSqX6sGYMP4/9TT1QXlsjElRA4xoJVoCWa8L39l8jBwh/DWOFPb5Re1+EMTqOexDrT38jP0GI/DLZQ==
+
 tailwindcss@^1.7.3:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.7.4.tgz#3992c5cda50887da3f5e108388a58f199aa52a40"
@@ -7989,6 +7994,11 @@ v-click-outside-x@^3.7.1:
   resolved "https://registry.yarnpkg.com/v-click-outside-x/-/v-click-outside-x-3.7.1.tgz#aa03eaa0e41e44cb5207dcf86c2d9f0dd64084c1"
   integrity sha512-WmUgmcIXr9clVpm1AYS/FgHtcDicfnfoxgQCNg4O6vfk9GVnxA0vSqO321ogUo0b7czYTidj7fQENvWFMWOkUg==
 
+v-mask@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/v-mask/-/v-mask-2.2.3.tgz#a8427ddb94cb0ebdfcaa996e84ca7aeda0d4b707"
+  integrity sha512-as00PjW8pC9fmub4y5DqO7Wg6wCIM6fddRk7rykZ6u3C7Zs/iDi/9vnssVkQCZY1o7DTjfK8jlLy0E+Nz4D+mg==
+
 vary@^1.1.2, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -8034,6 +8044,11 @@ vue-easy-lightbox@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/vue-easy-lightbox/-/vue-easy-lightbox-0.14.0.tgz#723ec4f888afc7989e05c58c7fd4c7f9ac5c11bf"
   integrity sha512-WUcqTcI3ndQen9KINh+qPb8sC4YdDliwoldwd6+TplhT1tBSqByAiLGQ3oEg/iwnz17HkX4K7x61BtoxgoKk2w==
+
+vue-gates@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-gates/-/vue-gates-2.1.0.tgz#06d5dd03129245b80ebef6f8bedf6ce20f8c9788"
+  integrity sha512-a6vc/8NeU1JTVSdFE1Oor8t+VbALxq3Q/16CL7ut9gEcRg9E2p06ksc+cRWFbx3g55xqPaAKr8P0brUTOTEiSA==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
@@ -8103,6 +8118,13 @@ vue-style-loader@^4.1.0:
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
+
+vue-sweetalert2@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/vue-sweetalert2/-/vue-sweetalert2-4.1.1.tgz#77963821d798bbf95fd4567ccd55e8cc51c78463"
+  integrity sha512-9ytddeXkjixIGzUxgmVAVdIOrbPiWcjEPQuO3mEPq4zc8clbQbhOn192zvYUdcM0SbRPzbafyXTFx9mNMNJzQA==
+  dependencies:
+    sweetalert2 "10.x"
 
 vue-template-compiler@^2.6.11:
   version "2.6.12"

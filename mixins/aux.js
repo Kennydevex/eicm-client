@@ -28,10 +28,35 @@ const redirectPage = {
           this.$router.push({
             name: name
           });
+        },
+
+        async onCancelModal(modal) {
+          this.$store.commit(modal);
+        },
+
+        async handleModal(modal) {
+          this.$store.commit(modal);
         }
       }
     });
   }
 };
 
+// const components_aux = {
+//   install(Vue, options) {
+//     Vue.mixin({
+//       methods: {
+//         filterMethod(data, query) {
+//           return data.label.indexOf(query) > -1;
+//         },
+
+//         renderTransfers(item) {
+//           return item.label;
+//         }
+//       }
+//     });
+//   }
+// };
+
 Vue.use(redirectPage);
+// Vue.use(components_aux);

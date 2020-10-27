@@ -77,9 +77,13 @@ export default {
     "@/plugins/view-design",
     "@/plugins/base",
     "@/plugins/filters",
+    "@/plugins/v-mask",
+    "@/plugins/vue-gates",
     "@/mixins/aux",
+    "@/mixins/links",
     "@/mixins/handleForm",
     "@/mixins/notifications",
+    "@/mixins/gates",
     "@/mixins/authentication",
     "@/mixins/validationErrors",
     "@/plugins/axios",
@@ -103,8 +107,13 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/robots",
     "@nuxtjs/auth",
-    "@nuxtjs/sitemap"
+    "@nuxtjs/sitemap",
+    [
+      "vue-sweetalert2/nuxt",
+      { confirmButtonColor: "#3E4095", cancelButtonColor: "#ff7674" }
+    ]
   ],
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
