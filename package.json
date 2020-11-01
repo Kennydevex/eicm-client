@@ -15,6 +15,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "gmap-vue": "^1.4.0",
     "loadash": "^1.0.0",
+    "lodash": "^4.17.20",
     "nuxt": "^2.14.0",
     "v-mask": "^2.2.3",
     "view-design": "^4.3.2",

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Upload
+      ref="uploadFileComponent"
       :disabled="fileList && fileList.length == 1"
       :show-upload-list="false"
       :on-success="handleFileSuccess"
@@ -24,7 +25,7 @@
             fileList && fileList.length == 1 ? 'text-gray-600' : 'text-primary'
           "
         ></Icon>
-        <p>Click or drag files here to upload</p>
+        <p>{{uploadMsg}}</p>
       </div>
     </Upload>
     <div class="demo-upload-list" v-for="(item, i) in fileList" :key="i">
@@ -76,6 +77,10 @@ export default {
     fileFieldRef: {
       type: String,
       default: ""
+    },
+    uploadMsg: {
+      type: String,
+      default: "Click ou carregue e largue o seu arquivo aqui"
     },
     uploadType: {
       type: String,

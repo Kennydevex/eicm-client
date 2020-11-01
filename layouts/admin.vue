@@ -60,7 +60,11 @@
               Instituição
             </template>
             <MenuGroup title="INFORMAÇOES">
-              <MenuItem name="institution-about">Sobre</MenuItem>
+              <MenuItem
+                name="institution-about"
+                :to="{ name: 'admin-institution-school' }"
+                >Minha Escola</MenuItem
+              >
               <MenuItem name="institution-history">Historia</MenuItem>
               <MenuItem name="institution-guidelines">Diretrizes</MenuItem>
             </MenuGroup>
@@ -154,7 +158,6 @@ export default {
 
   middleware: ["auth"],
 
- 
   created() {
     process.client ? (window.getApp = this) : "";
     this.vueGates(); // Uma opção crítica, mas no caso de problema é so chama-lo em cada componente explicitamente

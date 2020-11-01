@@ -26,6 +26,13 @@ const alerts = {
             title: title ? title : "Sucesso",
             desc: desc ? desc : "Operação efetuada com sucesso"
           });
+        },
+
+        warningNotify(title, desc) {
+          this.$Notice.warning({
+            title: title ? title : "Sucesso",
+            desc: desc ? desc : "Operação efetuada com sucesso"
+          });
         }
       }
     });

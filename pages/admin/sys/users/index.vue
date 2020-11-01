@@ -11,7 +11,11 @@
         <Button type="primary" @click.stop="onCreateUser()"
           >Registar Utilizador</Button
         >
-        <Button v-if="selected.length>1" type="primary" @click.stop="onDelete('users','','APP_UPDATE_USERS_DATA', true)">Elminar</Button
+        <Button
+          v-if="selected.length > 1"
+          type="primary"
+          @click.stop="onDelete('users', '', 'APP_UPDATE_USERS_DATA', true)"
+          >Elminar</Button
         >
         <create-user></create-user>
         <update-user></update-user>
@@ -30,9 +34,9 @@
           @on-selection-change="handleSelectUser"
         >
           <template slot="contextMenu">
-           <DropdownItem @click.native="handleContextMenuStatus"
-              >{{context_user.status?'Desativar':'Ativar'}}</DropdownItem
-            >
+            <DropdownItem @click.native="handleContextMenuStatus">{{
+              context_user.status ? "Desativar" : "Ativar"
+            }}</DropdownItem>
             <DropdownItem @click.native="handleContextMenuEdit"
               >Editar</DropdownItem
             >
@@ -78,7 +82,7 @@ export default {
         },
         {
           title: "Nome",
-          render: (h, params) => <span>{params.row.person.name}</span>,
+          render: (h, params) => <span> {params.row.person.name} </span>,
           sortable: true
         },
         {
@@ -214,25 +218,30 @@ export default {
         this.getUsers(1);
       });
     }
-  },
+  }, 
   methods: {
     handleSelectUser(selectedItems) {
-      this.selected=selectedItems;
+      this.selected = selectedItems;
       console.log(this.selected);
     },
 
-   
     handleContextMenu(row) {
       this.context_user = row;
     },
-     handleContextMenuStatus() {
-       this.toggleStatus("users/user-activation", this.context_user.id, this.context_user.status,"Utilizador","APP_UPDATE_USERS_DATA");                
+    handleContextMenuStatus() {
+      this.toggleStatus(
+        "users/user-activation",
+        this.context_user.id,
+        this.context_user.status,
+        "Utilizador",
+        "APP_UPDATE_USERS_DATA"
+      );
     },
     handleContextMenuEdit() {
-      this.onUpdateUser(this.context_user.id);                    
+      this.onUpdateUser(this.context_user.id);
     },
     handleContextMenuDelete() {
-       this.onDelete("users",this.context_user.id, "APP_UPDATE_USERS_DATA");
+      this.onDelete("users", this.context_user.id, "APP_UPDATE_USERS_DATA");
     },
     async getUsers(page) {
       await this.$store.dispatch("users/getUsers", page);
@@ -268,10 +277,7 @@ export default {
       //     : "";
       // } catch (error) {}
     },
-    onDeleteUser(index) {
-      console.log(this.users.splice(index, 1));
-      // this.users.splice(index, 1);
-    }
+   
   },
   components: {
     CreateUser: () => import("@/components/backend/users/CreateUser"),
