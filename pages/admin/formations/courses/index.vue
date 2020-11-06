@@ -2,7 +2,7 @@
   <div>
     <Row>
       <Col span="24">
-        Mini Estatistica Aqui
+        Mini Estatistica
       </Col>
 
       <Col span="24" class="my-5">
