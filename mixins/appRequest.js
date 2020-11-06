@@ -3,12 +3,13 @@ import { alerts } from "@/mixins/appAlerts";
 export const requests = {
   data() {
     return {
-      sending: false
+      sending: false,
+      on_load_data: {}
     };
   },
 
   methods: {
-    async addData(formRef, url, successTitle) {
+    async addData(formRef, url, successTitle, updataData, handle_modal) {
       this.$refs[formRef].validate(valid => {
         if (valid) {
           this.sending = true;
@@ -20,10 +21,8 @@ export const requests = {
                 this.resetFormFields(formRef);
                 this.successNotify(successTitle, res.data.msg);
                 console.log(res.data.msg);
-                process.client
-                  ? window.getApp.$emit("APP_UPDATE_USERS_DATA")
-                  : "";
-                this.handleModal("users/toggleCreateUserDialog");
+                process.client ? window.getApp.$emit(updataData) : "";
+                this.handleModal(handle_modal);
               })
               .catch(err => {
                 this.sending = false;
@@ -39,7 +38,18 @@ export const requests = {
       });
     },
 
-    async updateData(formRef, url, successTitle) {
+    onUpdateData(id, entity, updateData, updateModal) {
+      try {
+        this.$set(this.on_load_data, id, true);
+        this.$axios.$get(`${entity}/${id}`).then(res => {
+          process.client ? window.getApp.$emit(updateData, res.data) : "";
+          this.$set(this.on_load_data, id, false);
+          this.handleModal(updateModal);
+        });
+      } catch (error) {}
+    },
+
+    async updateData(formRef, url, successTitle, updataData, handle_modal) {
       this.$refs[formRef].validate(valid => {
         if (valid) {
           this.sending = true;
@@ -50,10 +60,12 @@ export const requests = {
                 this.sending = false;
                 this.resetFormFields(formRef);
                 this.successNotify(successTitle, res.data.msg);
-                process.client
-                  ? window.getApp.$emit("APP_UPDATE_USERS_DATA")
-                  : "";
-                this.handleModal("users/toggleUpdateUserDialog");
+                // process.client
+                //   ? window.getApp.$emit("APP_UPDATE_USERS_DATA")
+                //   : "";
+                // this.handleModal("users/toggleUpdateUserDialog");
+                process.client ? window.getApp.$emit(updataData) : "";
+                this.handleModal(handle_modal);
               })
               .catch(err => {
                 this.sending = false;
@@ -81,9 +93,9 @@ export const handleActivations = {
     };
   },
   methods: {
-    async toggleStatus(url, id, status, entity, refresh_data) {
+    async toggleStatus(url, id, status, entity, refresh_data, featured=false) {
       await this.$set(this.loadAtivaction, id, false);
-      await this.activationAlert(status, entity).then(result => {
+      await this.activationAlert(status, entity, featured).then(result => {
         if (result.value) {
           this.$set(this.loadAtivaction, id, true);
           this.$axios.$put(`${url}/${id}`).then(res => {

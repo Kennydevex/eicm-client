@@ -31,13 +31,19 @@ export const alerts = {
       });
     },
 
-    activationAlert(status, entity) {
+    activationAlert(status, entity, featured = false) {
       return this.$swal({
-        title: status ? "Desativar " + entity + "?" : "Ativar " + entity + "?",
+        title: !featured
+          ? status
+            ? `Desativar ${entity}?`
+            : `Ativar ${entity}?`
+          : status
+          ? `Tirar Destaque do ${entity}?`
+          : `Destacar ${entity}?`,
         text: "Tens certeza que queres efetuar esta ação?",
         icon: "question",
         showCancelButton: true,
-        confirmButtonText: status ? "Sim, Desativar" : "Sim, Ativar",
+        confirmButtonText: status ? "Confirmar" : "Confirmar",
         cancelButtonText: "Cancelar!"
       });
     }

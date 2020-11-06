@@ -9,11 +9,10 @@
     <div class="flex items-center justify-end px-6 py-3 bg-gray-900">
       <Button
         @click="onUpdate(school.id)"
-        shape="circle"
         type="text"
-        class="mr-2 text-gray-200 text-2xl hover:text-gray-800"
+        class="mr-2 text-gray-200 hover:text-gray-800"
         icon="md-create"
-      ></Button>
+      >Editar</Button>
     </div>
 
     <div class="py-4 px-6">

@@ -815,8 +815,8 @@
             style="margin-left: 8px"
             @click.stop="
               creating
-                ? addData('schoolForm', 'schools', 'Instituição Registado')
-                : updateData('schoolForm', 'schools', 'Instituição Atualizado')
+                ? addData('schoolForm', 'schools', 'Instituição Registado', 'APP_UPDATE_SCHOOLS_DATA', 'courses/toggleCreateSchoolDialog',)
+                : updateData('schoolForm', 'schools', 'Instituição Atualizado', 'APP_UPDATE_SCHOOLS_DATA', 'courses/toggleUpdateSchoolDialog',)
             "
             ><span v-if="!sending">{{
               creating ? "Registar" : "Atualizar"
@@ -993,6 +993,7 @@ export default {
           align: "center"
         }
       ],
+
       mural_header: [
         {
           title: "Icone",
@@ -1232,6 +1233,7 @@ export default {
       this.adding_mural = false;
       this.on_edit_mural = false;
     },
+
     findRepeatedContact: debounce(function(contact) {
       this.repeated_contact = false;
       for (var i = 0; i < this.formData.contacts.length; i++) {
@@ -1245,23 +1247,6 @@ export default {
       }
       this.repeated_contact = false;
     }, 500),
-
-    // findRepeatedContact(contact) {
-    //   this.repeated_contact = this.repeatedFormData(
-    //     "contacts",
-    //     'contact',
-    //     contact,
-    //     this.selected_contact
-    //   );
-    // },
-
-    // findRepeateddMark(mark) {
-    //   this.repeated_mark = this.repeatedFormData(
-    //     "marks",
-    //     mark,
-    //     this.selected_mark
-    //   );
-    // },
 
     findRepeatedGuideline: debounce(function(guideline) {
       this.repeated_guideline = false;
@@ -1326,28 +1311,6 @@ export default {
       this.on_edit_mural = false;
       this.adding_mural = false;
     },
-    // updateContact(formRef) {
-    //   this.$refs[formRef].validate(valid => {
-    //     if (valid) {
-    //       if (this.repeated_contact) {
-    //         return;
-    //       }
-    //       this.repeated_contact = false;
-    //       // this.formData.contacts[this.selected_contact] = this.temp_contacts;
-    //       this.formData.contacts.splice(
-    //         this.selected_contact,
-    //         1,
-    //         this.temp_contacts
-    //       );
-    //       this.clearTempContact();
-    //       this.selected_contact = "";
-    //       this.on_edit_contact = false;
-    //       this.adding_contact = false;
-    //     } else {
-    //       this.$Message.error("Erro de validação");
-    //     }
-    //   });
-    // },
 
     updateContact(formRef) {
       this.updateMultFormData(
@@ -1418,6 +1381,7 @@ export default {
       this.formData.cover = res;
       this.uploadCoverList = this.$refs.schoolCover.$refs.uploadFileComponent.fileList;
     },
+
     async handleRemoveLogo() {
       let logo = this.formData.logo;
       const res = await this.$axios.post("remove-school-logo", {

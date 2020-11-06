@@ -46,9 +46,17 @@ export default {
   data() {
     return {
       formData: {
+        id: "",
         name: "",
         email: "",
-        password: ""
+        password: "",
+        person: {
+          id: "",
+          name: "",
+          phone: "",
+          birthday: "",
+          gender: ""
+        }
       }
     };
   },

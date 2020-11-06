@@ -27,7 +27,7 @@ export default {
         history: "",
         slogan: "",
         logo: "default.svg",
-        cover: "defaul.svg",
+        cover: "default.svg",
         opning: "",
         primary_color: "",
         secundary_color: "",

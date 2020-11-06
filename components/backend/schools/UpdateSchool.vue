@@ -3,7 +3,7 @@
     <Modal
       width="640"
       v-model="update_school_dialog"
-      title="Editar utilizador"
+      title="Editar instituição"
       footer-hide
       scrollable
       :mask-closable="false"

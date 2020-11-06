@@ -80,7 +80,7 @@
               <Icon size="20" type="ios-school" />
               Cursos e Formações
             </template>
-            <MenuItem name="course-course">Cursos</MenuItem>
+            <MenuItem name="course-course" :to="{ name: 'admin-formations-courses' }">Cursos</MenuItem>
             <MenuItem name="course-subject">Disciplinas</MenuItem>
             <MenuItem name="course-category">Categogias</MenuItem>
           </Submenu>

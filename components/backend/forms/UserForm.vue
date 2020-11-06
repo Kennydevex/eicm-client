@@ -225,8 +225,8 @@
             style="margin-left: 8px"
             @click.stop="
               creating
-                ? addData('userForm', 'users', 'Utilizador Registado')
-                : updateData('userForm', 'users', 'Utilizador Atualizado')
+                ? addData('userForm', 'users', 'Utilizador Registado', 'APP_UPDATE_USERS_DATA', 'users/toggleCreateUserDialog',)
+                : updateData('userForm', 'users', 'Utilizador Atualizado', 'APP_UPDATE_USERS_DATA', 'users/toggleUpdateUserDialog',)
             "
             ><span v-if="!sending">{{
               creating ? "Registar" : "Atualizar"

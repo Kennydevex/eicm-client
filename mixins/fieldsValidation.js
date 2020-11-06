@@ -84,6 +84,69 @@ export const school_validation = {
   }
 };
 
+export const course_validation = {
+  data() {
+    return {
+      courseFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        family_id: [
+          {
+            required: true,
+            type: "number",
+
+            message: "Campo necessário",
+            trigger: "change"
+          },
+          { type: "number", message: "numero", trigger: "change" }
+        ],
+
+        release: [
+          {
+            required: true,
+            type: "date",
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+        type: [
+          {
+            required: true,
+
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+        departament_id: [
+          {
+            required: true,
+            type: "number",
+
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+        abbr: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
 export const mult_form_validation = {
   data() {
     return {
@@ -191,6 +254,27 @@ export const mult_form_validation = {
             message: "Apresente uma descrição",
             trigger: "blur"
           }
+        ]
+      },
+
+      attributionValidation: {
+        "attribution.discipline_id": [
+          {
+            required: true,
+            type: "number",
+            message: "Insira uma disciplina aqui",
+            trigger: "change"
+          }
+        ],
+
+        "attribution.workload": [
+          { type: "integer", message: "Carga horária tem de ser numero", trigger: "blur" },
+          {
+            required: true,
+            type: "integer",
+            message: "Insira uma carga horária",
+            trigger: "blur"
+          },
         ]
       }
     };
