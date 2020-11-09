@@ -24,6 +24,7 @@ export default {
         id:'',
         name: "",
         abbr: "",
+        summary: "",
         presentation: "",
         release: "",
         requirement: "",

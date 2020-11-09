@@ -3,6 +3,18 @@ export default {
     state.courses = course;
   },
 
+  SET_ACTIVED_COURSES(state, course) {
+    state.actived_courses = course;
+  },
+
+  SET_FEATURED_COURSES(state, course) {
+    state.featured_courses = course;
+  },
+
+  SET_COURSE(state, course) {
+    state.course = course;
+  },
+
   toggleCreateCourseDialog(state) {
     state.create_course_dialog = !state.create_course_dialog;
   },

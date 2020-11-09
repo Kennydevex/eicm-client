@@ -5462,6 +5462,11 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+nuxt-social-meta@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/nuxt-social-meta/-/nuxt-social-meta-0.0.5.tgz#60dc2e8dc00401a122fc069fd9aa541894db5b2b"
+  integrity sha512-HVBuw2/ci4wiJxkEZDWP9t/vP7knM2APN9Swhslgi28uD4jgOUqWsEeljRP/TWB+kg1nEM3JhyiPIn3EdmuUFQ==
+
 nuxt@^2.14.0:
   version "2.14.3"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.14.3.tgz#1e1fb762d407dc275253360b87f3257c609b4dfd"
@@ -8110,6 +8115,11 @@ vue-server-renderer@^2.6.11:
     resolve "^1.2.0"
     serialize-javascript "^3.1.0"
     source-map "0.5.6"
+
+vue-social-sharing@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/vue-social-sharing/-/vue-social-sharing-3.0.3.tgz#06fe22d4f1de70e4515c5447b92de07b0a0e41b0"
+  integrity sha512-7MbbVhhzMYM+mPGJjKc+L2EYudCDqavKP2nJTZeV/KQfJqbKsnK6e0nzSd/8Ir4JSQ+AQoY9D9yP0t4gXV0FgA==
 
 vue-style-loader@^4.1.0:
   version "4.1.2"

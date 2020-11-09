@@ -37,6 +37,21 @@
 
               <Col span="24">
                 <FormItem
+                  prop="summary"
+                  :error="showFormErrors('summary')"
+                  label="Resumo/Missão do curso"
+                >
+                  <Input
+                    type="textarea"
+                    :rows="2"
+                    v-model="formData.summary"
+                    placeholder="Faça um pequeno resumo deste curso"
+                  ></Input>
+                </FormItem>
+              </Col>
+
+              <Col span="24">
+                <FormItem
                   :error="showFormErrors('presentation')"
                   label="Apresentação/Descrição"
                 >
@@ -585,18 +600,6 @@ export default {
           align: "center"
         }
       ]
-
-      // attributionValidation: {
-      //   attribution: {
-      //     discipline_id: [
-      //       {
-      //         required: true,
-      //         message: "Insira uma disciplina aqui",
-      //         trigger: "change"
-      //       },
-      //     ]
-      //   }
-      // }
     };
   },
 

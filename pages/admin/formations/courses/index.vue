@@ -14,6 +14,32 @@
           <span v-if="!creating_course">Novo Curso</span>
           <span v-else>Solicitando...</span></Button
         >
+        <Button
+          :loading="creating_course"
+          type="primary"
+          @click.stop="onCreateCourse()"
+        >
+          <span v-if="!creating_course">Gerir Disciplinas</span>
+          <span v-else>Solicitando...</span></Button
+        >
+
+        <Button
+          :loading="creating_course"
+          type="primary"
+          @click.stop="onCreateCourse()"
+        >
+          <span v-if="!creating_course">Gerir Categorias</span>
+          <span v-else>Solicitando...</span></Button
+        >
+
+        <Button
+          :loading="creating_course"
+          type="primary"
+          @click.stop="onCreateCourse()"
+        >
+          <span v-if="!creating_course">Gerir Departamentos</span>
+          <span v-else>Solicitando...</span></Button
+        >
         <Button v-if="selected.length > 1" type="primary"
           >Elminar Selecionados</Button
         >
@@ -98,7 +124,7 @@ export default {
   mixins: [handleActivations, deleteDatas, requests],
 
   async fetch({ store }) {
-    await store.dispatch("courses/getCourses", 1);
+    await store.dispatch("courses/getCourses");
   },
 
   data() {

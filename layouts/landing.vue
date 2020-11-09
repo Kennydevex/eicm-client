@@ -17,9 +17,18 @@
 
 <script>
 export default {
+  async created() {
+    this.spinLoad = true;
+    await this.$store.dispatch("courses/getFeaturedCourses");
+    this.spinLoad = false;
+  },
   components: {
     NavBar: () => import("@/components/frontend/AppNavBar"),
     AppFooter: () => import("@/components/frontend/AppFooter")
+  },
+
+  data() {
+    return { spinLoad: false };
   }
 };
 </script>

@@ -108,9 +108,25 @@ export default {
     "@nuxtjs/robots",
     "@nuxtjs/auth",
     "@nuxtjs/sitemap",
+    "vue-social-sharing/nuxt",
     [
       "vue-sweetalert2/nuxt",
       { confirmButtonColor: "#3E4095", cancelButtonColor: "#ff7674" }
+    ],
+    [
+      "nuxt-social-meta",
+      {
+        url: process.env.SITE_URL || "https://eicm-gdc.ga",
+        title: process.env.SITE_TITLE || "EICM-GDC",
+        site_name: process.env.SITE_NAME || "EICM-GDC",
+        description:
+          process.env.SITE_DESCRIPTION || "Escola Tecnica do Mindelo",
+        img: process.env.SITE_LOGO || "logo/logo.png",
+        locale: "pt_PT",
+        twitter: "@eicm_gdc",
+        twitter_card: "summary_large_image",
+        themeColor: "#3E4095"
+      }
     ]
   ],
 

@@ -6,8 +6,8 @@
     <div class="relative pb-5/6">
       <img
         class="absolute h-full w-full object-cover rounded-lg shadow-md"
-        :src="course.cover"
-        :alt="course.name"
+        :src="`${publicURL}/uploads/courses/covers/${course.cover}`"
+        :alt="course.abbr"
       />
     </div>
     <div class="relative px-4 -mt-16">

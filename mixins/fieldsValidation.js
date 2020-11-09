@@ -95,6 +95,13 @@ export const course_validation = {
             trigger: "blur"
           }
         ],
+        summary: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
 
         family_id: [
           {
@@ -268,13 +275,17 @@ export const mult_form_validation = {
         ],
 
         "attribution.workload": [
-          { type: "integer", message: "Carga horária tem de ser numero", trigger: "blur" },
+          {
+            type: "integer",
+            message: "Carga horária tem de ser numero",
+            trigger: "blur"
+          },
           {
             required: true,
             type: "integer",
             message: "Insira uma carga horária",
             trigger: "blur"
-          },
+          }
         ]
       }
     };
