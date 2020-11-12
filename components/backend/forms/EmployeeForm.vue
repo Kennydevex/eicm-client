@@ -151,37 +151,25 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="12">
-          <Tooltip
-            max-width="200"
-            placement="bottom"
-            content="Este colaborador vai ter registo de professor tambem"
-          >
-            <FormItem label="Este colaborador tambem leciona nesta escola">
-              <i-switch v-model="formData.is_teacher" size="large">
-                <span slot="open">Sim</span>
-                <span slot="close">Não</span>
-              </i-switch>
-            </FormItem>
-          </Tooltip>
+          <FormItem label="Este colaborador tambem leciona nesta escola">
+            <i-switch v-model="formData.is_teacher" size="large">
+              <span slot="open">Sim</span>
+              <span slot="close">Não</span>
+            </i-switch>
+          </FormItem>
         </Col>
 
         <Col span="24" :xs="24" :sm="12">
-          <Tooltip
-            max-width="200"
-            placement="bottom"
-            content="Com esta conta o colaborador podera autenticar-se no sistema"
-          >
-            <FormItem label="Este colaborador pode ter uma conta de utilizador">
-              <i-switch
-                @on-change="resetUserEmail()"
-                v-model="formData.sync_user_account"
-                size="large"
-              >
-                <span slot="open">Sim</span>
-                <span slot="close">Não</span>
-              </i-switch>
-            </FormItem>
-          </Tooltip>
+          <FormItem label="Este colaborador pode ter uma conta de utilizador">
+            <i-switch
+              @on-change="resetUserEmail()"
+              v-model="formData.sync_user_account"
+              size="large"
+            >
+              <span slot="open">Sim</span>
+              <span slot="close">Não</span>
+            </i-switch>
+          </FormItem>
         </Col>
       </Row>
 
