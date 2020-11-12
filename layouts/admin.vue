@@ -69,7 +69,7 @@
               <MenuItem name="institution-guidelines">Diretrizes</MenuItem>
             </MenuGroup>
             <MenuGroup title="RECURSOS">
-              <MenuItem name="institution-collaborators"
+              <MenuItem name="institution-collaborators" :to="{ name: 'admin-institution-collaborators' }"
                 >Colaboradores</MenuItem
               >
               <MenuItem name="institution-team">Equipas</MenuItem>

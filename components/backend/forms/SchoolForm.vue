@@ -275,9 +275,9 @@
               <FormItem label="Sobre a Escola">
                 <Input
                   type="textarea"
+                  :rows="3"
                   v-model="formData.about"
                   placeholder="Apresente uma breve discrição sobre a escola"
-                  :rows="3"
                 ></Input>
               </FormItem>
             </Col>

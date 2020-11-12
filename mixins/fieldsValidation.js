@@ -52,6 +52,107 @@ export const user_validation = {
   }
 };
 
+export const charge_validation = {
+  data() {
+    return {
+      chargeFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        section: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const employee_validation = {
+  data() {
+    return {
+      employeeFormValidation: {
+        "person.name": [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        email: [{ type: "email", message: "Email inváldo", trigger: "blur" }],
+
+        ic: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        "charges.0.encumbrance.charge_id": [
+          {
+            required: true,
+            type: "number",
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+        "charges.0.encumbrance.activity_begin": [
+          {
+            required: true,
+            type: "date",
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+        "person.user.email": [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          },
+          { type: "email", message: "Email inváldo", trigger: "blur" }
+        ],
+
+        "person.user.name": [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        "person.user.password": [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
 export const school_validation = {
   data() {
     return {
