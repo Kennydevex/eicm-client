@@ -84,6 +84,118 @@ export const charge_validation = {
   }
 };
 
+export const discipline_validation = {
+  data() {
+    return {
+      disciplineFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        type: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const departament_validation = {
+  data() {
+    return {
+      departamentFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const family_validation = {
+  data() {
+    return {
+      familyFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const outcome_validation = {
+  data() {
+    return {
+      outcomeFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        type: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ]
+      }
+    };
+  }
+};
+
 export const employee_validation = {
   data() {
     return {

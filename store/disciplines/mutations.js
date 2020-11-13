@@ -15,5 +15,13 @@ export default {
   },
   update_discipline_dialog(state, val) {
     state.update_discipline_dialog = val;
+  },
+
+  toggleListDisciplineDialog(state) {
+    state.list_discipline_dialog = !state.list_discipline_dialog;
+  },
+
+  list_discipline_dialog(state, val) {
+    state.list_discipline_dialog = val;
   }
 };

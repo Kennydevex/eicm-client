@@ -15,5 +15,13 @@ export default {
   },
   update_departament_dialog(state, val) {
     state.update_departament_dialog = val;
+  },
+
+  toggleListDepartamentDialog(state) {
+    state.list_departament_dialog = !state.list_departament_dialog;
+  },
+
+  list_departament_dialog(state, val) {
+    state.list_departament_dialog = val;
   }
 };

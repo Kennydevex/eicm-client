@@ -93,7 +93,14 @@ export const handleActivations = {
     };
   },
   methods: {
-    async toggleStatus(url, id, status, entity, refresh_data, featured=false) {
+    async toggleStatus(
+      url,
+      id,
+      status,
+      entity,
+      refresh_data,
+      featured = false
+    ) {
       await this.$set(this.loadAtivaction, id, false);
       await this.activationAlert(status, entity, featured).then(result => {
         if (result.value) {
@@ -160,6 +167,23 @@ export const deleteDatas = {
 
       // Depois de eliminar registo, atualizar os dados
       process.client ? window.getApp.$emit(refresh_data) : "";
+    }
+  }
+};
+
+export const dataManage = {
+  mixins: [alerts],
+  data() {
+    return {
+      loading_external: {}
+    };
+  },
+  methods: {
+    async onManageExternalEntities(load_data, handle_modal) {
+      this.loading_external = true;
+      await this.$store.dispatch(load_data);
+      this.loading_external = false;
+      this.handleModal(handle_modal);
     }
   }
 };

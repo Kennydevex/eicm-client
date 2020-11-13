@@ -36,7 +36,8 @@ const redirectPage = {
 
         async handleModal(modal) {
           this.$store.commit(modal);
-        }
+        },
+
       }
     });
   }

@@ -69,7 +69,9 @@
               <MenuItem name="institution-guidelines">Diretrizes</MenuItem>
             </MenuGroup>
             <MenuGroup title="RECURSOS">
-              <MenuItem name="institution-collaborators" :to="{ name: 'admin-institution-collaborators' }"
+              <MenuItem
+                name="institution-collaborators"
+                :to="{ name: 'admin-institution-collaborators' }"
                 >Colaboradores</MenuItem
               >
               <MenuItem name="institution-team">Equipas</MenuItem>
@@ -80,7 +82,11 @@
               <Icon size="20" type="ios-school" />
               Cursos e Formações
             </template>
-            <MenuItem name="course-course" :to="{ name: 'admin-formations-courses' }">Cursos</MenuItem>
+            <MenuItem
+              name="course-course"
+              :to="{ name: 'admin-formations-courses' }"
+              >Cursos</MenuItem
+            >
             <MenuItem name="course-subject">Disciplinas</MenuItem>
             <MenuItem name="course-category">Categogias</MenuItem>
           </Submenu>

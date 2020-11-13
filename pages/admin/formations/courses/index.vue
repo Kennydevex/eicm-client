@@ -1,114 +1,130 @@
 <template>
   <div>
     <Row>
-      <Col span="24">
-        Mini Estatistica
-      </Col>
+      <Col span="24"> </Col>
 
       <Col span="24" class="my-5">
-        <Button
-          :loading="creating_course"
-          type="primary"
-          @click.stop="onCreateCourse()"
-        >
-          <span v-if="!creating_course">Novo Curso</span>
-          <span v-else>Solicitando...</span></Button
-        >
-        <Button
-          :loading="creating_course"
-          type="primary"
-          @click.stop="onCreateCourse()"
-        >
-          <span v-if="!creating_course">Gerir Disciplinas</span>
-          <span v-else>Solicitando...</span></Button
-        >
+        <Tabs :animated="false">
+          <TabPane label="Cursos">
+            <Row>
+              <Col span="24">
+                <Button
+                  :loading="creating_course"
+                  type="primary"
+                  @click.stop="onCreateCourse()"
+                >
+                  <span v-if="!creating_course">Novo Curso</span>
+                  <span v-else>Solicitando...</span></Button
+                >
+              </Col>
 
-        <Button
-          :loading="creating_course"
-          type="primary"
-          @click.stop="onCreateCourse()"
-        >
-          <span v-if="!creating_course">Gerir Categorias</span>
-          <span v-else>Solicitando...</span></Button
-        >
-
-        <Button
-          :loading="creating_course"
-          type="primary"
-          @click.stop="onCreateCourse()"
-        >
-          <span v-if="!creating_course">Gerir Departamentos</span>
-          <span v-else>Solicitando...</span></Button
-        >
-        <Button v-if="selected.length > 1" type="primary"
-          >Elminar Selecionados</Button
-        >
-        <create-course></create-course>
-        <update-course></update-course>
+              <Col span="24" class="mt-5">
+                <Table
+                  border
+                  :columns="courses_header"
+                  :data="courses"
+                  context-menu
+                  show-context-menu
+                  @on-contextmenu="handleContextMenu"
+                >
+                  <template slot="contextMenu">
+                    <DropdownItem @click.native="handleContextMenuEdit"
+                      >Editar</DropdownItem
+                    >
+                    <DropdownItem
+                      @click.native="handleContextMenuDelete"
+                      style="color: #ed4014"
+                      >Eliminar</DropdownItem
+                    >
+                    <DropdownItem @click.native="handleContextMenuStatus">{{
+                      context_course.status ? "Desativar" : "Ativar"
+                    }}</DropdownItem>
+                    <DropdownItem @click.native="handleContextMenuFeatured">{{
+                      context_course.featured ? "Tirar Destaque" : "Destacar"
+                    }}</DropdownItem>
+                  </template>
+                  <template slot-scope="{ row }" slot="abbr">
+                    <strong>{{ row.abbr }}</strong>
+                  </template>
+                  <template slot-scope="{ row }" slot="release">
+                    <span>{{ $moment(row.release).format("l") }}</span>
+                  </template>
+                  <template slot-scope="{ row }" slot="status">
+                    <Tag
+                      type="dot"
+                      :color="row.status ? 'primary' : 'warning'"
+                      >{{ row.status ? "Ativo" : "Desativo" }}</Tag
+                    >
+                  </template>
+                  <template slot-scope="{ row }" slot="featured">
+                    <Tag
+                      type="dot"
+                      :color="row.featured ? 'primary' : 'warning'"
+                      >{{ row.featured ? "Destaque" : "Normal" }}</Tag
+                    >
+                  </template>
+                  <template slot-scope="{ row, index }" slot="action">
+                    <Button
+                      type="primary"
+                      size="small"
+                      style="margin-right: 5px"
+                      :loading="on_load_data_to_update[row.id]"
+                      @click="onUpdateCourse(row.id)"
+                    >
+                      <Icon
+                        v-if="!on_load_data_to_update[row.id]"
+                        type="md-create"
+                      />
+                    </Button>
+                    <Button
+                      type="error"
+                      size="small"
+                      :loading="deleting[row.id]"
+                      @click="
+                        onDelete('courses', row.id, 'APP_UPDATE_COURSES_DATA')
+                      "
+                    >
+                      <Icon v-if="!deleting[row.id]" type="md-trash"
+                    /></Button>
+                  </template>
+                </Table>
+                <create-course></create-course>
+                <update-course></update-course>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Disciplinas">
+            <Row>
+              <Col span="24">
+                <list-disciplines></list-disciplines>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Departamentos">
+            <Row>
+              <Col span="24">
+                <list-departaments></list-departaments>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Familias Profissionais">
+            <Row>
+              <Col span="24">
+                <list-families></list-families>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Perfis de Saída">
+            <Row>
+              <Col span="24">
+                <list-outcomes></list-outcomes>
+              </Col>
+            </Row>
+          </TabPane>
+        </Tabs>
       </Col>
 
-      <Col span="24">
-        <Table
-          border
-          :columns="courses_header"
-          :data="courses"
-          context-menu
-          show-context-menu
-          @on-contextmenu="handleContextMenu"
-        >
-          <template slot="contextMenu">
-            <DropdownItem @click.native="handleContextMenuEdit"
-              >Editar</DropdownItem
-            >
-            <DropdownItem
-              @click.native="handleContextMenuDelete"
-              style="color: #ed4014"
-              >Eliminar</DropdownItem
-            >
-            <DropdownItem @click.native="handleContextMenuStatus">{{
-              context_course.status ? "Desativar" : "Ativar"
-            }}</DropdownItem>
-            <DropdownItem @click.native="handleContextMenuFeatured">{{
-              context_course.featured ? "Tirar Destaque" : "Destacar"
-            }}</DropdownItem>
-          </template>
-          <template slot-scope="{ row }" slot="abbr">
-            <strong>{{ row.abbr }}</strong>
-          </template>
-          <template slot-scope="{ row }" slot="release">
-            <span>{{ $moment(row.release).format("l") }}</span>
-          </template>
-          <template slot-scope="{ row }" slot="status">
-            <Tag type="dot" :color="row.status ? 'primary' : 'warning'">{{
-              row.status ? "Ativo" : "Desativo"
-            }}</Tag>
-          </template>
-          <template slot-scope="{ row }" slot="featured">
-            <Tag type="dot" :color="row.featured ? 'primary' : 'warning'">{{
-              row.featured ? "Destaque" : "Normal"
-            }}</Tag>
-          </template>
-          <template slot-scope="{ row, index }" slot="action">
-            <Button
-              type="primary"
-              size="small"
-              style="margin-right: 5px"
-              :loading="on_load_data_to_update[row.id]"
-              @click="onUpdateCourse(row.id)"
-            >
-              <Icon v-if="!on_load_data_to_update[row.id]" type="md-create" />
-            </Button>
-            <Button
-              type="error"
-              size="small"
-              :loading="deleting[row.id]"
-              @click="onDelete('courses', row.id, 'APP_UPDATE_COURSES_DATA')"
-            >
-              <Icon v-if="!deleting[row.id]" type="md-trash"
-            /></Button>
-          </template>
-        </Table>
-      </Col>
+      <Col span="24"> </Col>
     </Row>
   </div>
 </template>
@@ -125,11 +141,19 @@ export default {
 
   async fetch({ store }) {
     await store.dispatch("courses/getCourses");
+    await store.dispatch("disciplines/getDisciplines");
+    await store.dispatch("outcomes/getOutcomes");
+    await store.dispatch("families/getFamilies");
+    await store.dispatch("departaments/getDepartaments");
   },
 
   data() {
     return {
       context_course: {},
+      loading_disciplines: false,
+      loading_departaments: false,
+      loading_families: false,
+      loading_outcomes: false,
 
       on_load_data_to_update: {},
       creating_course: false,
@@ -191,6 +215,9 @@ export default {
     }
   },
   methods: {
+    testja() {
+      console.log("ta la");
+    },
     async onCreateCourse() {
       this.creating_course = true;
       await this.loadExtraData();
@@ -209,6 +236,30 @@ export default {
       );
       this.$set(this.on_load_data_to_update, id, false);
     },
+    // async onManageDisciplines() {
+    //   this.loading_disciplines = true;
+    //   await this.$store.dispatch("disciplines/getDisciplines");
+    //   this.loading_disciplines = false;
+    //   this.$store.commit("disciplines/toggleListDisciplineDialog");
+    // },
+    // async onManageFamilies() {
+    //   this.loading_families = true;
+    //   await this.$store.dispatch("families/getFamilies");
+    //   this.loading_families = false;
+    //   this.$store.commit("families/toggleListFamilyDialog");
+    // },
+    // async onManageDepartaments() {
+    //   this.loading_departaments = true;
+    //   await this.$store.dispatch("departaments/getDepartaments");
+    //   this.loading_departaments = false;
+    //   this.$store.commit("departaments/toggleListDepartamentDialog");
+    // },
+    // async onManageOutcomes() {
+    //   this.loading_outcomes = true;
+    //   await this.$store.dispatch("outcomes/getOutcomes");
+    //   this.loading_outcomes = false;
+    //   this.$store.commit("outcomes/toggleListOutcomeDialog");
+    // },
     async loadExtraData() {
       await this.$store.dispatch("departaments/getDepartaments");
       await this.$store.dispatch("families/getFamilies");
@@ -255,7 +306,13 @@ export default {
   },
   components: {
     CreateCourse: () => import("@/components/backend/courses/CreateCourse"),
-    UpdateCourse: () => import("@/components/backend/courses/UpdateCourse")
+    UpdateCourse: () => import("@/components/backend/courses/UpdateCourse"),
+    ListDisciplines: () =>
+      import("@/components/backend/disciplines/ListDisciplines"),
+    ListFamilies: () => import("@/components/backend/families/ListFamilies"),
+    ListDepartaments: () =>
+      import("@/components/backend/departaments/ListDepartaments"),
+    ListOutcomes: () => import("@/components/backend/outcomes/ListOutcomes")
   }
 };
 </script>

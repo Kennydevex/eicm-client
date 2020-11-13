@@ -15,5 +15,13 @@ export default {
   },
   update_family_dialog(state, val) {
     state.update_family_dialog = val;
+  },
+
+  toggleListFamilyDialog(state) {
+    state.list_family_dialog = !state.list_family_dialog;
+  },
+
+  list_family_dialog(state, val) {
+    state.list_family_dialog = val;
   }
 };

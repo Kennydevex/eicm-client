@@ -51,16 +51,15 @@
             context_employee.active ? "Desativar" : "Ativar"
           }}</DropdownItem>
         </template>
-        <template slot-scope="{ row }" slot="avatar">
+        <!--<template slot-scope="{ row }" slot="avatar">
           <div class="h-full w-full flex items-center justify-center">
             <img
               class="w-8 rounded-full"
               :src="`${publicURL}/uploads/avatars/${row.avatar}`"
               :alt="row.name"
             />
-            <!--<Avatar size="small"  :src="`${publicURL}/uploads/avatars/${row.avatar}`"/>-->
           </div>
-        </template>
+        </template>-->
         <template slot-scope="{ row }" slot="name">
           <strong>{{ row.person.name }}</strong>
         </template>
@@ -143,11 +142,11 @@ export default {
       context_employee: {},
       single_employee: [],
       employees_header: [
-        {
-          title: "Perfil",
-          slot: "avatar",
-          minWidth: 80
-        },
+        // {
+        //   title: "Perfil",
+        //   slot: "avatar",
+        //   minWidth: 80
+        // },
         {
           title: "Nome",
           slot: "name",
@@ -253,7 +252,7 @@ export default {
       import("@/components/backend/employees/CreateEmployee"),
     UpdateEmployee: () =>
       import("@/components/backend/employees/UpdateEmployee"),
-    ChargesIndex: () => import("@/components/backend/charges/ChargesIndex")
+    ChargesIndex: () => import("@/components/backend/charges/ChargesIndex"),
   }
 };
 </script>

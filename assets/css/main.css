@@ -6,3 +6,6 @@
 .page-leave-to {
   opacity: 0;
 }
+.swal2-container {
+  z-index: 100000;
+}

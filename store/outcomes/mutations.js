@@ -15,5 +15,13 @@ export default {
   },
   update_outcome_dialog(state, val) {
     state.update_outcome_dialog = val;
+  },
+
+  toggleListOutcomeDialog(state) {
+    state.list_outcome_dialog = !state.list_outcome_dialog;
+  },
+
+  list_outcome_dialog(state, val) {
+    state.list_outcome_dialog = val;
   }
 };
