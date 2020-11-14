@@ -1,17 +1,17 @@
 <template>
   <Row>
     <Col span="24">
-      <Button type="primary" @click.stop="onCreateFamily()">
-        <span>Nova Familia</span>
+      <Button type="primary" @click.stop="onCreateTag()">
+        <span>Novo Marcador</span>
       </Button>
-      <create-family></create-family>
+      <create-tag></create-tag>
     </Col>
 
     <Col span="24" class="mt-5">
       <Table
         border
-        :columns="families_header"
-        :data="families"
+        :columns="tags_header"
+        :data="tags"
         context-menu
         show-context-menu
         @on-contextmenu="handleContextMenu"
@@ -27,12 +27,14 @@
             >Eliminar</DropdownItem
           >
         </template>
+
         <template slot-scope="{ row }" slot="description">
           <span>{{ row.description | truncate(50) }}</span>
         </template>
+
       </Table>
       <div>
-        <update-family></update-family>
+        <update-tag></update-tag>
       </div>
     </Col>
   </Row>
@@ -43,28 +45,27 @@ import { mapGetters } from "vuex";
 import { deleteDatas, requests } from "@/mixins/appRequest";
 
 export default {
-  name: "ListFamilies",
+  name: "ListTags",
   mixins: [deleteDatas, requests],
 
   data() {
     return {
       on_load_data_to_update: false,
-      context_family: {},
+      context_tag: {},
       selected: [],
 
-      families_header: [
+      tags_header: [
         {
           title: "Nome",
           key: "name",
-          minWidth: 150,
-          sortable: true
+          minWidth: 150
         },
         {
           title: "Descrição",
           slot: "description",
           minWidth: 150
-        }
-
+        },
+       
         // {
         //   title: "Action",
         //   slot: "action",
@@ -77,58 +78,58 @@ export default {
 
   created() {
     if (process.client) {
-      window.getApp.$on("APP_UPDATE_FAMILIES_DATA", () => {
-        this.getFamilies();
+      window.getApp.$on("APP_UPDATE_TAGS_DATA", () => {
+        this.getTags();
       });
     }
   },
 
   computed: {
-    ...mapGetters({ families: "families/families" })
+    ...mapGetters({ tags: "tags/tags" })
   },
 
   methods: {
-    onCreateFamily() {
-      this.handleModal("families/toggleCreateFamilyDialog");
+    onCreateTag() {
+      this.handleModal("tags/toggleCreateTagDialog");
     },
 
-    async onUpdateFamily(id) {
+    async onUpdateTag(id) {
       // this.$set(this.on_load_data_to_update, id, true);
       this.on_load_data_to_update = true;
       await this.onUpdateData(
         id,
-        "families",
-        "APP_ON_UPDATE_FAMILY",
-        "families/toggleUpdateFamilyDialog"
+        "tags",
+        "APP_ON_UPDATE_TAG",
+        "tags/toggleUpdateTagDialog"
       );
       this.on_load_data_to_update = false;
 
       // this.$set(this.on_load_data_to_update, id, false);
     },
 
-    async getFamilies() {
-      await this.$store.dispatch("families/getFamilies");
+    async getTags() {
+      await this.$store.dispatch("tags/getTags");
     },
 
     handleContextMenu(row) {
-      this.context_family = row;
+      this.context_tag = row;
     },
 
     handleContextMenuEdit() {
-      this.onUpdateFamily(this.context_family.id);
+      this.onUpdateTag(this.context_tag.id);
     },
     handleContextMenuDelete() {
       this.onDelete(
-        "families",
-        this.context_family.id,
-        "APP_UPDATE_FAMILIES_DATA"
+        "tags",
+        this.context_tag.id,
+        "APP_UPDATE_TAGS_DATA"
       );
     }
   },
 
   components: {
-    CreateFamily: () => import("@/components/backend/families/CreateFamily"),
-    UpdateFamily: () => import("@/components/backend/families/UpdateFamily")
+    CreateTag: () => import("@/components/backend/tags/CreateTag"),
+    UpdateTag: () => import("@/components/backend/tags/UpdateTag")
   }
 };
 </script>

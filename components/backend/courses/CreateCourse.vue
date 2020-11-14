@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Modal width="740" v-model="create_course_dialog" title="Criar utilizador" footer-hide scrollable :mask-closable="false" class-name="vertical-center-modal">
+    <Modal width="740" v-model="create_course_dialog" title="Criar Curso" footer-hide scrollable :mask-closable="false" class-name="vertical-center-modal">
         <course-form :formData="formData" :creating="true"></course-form>
     </Modal>
 </div>

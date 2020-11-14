@@ -95,9 +95,7 @@
               <Icon type="ios-paper" />
               CMS
             </template>
-            <MenuItem name="cms-categories">Categorias</MenuItem>
-            <MenuItem name="cms-tags">Marcadores</MenuItem>
-            <MenuItem name="cms-media">Media</MenuItem>
+            <MenuItem :to="{ name: 'admin-cms-articles' }" name="cms-categories">Publicações</MenuItem>
           </Submenu>
         </Menu>
       </Sider>

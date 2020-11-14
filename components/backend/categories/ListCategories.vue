@@ -1,17 +1,17 @@
 <template>
   <Row>
     <Col span="24">
-      <Button type="primary" @click.stop="onCreateFamily()">
-        <span>Nova Familia</span>
+      <Button type="primary" @click.stop="onCreateCategory()">
+        <span>Nova Categoria</span>
       </Button>
-      <create-family></create-family>
+      <create-category></create-category>
     </Col>
 
     <Col span="24" class="mt-5">
       <Table
         border
-        :columns="families_header"
-        :data="families"
+        :columns="categories_header"
+        :data="categories"
         context-menu
         show-context-menu
         @on-contextmenu="handleContextMenu"
@@ -32,7 +32,7 @@
         </template>
       </Table>
       <div>
-        <update-family></update-family>
+        <update-category></update-category>
       </div>
     </Col>
   </Row>
@@ -43,16 +43,16 @@ import { mapGetters } from "vuex";
 import { deleteDatas, requests } from "@/mixins/appRequest";
 
 export default {
-  name: "ListFamilies",
+  name: "ListCategories",
   mixins: [deleteDatas, requests],
 
   data() {
     return {
       on_load_data_to_update: false,
-      context_family: {},
+      context_category: {},
       selected: [],
 
-      families_header: [
+      categories_header: [
         {
           title: "Nome",
           key: "name",
@@ -64,7 +64,6 @@ export default {
           slot: "description",
           minWidth: 150
         }
-
         // {
         //   title: "Action",
         //   slot: "action",
@@ -77,58 +76,60 @@ export default {
 
   created() {
     if (process.client) {
-      window.getApp.$on("APP_UPDATE_FAMILIES_DATA", () => {
-        this.getFamilies();
+      window.getApp.$on("APP_UPDATE_CATEGORIES_DATA", () => {
+        this.getCategories();
       });
     }
   },
 
   computed: {
-    ...mapGetters({ families: "families/families" })
+    ...mapGetters({ categories: "categories/categories" })
   },
 
   methods: {
-    onCreateFamily() {
-      this.handleModal("families/toggleCreateFamilyDialog");
+    onCreateCategory() {
+      this.handleModal("categories/toggleCreateCategoryDialog");
     },
 
-    async onUpdateFamily(id) {
+    async onUpdateCategory(id) {
       // this.$set(this.on_load_data_to_update, id, true);
       this.on_load_data_to_update = true;
       await this.onUpdateData(
         id,
-        "families",
-        "APP_ON_UPDATE_FAMILY",
-        "families/toggleUpdateFamilyDialog"
+        "categories",
+        "APP_ON_UPDATE_CATEGORY",
+        "categories/toggleUpdateCategoryDialog"
       );
       this.on_load_data_to_update = false;
 
       // this.$set(this.on_load_data_to_update, id, false);
     },
 
-    async getFamilies() {
-      await this.$store.dispatch("families/getFamilies");
+    async getCategories() {
+      await this.$store.dispatch("categories/getCategories");
     },
 
     handleContextMenu(row) {
-      this.context_family = row;
+      this.context_category = row;
     },
 
     handleContextMenuEdit() {
-      this.onUpdateFamily(this.context_family.id);
+      this.onUpdateCategory(this.context_category.id);
     },
     handleContextMenuDelete() {
       this.onDelete(
-        "families",
-        this.context_family.id,
-        "APP_UPDATE_FAMILIES_DATA"
+        "categories",
+        this.context_category.id,
+        "APP_UPDATE_CATEGORIES_DATA"
       );
     }
   },
 
   components: {
-    CreateFamily: () => import("@/components/backend/families/CreateFamily"),
-    UpdateFamily: () => import("@/components/backend/families/UpdateFamily")
+    CreateCategory: () =>
+      import("@/components/backend/categories/CreateCategory"),
+    UpdateCategory: () =>
+      import("@/components/backend/categories/UpdateCategory")
   }
 };
 </script>

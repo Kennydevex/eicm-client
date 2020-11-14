@@ -367,6 +367,78 @@ export const course_validation = {
   }
 };
 
+export const category_validation = {
+  data() {
+    return {
+      categoryFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const tag_validation = {
+  data() {
+    return {
+      tagFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const article_validation = {
+  data() {
+    return {
+      articleFormValidation: {
+        title: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        summary: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        content: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+        category_id: [
+          {
+            required: true,
+            type: "number",
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ]
+      }
+    };
+  }
+};
+
 export const mult_form_validation = {
   data() {
     return {
