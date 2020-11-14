@@ -32,7 +32,8 @@ export default {
         publish_start_date: "",
         publish_start_end: "",
         cover: null,
-        category_id: ""
+        category_id: "",
+        article_tags: []
       }
     };
   },

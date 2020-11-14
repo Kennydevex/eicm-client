@@ -171,7 +171,7 @@
                 <div slot="content" class=" flex justify-center">
                   <Transfer
                     :data="permissions"
-                    :target-keys="formData.permissions"
+                    :target-keys="formData.user_permissions"
                     :list-style="listStyle"
                     :render-format="renderTransfers"
                     @on-change="onChangePermissions"
@@ -188,7 +188,7 @@
                 <div slot="content" class=" flex justify-center">
                   <Transfer
                     :data="roles"
-                    :target-keys="formData.roles"
+                    :target-keys="formData.user_roles"
                     :list-style="listStyle"
                     :render-format="renderTransfers"
                     @on-change="onChangeRoles"
@@ -225,8 +225,20 @@
             style="margin-left: 8px"
             @click.stop="
               creating
-                ? addData('userForm', 'users', 'Utilizador Registado', 'APP_UPDATE_USERS_DATA', 'users/toggleCreateUserDialog',)
-                : updateData('userForm', 'users', 'Utilizador Atualizado', 'APP_UPDATE_USERS_DATA', 'users/toggleUpdateUserDialog',)
+                ? addData(
+                    'userForm',
+                    'users',
+                    'Utilizador Registado',
+                    'APP_UPDATE_USERS_DATA',
+                    'users/toggleCreateUserDialog'
+                  )
+                : updateData(
+                    'userForm',
+                    'users',
+                    'Utilizador Atualizado',
+                    'APP_UPDATE_USERS_DATA',
+                    'users/toggleUpdateUserDialog'
+                  )
             "
             ><span v-if="!sending">{{
               creating ? "Registar" : "Atualizar"
@@ -297,7 +309,6 @@ export default {
   // },
 
   methods: {
-
     filterMethod(data, query) {
       return data.label.indexOf(query) > -1;
     },
@@ -326,10 +337,10 @@ export default {
     },
 
     onChangePermissions(new_entries) {
-      this.formData.permissions = new_entries;
+      this.formData.user_permissions = new_entries;
     },
     onChangeRoles(new_entries) {
-      this.formData.roles = new_entries;
+      this.formData.user_roles = new_entries;
     }
   }
 };

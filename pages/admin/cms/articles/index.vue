@@ -20,6 +20,7 @@
 
               <Col span="24" class="mt-5">
                 <Table
+                  stripe
                   border
                   :columns="articles_header"
                   :data="articles"
@@ -44,11 +45,11 @@
                     }}</DropdownItem>
                   </template>
 
-                   <template slot-scope="{ row }" slot="title">
+                  <template slot-scope="{ row }" slot="title">
                     <strong>{{ row.title }}</strong>
                   </template>
 
-                   <template slot-scope="{ row }" slot="user">
+                  <template slot-scope="{ row }" slot="user">
                     <span>{{ row.user }}</span>
                   </template>
 
@@ -75,7 +76,7 @@
                       size="small"
                       style="margin-right: 5px"
                       :loading="on_load_data_to_update[row.id]"
-                      @click="onUpdateArticle(row.id)"
+                      @click="onUpdateArticle(row.slug)"
                     >
                       <Icon
                         v-if="!on_load_data_to_update[row.id]"
@@ -125,6 +126,7 @@
 import { handleActivations, deleteDatas } from "@/mixins/appRequest";
 import { mapGetters } from "vuex";
 import { requests } from "@/mixins/appRequest";
+import ExpandDescriptionRow from "@/components/common/ExpandDescriptionRow";
 
 export default {
   name: "ArticlePage",
@@ -148,23 +150,36 @@ export default {
       single_article: [],
       articles_header: [
         {
+          type: "expand",
+          width: 50,
+          render: (h, params) => {
+            return h(ExpandDescriptionRow, {
+              props: {
+                description: params.row.summary
+              }
+            });
+          }
+        },
+        {
           title: "Título",
           slot: "title",
           minWidth: 150,
-          fixed: 'left'
+          sortable: true
         },
 
-         {
+        {
           title: "Autor",
           slot: "user",
-          minWidth: 150
+          minWidth: 150,
+          sortable: true
         },
 
         {
           title: "Criado",
           slot: "created_at",
           minWidth: 100,
-          maxWidth: 150
+          maxWidth: 150,
+          sortable: true
         },
         {
           title: "Categoria",
@@ -183,7 +198,7 @@ export default {
           slot: "featured",
           width: 150,
           align: "center"
-        },
+        }
         // {
         //   title: "Action",
         //   slot: "action",
@@ -249,7 +264,7 @@ export default {
     },
     handleContextMenuFeatured() {
       this.toggleStatus(
-        "articles/featured-article",
+        "articles/highlight-article",
         this.context_article.id,
         this.context_article.featured,
         "Artigo",
@@ -258,7 +273,7 @@ export default {
       );
     },
     handleContextMenuEdit() {
-      this.onUpdateArticle(this.context_article.id);
+      this.onUpdateArticle(this.context_article.slug);
     },
     handleContextMenuDelete() {
       this.onDelete(
@@ -273,9 +288,14 @@ export default {
     UpdateArticle: () => import("@/components/backend/articles/UpdateArticle"),
     ListCategories: () =>
       import("@/components/backend/categories/ListCategories"),
-    ListTags: () => import("@/components/backend/tags/ListTags")
+    ListTags: () => import("@/components/backend/tags/ListTags"),
+    ExpandDescriptionRow
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.expand-row {
+  margin-bottom: 16px;
+}
+</style>

@@ -37,6 +37,7 @@ export default {
         departament_id: "",
         family_id: "",
         outcomes: [],
+        course_outcomes: [],
         teachers: [
           {
             coordination: {

@@ -34,7 +34,9 @@ export default {
           phone: ""
         },
         roles: [],
-        permissions: []
+        permissions: [],
+        user_roles: [],
+        user_permissions: []
       }
     };
   },

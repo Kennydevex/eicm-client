@@ -105,7 +105,7 @@
           >
             <Select
               multiple
-              v-model="formData.tags"
+              v-model="formData.article_tags"
               placeholder="Marcadores do artigo"
             >
               <Option v-for="tag in tags" :value="tag.id" :key="tag.id">{{
@@ -256,7 +256,12 @@ export default {
     ...mapGetters({
       categories: "categories/categories",
       tags: "tags/tags",
-    })
+    }),
+    availableTags(){
+      if (creating) {
+        return this.tags
+      }
+    }
   },
 
   mounted() {

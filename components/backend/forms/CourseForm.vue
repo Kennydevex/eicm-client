@@ -150,7 +150,7 @@
 
               <Col span="24">
                 <FormItem label="Perfil de Saída">
-                  <Select multiple v-model="formData.outcomes">
+                  <Select multiple v-model="formData.course_outcomes">
                     <Option
                       v-for="outcome in outcomes"
                       :value="outcome.id"

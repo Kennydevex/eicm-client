@@ -68,11 +68,11 @@
                       type="primary"
                       size="small"
                       style="margin-right: 5px"
-                      :loading="on_load_data_to_update[row.id]"
-                      @click="onUpdateCourse(row.id)"
+                      :loading="on_load_data_to_update[row.slug]"
+                      @click="onUpdateCourse(row.slug)"
                     >
                       <Icon
-                        v-if="!on_load_data_to_update[row.id]"
+                        v-if="!on_load_data_to_update[row.slug]"
                         type="md-create"
                       />
                     </Button>
@@ -294,7 +294,7 @@ export default {
       );
     },
     handleContextMenuEdit() {
-      this.onUpdateCourse(this.context_course.id);
+      this.onUpdateCourse(this.context_course.slug);
     },
     handleContextMenuDelete() {
       this.onDelete(
