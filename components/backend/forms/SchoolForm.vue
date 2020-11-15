@@ -50,7 +50,7 @@
               ></DatePicker>
             </FormItem>
 
-            <FormItem prop="slogan" label="Lema da Escola">
+            <FormItem :error="showFormErrors('slogan')" prop="slogan" label="Lema da Escola">
               <Input
                 v-model="formData.slogan"
                 placeholder="Introduza o lema da escola"
@@ -815,8 +815,8 @@
             style="margin-left: 8px"
             @click.stop="
               creating
-                ? addData('schoolForm', 'schools', 'Instituição Registado', 'APP_UPDATE_SCHOOLS_DATA', 'courses/toggleCreateSchoolDialog',)
-                : updateData('schoolForm', 'schools', 'Instituição Atualizado', 'APP_UPDATE_SCHOOLS_DATA', 'courses/toggleUpdateSchoolDialog',)
+                ? addData('schoolForm', 'schools', 'Instituição Registado', 'APP_UPDATE_SCHOOLS_DATA', 'schools/toggleCreateSchoolDialog',)
+                : updateData('schoolForm', 'schools', 'Instituição Atualizado', 'APP_UPDATE_SCHOOLS_DATA', 'schools/toggleUpdateSchoolDialog',)
             "
             ><span v-if="!sending">{{
               creating ? "Registar" : "Atualizar"

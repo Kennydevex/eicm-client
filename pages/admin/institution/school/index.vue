@@ -2,6 +2,8 @@
   <div>
     <Row>
       <Col span="24">
+       
+
         <Tabs>
           <TabPane label="Geral" name="institution_info">
             <Row>
@@ -9,7 +11,6 @@
                 <Button type="primary" @click.stop="onCreateSchool()"
                   >Registar Instituição</Button
                 >
-                <create-school></create-school>
               </Col>
 
               <Col span="24" class="mt-5">
@@ -17,7 +18,6 @@
                   @onUpdate="onUpdateSchool($event)"
                   :school="schools[0]"
                 ></base-school-presentation>
-                <update-school></update-school>
               </Col>
             </Row>
           </TabPane>
@@ -43,6 +43,8 @@
             </Row>
           </TabPane>
         </Tabs>
+         <create-school></create-school>
+        <update-school></update-school>
       </Col>
     </Row>
   </div>
@@ -56,7 +58,7 @@ export default {
   layout: "admin",
 
   async fetch({ store }) {
-    await store.dispatch("schools/getUsers", 1);
+    await store.dispatch("schools/getSchools", 1);
     await store.dispatch("guidelines/getGuidelines");
     await store.dispatch("marks/getMarks");
     await store.dispatch("murals/getMurals");
@@ -64,7 +66,7 @@ export default {
 
   data() {
     return {
-      sending: {},
+      sending: {}
     };
   },
 

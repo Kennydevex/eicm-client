@@ -74,7 +74,6 @@
                 :to="{ name: 'admin-institution-collaborators' }"
                 >Colaboradores</MenuItem
               >
-              <MenuItem name="institution-team">Equipas</MenuItem>
             </MenuGroup>
           </Submenu>
           <Submenu name="course">
@@ -87,8 +86,7 @@
               :to="{ name: 'admin-formations-courses' }"
               >Cursos</MenuItem
             >
-            <MenuItem name="course-subject">Disciplinas</MenuItem>
-            <MenuItem name="course-category">Categogias</MenuItem>
+           
           </Submenu>
           <Submenu name="cms">
             <template slot="title">
