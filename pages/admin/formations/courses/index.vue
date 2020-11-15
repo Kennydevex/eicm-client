@@ -4,7 +4,7 @@
       <Col span="24"> </Col>
 
       <Col span="24" class="my-5">
-        <Tabs :animated="false">
+        <Tabs>
           <TabPane label="Cursos">
             <Row>
               <Col span="24">

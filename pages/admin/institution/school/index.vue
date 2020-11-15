@@ -2,8 +2,8 @@
   <div>
     <Row>
       <Col span="24">
-        <Tabs :animated="false" v-model="schoolTabs">
-          <TabPane label="Geral" name="geral">
+        <Tabs>
+          <TabPane label="Geral" name="institution_info">
             <Row>
               <Col span="24">
                 <Button type="primary" @click.stop="onCreateSchool()"
@@ -65,7 +65,6 @@ export default {
   data() {
     return {
       sending: {},
-      schoolTabs: "geral"
     };
   },
 
