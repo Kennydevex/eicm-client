@@ -27,6 +27,7 @@
             </FormItem>
 
             <FormItem
+              prop="person.birthday"
               label="Nascimento"
               :error="showFormErrors('person.birthday')"
             >
@@ -39,14 +40,18 @@
               ></DatePicker>
             </FormItem>
 
-            <FormItem label="Sexo">
+            <FormItem label="Sexo" prop="person.gender">
               <RadioGroup v-model="formData.person.gender">
                 <Radio label="0">Masculino</Radio>
                 <Radio label="1">Feminino</Radio>
               </RadioGroup>
             </FormItem>
 
-            <FormItem label="Contacto" :error="showFormErrors('person.phone')">
+            <FormItem
+              prop="person.phone"
+              label="Contacto"
+              :error="showFormErrors('person.phone')"
+            >
               <Input
                 placeholder="Contacto (Tel/Móvel)"
                 v-mask="'(+238) ### ## ##'"
@@ -91,13 +96,13 @@
                 placeholder="Palavra passe"
               ></Input>
             </FormItem>
-            <FormItem label="Ativação">
+            <FormItem prop="status" label="Ativação">
               <i-switch v-model="formData.status" size="large">
                 <span slot="open">Sim</span>
                 <span slot="close">Não</span>
               </i-switch>
             </FormItem>
-            <FormItem label="Perfil">
+            <FormItem label="Perfil" prop="avatar">
               <div>
                 <Upload
                   :disabled="uploadAvatarList && uploadAvatarList.length == 1"

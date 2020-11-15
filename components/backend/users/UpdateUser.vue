@@ -69,7 +69,6 @@ export default {
 
   components: {
     UserForm: () => import("@/components/backend/forms/UserForm"),
-    UserFor: () => import("@/components/backend/forms/UserFor")
   }
 };
 </script>

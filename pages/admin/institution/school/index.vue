@@ -1,29 +1,48 @@
 <template>
   <div>
-    <Row class="mb-3" :gutter="16">
-      <Col span="12">
-        <div>
-          <Button type="primary" @click.stop="onCreateSchool()"
-            >Registar Instituição</Button
-          >
-          <create-school></create-school>
-        </div>
-      </Col>
-    </Row>
-    <Row :gutter="16">
-      <Col
-        span="24"
-        :xs="24"
-        :sm="12"
-        v-for="(school, s) in schools"
-        :key="s"
-        class="mb-3"
-      >
-        <base-school-presentation
-          @onUpdate="onUpdateSchool($event)"
-          :school="school"
-        ></base-school-presentation>
-        <update-school></update-school>
+    <Row>
+      <Col span="24">
+        <Tabs :animated="false" v-model="schoolTabs">
+          <TabPane label="Geral" name="geral">
+            <Row>
+              <Col span="24">
+                <Button type="primary" @click.stop="onCreateSchool()"
+                  >Registar Instituição</Button
+                >
+                <create-school></create-school>
+              </Col>
+
+              <Col span="24" class="mt-5">
+                <base-school-presentation
+                  @onUpdate="onUpdateSchool($event)"
+                  :school="schools[0]"
+                ></base-school-presentation>
+                <update-school></update-school>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Diretrizes" name="guidelines">
+            <Row>
+              <Col span="24">
+                <list-guidelines></list-guidelines>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Marcos Históricos" name="marks">
+            <Row>
+              <Col span="24">
+                <list-marks></list-marks>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane label="Mural" name="murals">
+            <Row>
+              <Col span="24">
+                <list-murals></list-murals>
+              </Col>
+            </Row>
+          </TabPane>
+        </Tabs>
       </Col>
     </Row>
   </div>
@@ -38,11 +57,15 @@ export default {
 
   async fetch({ store }) {
     await store.dispatch("schools/getUsers", 1);
+    await store.dispatch("guidelines/getGuidelines");
+    await store.dispatch("marks/getMarks");
+    await store.dispatch("murals/getMurals");
   },
 
   data() {
     return {
-      sending: {}
+      sending: {},
+      schoolTabs: "geral"
     };
   },
 
@@ -83,7 +106,11 @@ export default {
 
   components: {
     CreateSchool: () => import("@/components/backend/schools/CreateSchool"),
-    UpdateSchool: () => import("@/components/backend/schools/UpdateSchool")
+    UpdateSchool: () => import("@/components/backend/schools/UpdateSchool"),
+    ListGuidelines: () =>
+      import("@/components/backend/guidelines/ListGuidelines"),
+    ListMarks: () => import("@/components/backend/marks/ListMarks"),
+    ListMurals: () => import("@/components/backend/murals/ListMurals")
   }
 };
 </script>

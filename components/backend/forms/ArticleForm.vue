@@ -36,7 +36,7 @@
         </Col>
 
         <Col span="24">
-          <FormItem :error="showFormErrors('content')" label="Conteúdo">
+          <FormItem prop="content" :error="showFormErrors('content')" label="Conteúdo">
             <Input
               type="textarea"
               :rows="5"
@@ -131,7 +131,7 @@
         <Col span="12">
           <Row>
             <Col span="12">
-              <FormItem label="Publicação do artigo">
+              <FormItem prop="status" label="Publicação do artigo">
                 <i-switch v-model="formData.status" size="large">
                   <span slot="open">Sim</span>
                   <span slot="close">Não</span>
@@ -140,7 +140,7 @@
             </Col>
 
             <Col span="12">
-              <FormItem label="Artigo em destaque">
+              <FormItem prop="featured" label="Artigo em destaque">
                 <i-switch v-model="formData.featured" size="large">
                   <span slot="open">Sim</span>
                   <span slot="close">Não</span>
@@ -151,7 +151,7 @@
         </Col>
 
         <Col span="24">
-          <FormItem label="Imagem fundo">
+          <FormItem prop="cover" label="Imagem fundo">
             <base-file-upload
               ref="articleCover"
               :uploadMsg="'Clique ou largue a imagem aqui'"

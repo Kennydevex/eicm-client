@@ -52,7 +52,11 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="8">
-          <FormItem label="Contacto" :error="showFormErrors('person.phone')">
+          <FormItem
+            prop="person.phone"
+            label="Contacto"
+            :error="showFormErrors('person.phone')"
+          >
             <Input
               placeholder="Contacto (Tel/Móvel)"
               v-mask="'(+238) ### ## ##'"
@@ -63,6 +67,7 @@
 
         <Col span="24" :xs="24" :sm="16">
           <FormItem
+            prop="person.birthday"
             label="Nascimento"
             :error="showFormErrors('person.birthday')"
           >
@@ -77,7 +82,7 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="8">
-          <FormItem label="Sexo">
+          <FormItem prop="person.gender" label="Sexo">
             <RadioGroup
               class="w-full"
               type="button"
@@ -136,7 +141,7 @@
                 </FormItem>
               </Col>
               <Col span="24" :xs="12" :sm="8">
-                <FormItem label="Fim do cargo">
+                <FormItem  prop="charges.0.encumbrance.activity_end" label="Fim do cargo">
                   <DatePicker
                     format="dd/MM/yyyy"
                     class="w-full"
@@ -151,7 +156,7 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="12">
-          <FormItem label="Este colaborador tambem leciona nesta escola">
+          <FormItem prop="is_teacher" label="Este colaborador tambem leciona nesta escola">
             <i-switch v-model="formData.is_teacher" size="large">
               <span slot="open">Sim</span>
               <span slot="close">Não</span>
@@ -160,7 +165,7 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="12">
-          <FormItem label="Este colaborador pode ter uma conta de utilizador">
+          <FormItem prop="sync_user_account" label="Este colaborador pode ter uma conta de utilizador">
             <i-switch
               @on-change="resetUserEmail()"
               v-model="formData.sync_user_account"

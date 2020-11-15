@@ -1,35 +1,31 @@
 <template>
   <div class="px-3">
     <Form
-      ref="chargeForm"
+      ref="guidelineForm"
       :model="formData"
-      :rules="chargeFormValidation"
+      :rules="guidelineFormValidation"
       label-position="right"
       :label-width="80"
     >
-      <FormItem
-        prop="name"
-        label="Nome"
-        :error="showFormErrors('name')"
-      >
-        <Input v-model="formData.name" placeholder="Nome do cargo"></Input>
+      <FormItem prop="name" label="Nome" :error="showFormErrors('name')">
+        <Input v-model="formData.name" placeholder="Nome da diretriz"></Input>
       </FormItem>
 
       <FormItem
         prop="description"
-        label="Descrição do cargo"
+        label="Descrição da diretriz"
         :error="showFormErrors('description')"
       >
         <Input
           type="textarea"
           :rows="3"
           v-model="formData.description"
-          placeholder="Insira uma pequena descrição deste cargo"
+          placeholder="Insira uma pequena descrição desta diretriz"
         ></Input>
       </FormItem>
 
-      <FormItem label="Secção" prop="section">
-        <RadioGroup  type="button" v-model="formData.section">
+      <FormItem prop="icon" label="Icone">
+        <RadioGroup type="button" v-model="formData.icon">
           <Radio label="1">Direção</Radio>
           <Radio label="2">Secretaria</Radio>
           <Radio label="3">Biblioteca</Radio>
@@ -42,7 +38,7 @@
           <FormItem>
             <div class="flex justify-end">
               <Button
-                @click="resetFormFields('chargeForm')"
+                @click="resetFormFields('guidelineForm')"
                 style="margin-right: 8px"
                 >Limpar</Button
               >
@@ -50,8 +46,8 @@
               <Button
                 @click="
                   creating
-                    ? handleModal('charges/toggleCreateChargeDialog')
-                    : handleModal('charges/toggleUpdateChargeDialog')
+                    ? handleModal('guidelines/toggleCreateGuidelineDialog')
+                    : handleModal('guidelines/toggleUpdateGuidelineDialog')
                 "
                 >Cancelar</Button
               >
@@ -63,18 +59,18 @@
                 @click.stop="
                   creating
                     ? addData(
-                        'chargeForm',
-                        'charges',
-                        'Cargo regsitado',
-                        'APP_UPDATE_CHARGES_DATA',
-                        'charges/toggleCreateChargeDialog'
+                        'guidelineForm',
+                        'guidelines',
+                        'Diretriz regsitado',
+                        'APP_UPDATE_GUIDELINES_DATA',
+                        'guidelines/toggleCreateGuidelineDialog'
                       )
                     : updateData(
-                        'chargeForm',
-                        'charges',
-                        'Cargo Atualizado',
-                        'APP_UPDATE_CHARGES_DATA',
-                        'charges/toggleUpdateChargeDialog'
+                        'guidelineForm',
+                        'guidelines',
+                        'Diretriz Atualizado',
+                        'APP_UPDATE_GUIDELINES_DATA',
+                        'guidelines/toggleUpdateGuidelineDialog'
                       )
                 "
                 ><span v-if="!sending">{{
@@ -93,11 +89,11 @@
 <script>
 import { mapGetters } from "vuex";
 import { requests } from "@/mixins/appRequest";
-import { charge_validation } from "@/mixins/fieldsValidation";
+import { guideline_validation } from "@/mixins/fieldsValidation";
 
 export default {
-  name: "ChargeForm",
-  mixins: [requests, charge_validation],
+  name: "GuidelineForm",
+  mixins: [requests, guideline_validation],
   props: {
     creating: {
       type: Boolean,

@@ -439,6 +439,144 @@ export const article_validation = {
   }
 };
 
+export const partner_validation = {
+  data() {
+    return {
+      partnerFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        link: [
+          {
+            type: "url",
+            message: "Insira um URL Válido (Ex: https://www.exemplo.cv)",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const testimonial_validation = {
+  data() {
+    return {
+      testimonialFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        type: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+        message: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const mural_validation = {
+  data() {
+    return {
+      muralFormValidation: {
+        designation: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const guideline_validation = {
+  data() {
+    return {
+      guidelineFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
+export const mark_validation = {
+  data() {
+    return {
+      markFormValidation: {
+        designation: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        content: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ],
+
+        begin: [
+          {
+            required: true,
+            type: "date",
+            message: "Campo necessário",
+            trigger: "change"
+          }
+        ],
+
+      }
+    };
+  }
+};
+
 export const mult_form_validation = {
   data() {
     return {

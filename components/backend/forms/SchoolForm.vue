@@ -40,7 +40,7 @@
                 </FormItem>
               </Col>
             </Row>
-            <FormItem label="Inaugoração" :error="showFormErrors('opning')">
+            <FormItem  prop="opning"  label="Inaugoração" :error="showFormErrors('opning')">
               <DatePicker
                 class="w-full"
                 :value="formData.opning"
@@ -50,7 +50,7 @@
               ></DatePicker>
             </FormItem>
 
-            <FormItem label="Lema da Escola">
+            <FormItem prop="slogan" label="Lema da Escola">
               <Input
                 v-model="formData.slogan"
                 placeholder="Introduza o lema da escola"
@@ -272,7 +272,7 @@
         <TabPane label="Sobre a Instituição" name="about_institution">
           <Row>
             <Col span="24">
-              <FormItem label="Sobre a Escola">
+              <FormItem prop="about" label="Sobre a Escola">
                 <Input
                   type="textarea"
                   :rows="3"
@@ -283,7 +283,7 @@
             </Col>
 
             <Col span="24">
-              <FormItem label="História">
+              <FormItem prop="history" label="História">
                 <Input
                   type="textarea"
                   :rows="3"

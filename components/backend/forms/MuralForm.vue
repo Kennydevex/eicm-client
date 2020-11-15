@@ -1,35 +1,31 @@
 <template>
   <div class="px-3">
     <Form
-      ref="chargeForm"
+      ref="muralForm"
       :model="formData"
-      :rules="chargeFormValidation"
+      :rules="muralFormValidation"
       label-position="right"
       :label-width="80"
     >
-      <FormItem
-        prop="name"
-        label="Nome"
-        :error="showFormErrors('name')"
-      >
-        <Input v-model="formData.name" placeholder="Nome do cargo"></Input>
+      <FormItem prop="designation" label="Deseguinação" :error="showFormErrors('designation')">
+        <Input v-model="formData.designation" placeholder="Deseguinação do mural"></Input>
       </FormItem>
 
       <FormItem
         prop="description"
-        label="Descrição do cargo"
+        label="Descrição do mural"
         :error="showFormErrors('description')"
       >
         <Input
           type="textarea"
           :rows="3"
           v-model="formData.description"
-          placeholder="Insira uma pequena descrição deste cargo"
+          placeholder="Descrição do mural"
         ></Input>
       </FormItem>
 
-      <FormItem label="Secção" prop="section">
-        <RadioGroup  type="button" v-model="formData.section">
+      <FormItem prop="icon" label="Icone">
+        <RadioGroup type="button" v-model="formData.icon">
           <Radio label="1">Direção</Radio>
           <Radio label="2">Secretaria</Radio>
           <Radio label="3">Biblioteca</Radio>
@@ -42,7 +38,7 @@
           <FormItem>
             <div class="flex justify-end">
               <Button
-                @click="resetFormFields('chargeForm')"
+                @click="resetFormFields('muralForm')"
                 style="margin-right: 8px"
                 >Limpar</Button
               >
@@ -50,8 +46,8 @@
               <Button
                 @click="
                   creating
-                    ? handleModal('charges/toggleCreateChargeDialog')
-                    : handleModal('charges/toggleUpdateChargeDialog')
+                    ? handleModal('murals/toggleCreateMuralDialog')
+                    : handleModal('murals/toggleUpdateMuralDialog')
                 "
                 >Cancelar</Button
               >
@@ -63,18 +59,18 @@
                 @click.stop="
                   creating
                     ? addData(
-                        'chargeForm',
-                        'charges',
-                        'Cargo regsitado',
-                        'APP_UPDATE_CHARGES_DATA',
-                        'charges/toggleCreateChargeDialog'
+                        'muralForm',
+                        'murals',
+                        'Mural regsitado',
+                        'APP_UPDATE_MURALS_DATA',
+                        'murals/toggleCreateMuralDialog'
                       )
                     : updateData(
-                        'chargeForm',
-                        'charges',
-                        'Cargo Atualizado',
-                        'APP_UPDATE_CHARGES_DATA',
-                        'charges/toggleUpdateChargeDialog'
+                        'muralForm',
+                        'murals',
+                        'Mural Atualizado',
+                        'APP_UPDATE_MURALS_DATA',
+                        'murals/toggleUpdateMuralDialog'
                       )
                 "
                 ><span v-if="!sending">{{
@@ -93,11 +89,11 @@
 <script>
 import { mapGetters } from "vuex";
 import { requests } from "@/mixins/appRequest";
-import { charge_validation } from "@/mixins/fieldsValidation";
+import { mural_validation } from "@/mixins/fieldsValidation";
 
 export default {
-  name: "ChargeForm",
-  mixins: [requests, charge_validation],
+  name: "MuralForm",
+  mixins: [requests, mural_validation],
   props: {
     creating: {
       type: Boolean,

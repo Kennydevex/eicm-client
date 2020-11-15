@@ -52,6 +52,7 @@
 
               <Col span="24">
                 <FormItem
+                prop="presentation"
                   :error="showFormErrors('presentation')"
                   label="Apresentação/Descrição"
                 >
@@ -114,7 +115,7 @@
                 </FormItem>
               </Col>
               <Col span="12">
-                <FormItem label="Duração do Curso">
+                <FormItem prop="duration_type" label="Duração do Curso">
                   <Input v-model="formData.duration">
                     <Select
                       v-model="formData.duration_type"
@@ -136,6 +137,7 @@
             <Row :gutter="16">
               <Col span="24">
                 <FormItem
+                prop="requirement"
                   :error="showFormErrors('requirement')"
                   label="Requisitos de Acesso"
                 >
@@ -149,7 +151,7 @@
               </Col>
 
               <Col span="24">
-                <FormItem label="Perfil de Saída">
+                <FormItem prop="course_outcomes" label="Perfil de Saída">
                   <Select multiple v-model="formData.course_outcomes">
                     <Option
                       v-for="outcome in outcomes"
@@ -188,7 +190,7 @@
             <template v-for="(teacher, k) in formData.teachers">
               <Row :key="k + 'coordination'">
                 <Col span="24">
-                  <FormItem label="Cordenador do curso">
+                  <FormItem prop="teacher_id" label="Cordenador do curso">
                     <Select
                       placeholder="Selecionar cordenador"
                       v-model="teacher.coordination.teacher_id"

@@ -65,8 +65,8 @@
                 :to="{ name: 'admin-institution-school' }"
                 >Minha Escola</MenuItem
               >
-              <MenuItem name="institution-history">Historia</MenuItem>
-              <MenuItem name="institution-guidelines">Diretrizes</MenuItem>
+              <MenuItem :to="{ name: 'admin-institution-partners' }" name="institution-partners">Parceiros</MenuItem>
+              <MenuItem :to="{ name: 'admin-institution-testimonials' }" name="institution-testimonials">Testemunhos</MenuItem>
             </MenuGroup>
             <MenuGroup title="RECURSOS">
               <MenuItem
