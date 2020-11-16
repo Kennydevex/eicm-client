@@ -1,10 +1,10 @@
 <template>
   <div
     class="h-screen object-cover w-full bg-gray-600 flex justify-end items-center "
-    style="background-image: url('/background/login_bg.jpg');"
+    style="background-image: url('/background/bg_login.jpg');"
   >
     <div
-      class="p-8 flex flex-col justify-center  w-96 bg-white m-5 rounded-lg shadow-2xl"
+      class="p-8 flex flex-col justify-center  w-96 bg-white m-5 border rounded-lg shadow-2xl"
     >
       <div class="pb-5 text-center">
         <p
