@@ -3,6 +3,10 @@ export default {
     state.categories = category;
   },
 
+  SET_CATEGORIES_WITH_ACTIVED_ARTICLES(state, category) {
+    state.categories_with_actived_articles = category;
+  },
+
   toggleCreateCategoryDialog(state) {
     state.create_category_dialog = !state.create_category_dialog;
   },

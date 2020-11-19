@@ -57,10 +57,19 @@
       <div>
         <nuxt-link
           class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
-          to=""
+          :to="{ name: 'contacts' }"
           >Contactos</nuxt-link
         >
       </div>
+
+       <div>
+        <nuxt-link
+          class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
+          :to="{ name: 'blog' }"
+          >EICM Blog</nuxt-link
+        >
+      </div>
+
 
       <div v-if="authenticated">
         <user-dropdown></user-dropdown>

@@ -27,7 +27,7 @@
               <div class="container m-auto ml-8 h-full">
                 <div class="flex flex-col w-full h-full justify-center">
                   <div
-                    class="transition duration-500 ease-in-out text-white font-sans leading-tight text-xl group-hover:text-md font-light uppercase w-1/4 tracking-widest transform group-hover:-translate-y-3 group-hover:scale-100 group-hover:skew-y-3"
+                    class="transition duration-500 ease-in-out text-white font-sans leading-tight text-xl group-hover:text-md font-light uppercase w-1/4 tracking-widest transform group-hover:-translate-y-3"
                   >
                     <span>ASISBD</span>
                     <div

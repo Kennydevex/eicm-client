@@ -23,6 +23,8 @@ export default {
         id: "",
         name: "",
         description: "",
+        color: "",
+        display: ""
       }
     };
   },

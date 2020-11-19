@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 w-full py-12 justify-center">
+  <div class="bg-gray-200 w-full py-12 justify-center">
     <div class=" container px-3 mx-auto">
       <Row type="flex">
         <Col span="24" class="mb-10">
@@ -12,7 +12,7 @@
           :xs="24"
           :sm="12"
           :md="8"
-          :lg="6"
+          :lg="8"
         >
           <base-course-card :course="course" />
         </Col>

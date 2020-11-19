@@ -24,6 +24,22 @@
         ></Input>
       </FormItem>
 
+      <FormItem prop="display" label="Dispor artigos em">
+        <RadioGroup type="button" v-model="formData.display">
+          <Radio label="1">Colunas</Radio>
+          <Radio label="2">Linhas</Radio>
+        </RadioGroup>
+      </FormItem>
+
+      <FormItem prop="color" label="Cor">
+        <Row>
+          <Col span="24">
+            Escolha uma cor de apresentação da categoria
+            <ColorPicker v-model="formData.color" />
+          </Col>
+        </Row>
+      </FormItem>
+
       <Row class="mt-5">
         <Col span="24">
           <FormItem>

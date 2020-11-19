@@ -53,13 +53,13 @@ export default {
 
     let article = articles.find(article => article.slug === slug);
     if (article) {
-      commit("SET_COURSE", article);
+      commit("SET_ARTICLE", article);
       return;
     }
 
     try {
       article = await this.$axios.$get(`articles/${slug}`);
-      commit("SET_COURSE", article.data);
+      commit("SET_ARTICLE", article.data);
     } catch (error) {}
   }
 };
