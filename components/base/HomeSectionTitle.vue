@@ -1,8 +1,10 @@
 <template>
   <div
-    class="text-center text-4xl text-gray-700 leading-tight tracking-wider font-semibold font-sans capitalize"
+    class="text-center text-3xl text-gray-700 leading-tight tracking-wide font-sans uppercase"
   >
-    <slot></slot>
-    <div class="border-b-2 border-gray-900 w-1/12 m-auto mt-5"></div>
+    <span class="border-l-4 px-4 border-primary rounded-b-lg">
+      <slot></slot>
+    </span>
+    <!--<div class="border-b-4 border-gray-500 w-1/12 m-auto mt-4"></div>--></div>
   </div>
 </template>

@@ -4,18 +4,51 @@
       <div class="shadow-lg">
         <BlogInfoHeader :article="article" />
       </div>
-      <div class="p-5">
-        <div></div>
-        <div></div>
+      <div class="p-8">
+        <Row>
+          <Col span="18">
+            <div class="my-3 pb-3 border-b-2">
+              <h2
+                class="text-xl font-bold text-gray-700 tracking-wide leading-relaxed"
+              >
+                {{ article.summary }}
+              </h2>
+            </div>
+            <div
+              class="mt-5 text-lg tracking-wide leading-loose text-justify"
+            >
+              <p class="text-gray-700">{{ article.content }}</p>
+            </div>
+          </Col>
+
+          <Col span="6"> Aside</Col>
+        </Row>
+        <Divider />
+        <Row>
+          <Col span="24">
+            <div>
+              <h2 class="text-gray-600 font-semibold tracking-wide">
+                Partilhar com os amigos
+              </h2>
+            </div>
+            <div class="py-5">
+              <social-network
+                :title="article.title"
+                :description="article.summary"
+                :hashtags="article.category"
+              ></social-network>
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import networks from "@/api/networks";
 import { mapGetters } from "vuex";
 import BlogInfoHeader from "@/components/frontend/sections/BlogInfoHeader";
+import SocialNetwork from "@/components/frontend/sections/SocialNetwork";
 
 export default {
   name: "ReadArticle",
@@ -55,12 +88,6 @@ export default {
     };
   },
 
-  data() {
-    return {
-      networks: networks
-    };
-  },
-
   computed: {
     ...mapGetters({
       article: "articles/article"
@@ -68,7 +95,8 @@ export default {
   },
 
   components: {
-    BlogInfoHeader
+    BlogInfoHeader,
+    SocialNetwork
   }
 };
 </script>

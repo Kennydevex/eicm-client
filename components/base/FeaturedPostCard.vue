@@ -1,10 +1,13 @@
 <template>
   <div class="w-full">
     <div class="py-2">
-      <div class="flex bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="flex bg-white shadow-xl border rounded-lg overflow-hidden">
         <div
-          class="w-1/3 bg-cover"
-          style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"
+          @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
+          class="w-1/3 bg-cover cursor-pointer"
+          :style="{
+            backgroundImage: `url(${publicURL}/uploads/articles/covers/${article.cover})`
+          }"
         ></div>
         <div class="w-2/3 p-5">
           <div class="flex items-baseline mb-1">
@@ -21,14 +24,20 @@
           </div>
 
           <div class=" border-b">
-            <h1 class="text-gray-800 font-bold text-xl truncate">
-              {{ article.title }} sdfgdvfd g fd gfd gf dg fdg fg dfg fdgfd
+            <h1
+              @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
+              class="text-gray-800 font-bold text-xl cursor-pointer truncate hover:text-primary"
+            >
+              {{ article.title }}
             </h1>
-            <p class="mt-2 text-gray-700 text-md">
+            <p class="mt-2 text-gray-700 text-md tracking-wide leading-relaxed">
               {{ article.summary | truncate(100) }}
             </p>
             <div class="flex item-center my-1">
-              <button class="pr-3 py-1 text-primary text-sm font-bold rounded">
+              <button
+                @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
+                class="px-3 py-1 text-primary text-sm font-bold rounded"
+              >
                 Ler mais
               </button>
             </div>

@@ -12,7 +12,7 @@
 
           <div class="h-96 mb-4 md:mb-0 w-full mx-auto relative">
             <div
-              class="absolute left-0 bottom-0 w-full h-full z-10"
+              class="absolute left-0 bottom-0 w-full h-full"
               style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"
             ></div>
             <img
@@ -21,7 +21,7 @@
             />
 
             <div
-              class="z-20 absolute bottom-0 w-full flex-col justify-center pb-10"
+              class="absolute bottom-0 w-full flex-col justify-center pb-10"
             >
               <div class="w-full text-center">
                 <span
@@ -32,13 +32,14 @@
                   {{ course.name }}
                 </h2>
 
-                <div class="mt-3">
+                <div class="mt-3" v-if="course.teachers.length > 0">
                   <Tooltip placement="right" content="Cordenador do curso">
                     <img
                       src="/teams/default.png"
                       class="h-10 w-10 rounded-full mr-2 object-cover bg-white p-2"
                     />
                   </Tooltip>
+
                   <div>
                     <p class="font-semibold text-gray-200 text-sm">
                       {{ course.teachers[0].employee.person.name }}
@@ -57,7 +58,7 @@
       <!-- Course Description -->
       <Col span="24">
         <div class="container m-auto px-3">
-          <div class="my-8 bg-white p-5 rounded-lg shadow-xl border">
+          <div class="my-8 bg-white p-8 rounded-lg shadow-xl border">
             <div
               :style="{ color: course.color }"
               class="pt-3 pb-3 mb-5 text-xl tracking-wide leading-tight uppercase font-semibold border-b-2"
@@ -235,15 +236,13 @@
                         >{{ discipline.attribution.academic_year }} Ano</span
                       >
                       <div slot="content">
-                        <div class="flex flex-col justify-center p-5">
+                        <div class="flex flex-col justify-center p-2">
                           <div
-                            class="text-base tracking-wide pb-2 leading-relaxed text-gray-700 border-b"
+                            class="text-base tracking-wide leading-relaxed text-gray-700"
                           >
-                            {{ discipline.description }}
+                            {{ discipline.description?discipline.description:'Sem descrição' }}
                           </div>
-                          <div class="pt-3">
-                            <div>tipo</div>
-                          </div>
+                         
                         </div>
                       </div>
                     </Panel>
@@ -351,39 +350,14 @@
             <div
               class="text-2xl leading-snug tracking-wide text-gray-700 border-b w-full text-center pb-5"
             >
-              Partilhar nas redes sociais
+              Partilhar com amigos e familiares
             </div>
-            <div class="pt-5 text-center">
-              <ShareNetwork
-                v-for="network in networks"
-                :network="network.network"
-                :key="network.network"
-                :url="siteURL + $route.path"
+            <div class="py-5 text-center">
+              <social-network
                 :title="course.name"
                 :description="course.presentation"
-                :quote="'EICM-GDC'"
                 :hashtags="course.family.name"
-                :twitterUser="'eicm_gdc'"
-              >
-                <span class="m-2">
-                  <Button
-                    :style="{ backgroundColor: network.color }"
-                    class="text-gray-100 rounded-lg shadow-xl"
-                    size="large"
-                    :icon="network.icon"
-                    >{{ network.name }}</Button
-                  >
-                </span>
-
-                <!--<v-btn
-                dark
-                tile
-                class="text-none ma-1"
-                small
-                :color="network.color"
-                ><v-icon>{{ network.icon }}</v-icon> {{ network.name }}</v-btn
-              >-->
-              </ShareNetwork>
+              ></social-network>
             </div>
           </div>
         </div>
@@ -397,7 +371,7 @@
 <script>
 import { mapGetters } from "vuex";
 import Vue2Filters from "vue2-filters";
-import networks from "@/api/networks";
+import SocialNetwork from "@/components/frontend/sections/SocialNetwork";
 
 export default {
   name: "CourseInfo",
@@ -445,8 +419,7 @@ export default {
       course_outcomes: "profissional",
       course_disciplines: "",
       course_tecnics_disciplines: "",
-      course_geral_disciplines: "",
-      networks: networks
+      course_geral_disciplines: ""
     };
   },
 
@@ -457,14 +430,9 @@ export default {
   },
 
   components: {
-    CourseHeader: () => import("@/views/sections/CourseHeader")
+    CourseHeader: () => import("@/views/sections/CourseHeader"),
+    SocialNetwork
   }
-
-  //   computed: {
-  //     courses() {
-  //       return this.$store.getters.courses.courses;
-  //     }
-  //   }
 };
 </script>
 
