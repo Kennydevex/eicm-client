@@ -51,9 +51,7 @@
           >Cursos e Formações</mega-menu-drop
         >
       </div>
-      <!--<div>
-        <mega-menu :items="courses">Cursos e Formações</mega-menu>
-      </div>-->
+     
       <div>
         <nuxt-link
           class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
@@ -102,7 +100,7 @@ export default {
           name: "Cursos da Via Tecnica",
           description:
             "Curso para quem pretende comcluir o ensino secubdário, com dupla certificação, podendo prosseguir com o ensino superior ou empregar-se",
-          icon: "ios-school-outline",
+          icon: "ios-school",
           href: "/courses/tecnics",
           mega: true
         },
@@ -110,7 +108,7 @@ export default {
           name: "Formação Profissional",
           description:
             "Destinado para quem pretente adequirir e/ou aprofeiçoar as competências para melhor responder aos desafios do mercado de trabalho",
-          icon: "ios-build-outline",
+          icon: "ios-build",
           href: "/courses/profissional",
           mega: true
         },
@@ -140,7 +138,6 @@ export default {
 
   components: {
     MegaMenuDrop: () => import("@/components/frontend/partials/MegaMenuDrop"),
-    MegaMenu: () => import("@/components/frontend/partials/MegaMenu"),
     MyDropdownMenu: () =>
       import("@/components/frontend/partials/MyDropdownMenu")
   }

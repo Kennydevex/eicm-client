@@ -1,8 +1,8 @@
 <template>
-  <div class="relative group">
+  <div class="relative">
     <a
       href="#"
-      class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded group-hover:text-primary group-hover:bg-gray-300 active:bg-gray-300 active:text-primary hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
+      class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded active:bg-gray-300 active:text-primary hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
       @click="toggleVisibility"
       @keydown.space.exact.prevent="toggleVisibility"
       @keydown.esc.exact="hideMenu"
@@ -40,7 +40,7 @@
                   >
                     <span>
                       <Icon
-                        size="32"
+                        size="44"
                         class="text-primary group-hover:text-gray-900"
                         :type="item.icon"
                       />
@@ -48,11 +48,11 @@
 
                     <span class="ml-3">
                       <span
-                        class="block font-bold text-gray-800 group-hover:text-gray-900 uppercase"
+                        class="block text-base font-bold text-primary group-hover:text-gray-700 uppercase"
                         >{{ item.name }}</span
                       >
                       <span
-                        class="block text-sm text-gray-500 group-hover:text-gray-600"
+                        class="mt-2 block text-md text-gray-500 group-hover:text-gray-600"
                         >{{ item.description }}</span
                       >
                     </span>
@@ -73,14 +73,14 @@
               <Icon
                 size="16"
                 class=" text-gray-800 group-hover:text-primary"
-                type="item.icon"
+                :type="item.icon"
               />
               <span
                 class="block ml-1 font-normal text-gray-800 group-hover:text-primary"
                 >{{ item.name }}</span
               >
               <span
-                class="block ml-2 text-xs group-hover:text-sm text-gray-600  group-hover:text-gray-800"
+                class="block ml-2 text-xs text-gray-600  group-hover:text-gray-700"
                 >{{ item.description }}</span
               >
             </nuxt-link>
