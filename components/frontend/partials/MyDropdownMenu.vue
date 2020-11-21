@@ -18,7 +18,7 @@
         v-on-clickaway="hideDropdown"
         v-if="isVisible"
         ref="dropdown"
-        class="z-10 absolute uppercase xs:left-0 lg:right-0 bg-gray-100 shadow-outline overflow-hidden w-64 mt-2 -pl-1 py-2 pr-3 lg:z-20 rounded-b"
+        class="z-10 absolute uppercase xs:left-0 lg:right-0 bg-gray-100 shadow-2xl overflow-hidden w-64 mt-2 -pl-1 py-2 pr-3 lg:z-20 rounded-b"
       >
         <li
           v-for="(item, i) in dropdown_items"

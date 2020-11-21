@@ -51,7 +51,7 @@
           >Cursos e Formações</mega-menu-drop
         >
       </div>
-     
+
       <div>
         <nuxt-link
           class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
@@ -60,14 +60,13 @@
         >
       </div>
 
-       <div>
+      <div>
         <nuxt-link
           class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
           :to="{ name: 'blog' }"
           >EICM Blog</nuxt-link
         >
       </div>
-
 
       <div v-if="authenticated">
         <user-dropdown></user-dropdown>
@@ -101,7 +100,10 @@ export default {
           description:
             "Curso para quem pretende comcluir o ensino secubdário, com dupla certificação, podendo prosseguir com o ensino superior ou empregar-se",
           icon: "ios-school",
-          href: "/courses/tecnics",
+          href: {
+            name: "courses-courses",
+            params: { courses: "cursos_via_tecnica" }
+          },
           mega: true
         },
         {
@@ -109,21 +111,26 @@ export default {
           description:
             "Destinado para quem pretente adequirir e/ou aprofeiçoar as competências para melhor responder aos desafios do mercado de trabalho",
           icon: "ios-build",
-          href: "/courses/profissional",
+          href: {
+            name: "courses-courses",
+            params: { courses: "formacoes_profissionais" }
+          },
           mega: true
         },
         {
           name: "ACP",
           description: "Ano Compementar Profissionalizante",
           icon: "md-briefcase",
-          href: "/courses/acp",
+          href: { name: "courses-courses", params: { courses: "acp" } },
+
           mega: false
         },
         {
           name: "Outros",
           description: "Outros cursos de curta/média duração",
           icon: "ios-pricetag",
-          href: "/courses/others",
+          href: { name: "courses-courses", params: { courses: "outros" } },
+
           mega: false
         }
       ]

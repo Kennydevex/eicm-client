@@ -3,6 +3,10 @@ export default {
     return state.courses;
   },
 
+  courses_by_type(state) {
+    return state.courses_by_type;
+  },
+
   actived_courses(state) {
     return state.actived_courses;
   },
@@ -10,7 +14,7 @@ export default {
   featured_courses(state) {
     return state.featured_courses;
   },
-  
+
   course(state) {
     return state.course;
   }

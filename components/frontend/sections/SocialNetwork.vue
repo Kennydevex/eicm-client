@@ -14,7 +14,7 @@
       <span class="mr-4">
         <Button
           :style="{ backgroundColor: network.color }"
-          class="text-gray-100 rounded-lg shadow-xl"
+          class="text-gray-100 rounded-lg shadow-xl my-1"
           size="large"
           :icon="network.icon"
           >{{ network.name }}</Button

@@ -3,6 +3,10 @@ export default {
     state.courses = course;
   },
 
+  SET_COURSES_BY_TYPE(state, course) {
+    state.courses_by_type = course;
+  },
+
   SET_ACTIVED_COURSES(state, course) {
     state.actived_courses = course;
   },

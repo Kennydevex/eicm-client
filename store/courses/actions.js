@@ -6,6 +6,26 @@ export default {
     } catch (error) {}
   },
 
+  async getCoursesByType({ commit, getters }, type) {
+    let courses = {};
+    if (getters.actived_courses.length > 0) courses = getters.actived_courses;
+    else courses = getters.courses;
+
+    let courses_by_type = courses.filter(function(course) {
+      return course.type == type;
+    });
+
+    if (courses_by_type) {
+      commit("SET_COURSES_BY_TYPE", courses_by_type);
+      return;
+    }
+
+    // try {
+    //   let res = await this.$axios.$get(`courses`);
+    //   commit("SET_COURSES", res.data);
+    // } catch (error) {}
+  },
+
   async getActivedCourses({ commit, getters }) {
     let courses = {};
     if (getters.courses.length > 0) {
