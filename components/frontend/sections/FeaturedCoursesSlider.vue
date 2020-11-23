@@ -12,6 +12,7 @@
           @autoplay-resume="internalAutoPlaying = true"
         >
           <vueper-slide
+          class="course_slider"
             v-for="i in 10"
             :key="i"
             :image="'/sliders/slide.jpg'"
@@ -100,5 +101,19 @@ export default {
 <style lang="css" scoped>
 .vueperslides__arrow {
   color: #3e4095;
+}
+
+.course_slider:before {
+  content: 'Curso Novo';
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  padding: 4px 25px;
+  background: orange;
+  color: #fff;
+  font-size: 10px;
+  transform: translateX(30%) rotate(45deg);
+  transform-origin: 0 0;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
 }
 </style>

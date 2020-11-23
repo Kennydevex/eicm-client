@@ -65,6 +65,45 @@
           </FormItem>
         </Col>
 
+        <Col span="24" :xs="24" :sm="8">
+          <FormItem
+            prop="facebook"
+            label="Perfil do facebook"
+            :error="showFormErrors('facebook')"
+          >
+            <Input
+              v-model="formData.facebook"
+              placeholder="Cole a ligação da sua página no facebook"
+            ></Input>
+          </FormItem>
+        </Col>
+
+        <Col span="24" :xs="24" :sm="8">
+          <FormItem
+            prop="twitter"
+            label="Twitter"
+            :error="showFormErrors('twitter')"
+          >
+            <Input
+              v-model="formData.twitter"
+              placeholder="Cole a ligação do twitter"
+            ></Input>
+          </FormItem>
+        </Col>
+
+        <Col span="24" :xs="24" :sm="8">
+          <FormItem
+            prop="linkedin"
+            label="Linkedin"
+            :error="showFormErrors('linkedin')"
+          >
+            <Input
+              v-model="formData.linkedin"
+              placeholder="Cole a ligação do linkedin"
+            ></Input>
+          </FormItem>
+        </Col>
+
         <Col span="24" :xs="24" :sm="16">
           <FormItem
             prop="person.birthday"
@@ -141,7 +180,10 @@
                 </FormItem>
               </Col>
               <Col span="24" :xs="12" :sm="8">
-                <FormItem  prop="charges.0.encumbrance.activity_end" label="Fim do cargo">
+                <FormItem
+                  prop="charges.0.encumbrance.activity_end"
+                  label="Fim do cargo"
+                >
                   <DatePicker
                     format="dd/MM/yyyy"
                     class="w-full"
@@ -156,7 +198,10 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="12">
-          <FormItem prop="is_teacher" label="Este colaborador tambem leciona nesta escola">
+          <FormItem
+            prop="is_teacher"
+            label="Este colaborador tambem leciona nesta escola"
+          >
             <i-switch v-model="formData.is_teacher" size="large">
               <span slot="open">Sim</span>
               <span slot="close">Não</span>
@@ -165,7 +210,10 @@
         </Col>
 
         <Col span="24" :xs="24" :sm="12">
-          <FormItem prop="sync_user_account" label="Este colaborador pode ter uma conta de utilizador">
+          <FormItem
+            prop="sync_user_account"
+            label="Este colaborador pode ter uma conta de utilizador"
+          >
             <i-switch
               @on-change="resetUserEmail()"
               v-model="formData.sync_user_account"
@@ -305,6 +353,32 @@
               @onFileSuccess="handleAvatarSuccess($event)"
               @onRemoveFile="handleRemoveAvatar($event)"
             ></base-file-upload>
+          </FormItem>
+        </Col>
+      </Row>
+
+      <div>
+        <Divider orientation="left"
+          ><span class="text-sm text-gray-500 italic">Ativações</span></Divider
+        >
+      </div>
+
+      <Row>
+        <Col span="12">
+          <FormItem prop="active" label="Ativação do colaborador">
+            <i-switch v-model="formData.active" size="large">
+              <span slot="open">Sim</span>
+              <span slot="close">Não</span>
+            </i-switch>
+          </FormItem>
+        </Col>
+
+        <Col span="12">
+          <FormItem prop="team" label="Faz parte de equipa principal">
+            <i-switch v-model="formData.team" size="large">
+              <span slot="open">Sim</span>
+              <span slot="close">Não</span>
+            </i-switch>
           </FormItem>
         </Col>
       </Row>

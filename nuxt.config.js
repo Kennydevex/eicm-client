@@ -88,7 +88,8 @@ export default {
     "@/mixins/validationErrors",
     "@/plugins/axios",
     { src: "@/plugins/g-map", ssr: false },
-    { src: "@/plugins/image-lightbox", ssr: false }
+    { src: "@/plugins/image-lightbox", ssr: false },
+    { src: "@/plugins/aos", ssr: false }
   ],
   /*
    ** Auto import components

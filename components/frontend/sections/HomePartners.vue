@@ -1,35 +1,34 @@
 <template>
-  <div class="bg-gray-200 w-full py-12 justify-center">
+  <div class="bg-gray-100 w-full py-12 justify-center">
     <div class=" container px-3 mx-auto">
-      <Row type="flex">
+      <Row type="flex" :gutter="16">
         <Col span="24" class="mb-10">
-          <base-home-section-title>Cursos em distaque</base-home-section-title>
+          <base-home-section-title>Parceiros</base-home-section-title>
         </Col>
 
         <Col span="24" class="mt-8">
-          <div data-aos="zoom-in">
+          <div data-aos="fade-right">
             <vueper-slides
               autoplay
               fade
               :infinite="true"
               :bullets="true"
               class="no-shadow mx-5"
-              :visible-slides="3"
-              fixed-height="400px"
+              :visible-slides="2"
+              fixed-height="300px"
               slide-multiple
               :gap="3"
               :slide-ratio="1 / 4"
               :dragging-distance="200"
               :breakpoints="breakpoints"
             >
-              <template v-if="featured_courses.length != 0">
-                <vueper-slide
-                  v-for="course in featured_courses"
-                  :key="course.id"
-                >
+              <template v-if="articles.length != 0">
+                <vueper-slide v-for="article in articles" :key="article.id">
                   <template v-slot:content>
                     <div class="flex justify-center items-center">
-                      <base-course-card :course="course" />
+                      <featured-post-card
+                        :article="article"
+                      ></featured-post-card>
                     </div>
                   </template>
                 </vueper-slide>
@@ -38,15 +37,8 @@
           </div>
         </Col>
 
-        <!--<Col
-          v-for="(course, c) in featured_courses"
-          :key="c"
-          :xs="24"
-          :sm="12"
-          :md="8"
-          :lg="8"
-        >
-          <base-course-card :course="course" />
+        <!--<Col v-for="(article, a) in articles" :key="a" :xs="24" :sm="12">
+          <featured-post-card :article="article"></featured-post-card>
         </Col>-->
       </Row>
     </div>
@@ -54,11 +46,20 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import { mapGetters } from "vuex";
 export default {
   name: "HomeFeaturedCourses",
+
+  props: {
+    articles: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
+  },
 
   data() {
     return {
@@ -72,8 +73,8 @@ export default {
         },
         900: {
           slideRatio: 1 / 3,
-          visibleSlides: 2,
-          slideMultiple: 2
+          visibleSlides: 1,
+          slideMultiple: 1
         },
         600: {
           slideRatio: 1 / 2,
@@ -91,39 +92,9 @@ export default {
       }
     };
   },
-
-  computed: {
-    ...mapGetters({
-      featured_courses: "courses/featured_courses"
-    })
-  },
-
   components: {
     VueperSlides,
     VueperSlide
   }
 };
 </script>
-
-<style scoped>
-.section-title {
-  display: inline-block;
-  position: relative;
-}
-.section-title:after {
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 4px;
-  left: 0;
-  position: absolute;
-  background: rgb(12, 1, 1);
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 100%;
-}
-.section-title:hover:after {
-  width: 100%;
-  left: 0;
-}
-</style>

@@ -2,8 +2,11 @@
   <Layout>
     <HomeCarousel />
     <HomeSchoolBanner />
+    <HomeSchoolSlogan />
+    <HomeSchoolTeam />
     <HomeFeaturedCourses />
     <HomeFeaturedArticles :articles="featured_articles" />
+    <HomePartners />
     <home-footer></home-footer>
     <!-- <HomeGuidelines />
     <principal-footer></principal-footer>
@@ -16,8 +19,11 @@
 
 <script>
 import HomeCarousel from "@/components/frontend/sections/HomeCarousel";
+import HomePartners from "@/components/frontend/sections/HomePartners";
 import HomeTeams from "@/components/frontend/sections/HomeTeams";
 import HomeSchoolBanner from "@/components/frontend/sections/HomeSchoolBanner";
+import HomeSchoolSlogan from "@/components/frontend/sections/HomeSchoolSlogan";
+import HomeSchoolTeam from "@/components/frontend/sections/HomeSchoolTeam";
 import HomeFeaturedCourses from "@/components/frontend/sections/HomeFeaturedCourses";
 import HomeFeaturedArticles from "@/components/frontend/sections/HomeFeaturedArticles";
 import HomeFooter from "@/components/frontend/sections/HomeFooter";
@@ -32,7 +38,7 @@ export default {
     await this.$store.dispatch("articles/getFeaturedArticles");
   },
 
-   computed: {
+  computed: {
     ...mapGetters({
       featured_articles: "articles/featured_articles"
     })
@@ -42,8 +48,11 @@ export default {
     HomeCarousel,
     HomeTeams,
     HomeSchoolBanner,
+    HomeSchoolSlogan,
+    HomeSchoolTeam,
     HomeFeaturedCourses,
     HomeFeaturedArticles,
+    HomePartners,
     HomeFooter,
     PrincipalFooter
   }

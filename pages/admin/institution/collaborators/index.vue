@@ -50,6 +50,9 @@
           <DropdownItem @click.native="handleContextMenuActive">{{
             context_employee.active ? "Desativar" : "Ativar"
           }}</DropdownItem>
+          <DropdownItem @click.native="handleContextMenuTeam">{{
+            context_employee.team ? "Remover da equipe" : "Destacar como equipa"
+          }}</DropdownItem>
         </template>
         <!--<template slot-scope="{ row }" slot="avatar">
           <div class="h-full w-full flex items-center justify-center">
@@ -69,6 +72,11 @@
         <template slot-scope="{ row }" slot="active">
           <Tag type="dot" :color="row.active ? 'primary' : 'warning'">{{
             row.active ? "Ativo" : "Desativo"
+          }}</Tag>
+        </template>
+        <template slot-scope="{ row }" slot="team">
+          <Tag type="dot" :color="row.team ? 'primary' : 'warning'">{{
+            row.team ? "Sim" : "Não"
           }}</Tag>
         </template>
         <template slot-scope="{ row }" slot="is_teacher">
@@ -165,6 +173,12 @@ export default {
           align: "center"
         },
         {
+          title: "Equipa",
+          slot: "team",
+          width: 120,
+          align: "center"
+        },
+        {
           title: "Leciona",
           slot: "is_teacher",
           width: 100,
@@ -235,6 +249,16 @@ export default {
       );
     },
 
+    handleContextMenuTeam() {
+      this.toggleStatus(
+        "employees/employee-handle-team",
+        this.context_employee.id,
+        this.context_employee.team,
+        "Colaborador",
+        "APP_UPDATE_EMPLOYEES_DATA"
+      );
+    },
+
     handleContextMenuEdit() {
       this.onUpdateEmployee(this.context_employee.id);
     },
@@ -252,7 +276,7 @@ export default {
       import("@/components/backend/employees/CreateEmployee"),
     UpdateEmployee: () =>
       import("@/components/backend/employees/UpdateEmployee"),
-    ChargesIndex: () => import("@/components/backend/charges/ChargesIndex"),
+    ChargesIndex: () => import("@/components/backend/charges/ChargesIndex")
   }
 };
 </script>

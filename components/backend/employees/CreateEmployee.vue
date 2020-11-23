@@ -7,7 +7,7 @@
       footer-hide
       scrollable
       :mask-closable="false"
-      :styles="{top: '20px'}"
+      :styles="{ top: '20px' }"
     >
       <employee-form :formData="formData" :creating="true"></employee-form>
     </Modal>
@@ -24,9 +24,12 @@ export default {
         id: "",
         ic: "",
         email: "",
-        active: "",
+        facebook: "",
+        twitter: "",
+        linkedin: "",
         avatar: "default.svg",
-        team: "",
+        team: false,
+        active: false,
         sync_user_account: false,
         is_teacher: false,
         sync_email: false,

@@ -15,8 +15,9 @@
               <div
                 class="border-b-2 border-gray-600 pb-3 mb-3 text-justify text-gray-500 font-sans text-sm antialiased font-normal tracking-tight leading-relaxed"
               >
-                Lorem ipsum dolor sit amet consectetur adipiscing elit dictumst,
-                turpis nullam pulvinar metus nostra posuere donec convallis.
+                {{ courses }} cursos Lorem ipsum dolor sit amet consectetur
+                adipiscing elit dictumst, turpis nullam pulvinar metus nostra
+                posuere donec convallis.
               </div>
 
               <div class="text-base pb-3 text-gray-400">
@@ -53,27 +54,17 @@
             <div>
               <div class="text-center flex flex-col ">
                 <ul>
-                  <li class="pb-3">
-                    <nuxt-link class="footer-link" to=""
-                      >Construção Civil</nuxt-link
-                    >
-                  </li>
-                  <li class="pb-3">
-                    <nuxt-link class="footer-link" to="">Mecânica</nuxt-link>
-                  </li>
-                  <li class="pb-3">
-                    <nuxt-link class="footer-link" to=""
-                      >Informática de Gestão</nuxt-link
-                    >
-                  </li>
-                  <li class="pb-3">
-                    <nuxt-link class="footer-link" to=""
+                  <li class="pb-1">
+                    <nuxt-link
+                      class=" text-gray-500 text-xs tracking-widest font-sans"
+                      to=""
                       >Contabilidade</nuxt-link
                     >
-                  </li>
-                  <li class="pb-3">
-                    <nuxt-link class="footer-link" to=""
-                      >Mecanotecnia</nuxt-link
+
+                    <nuxt-link
+                      class=" text-gray-500 text-xs tracking-widest font-sans"
+                      to=""
+                      >Electricidade</nuxt-link
                     >
                   </li>
                 </ul>

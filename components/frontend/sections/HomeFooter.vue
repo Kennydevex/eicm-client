@@ -67,7 +67,7 @@
             Cursos da Via Técnica
           </h5>
           <ul class="mb-4">
-            <li class="mt-2" v-for="(course, c) in featured_courses" :key="c">
+            <li class="mt-2" v-for="(course, c) in courses" :key="c">
               <a
                 href="#"
                 class="hover:underline text-gray-600 hover:text-primary leading-tight"
@@ -167,7 +167,7 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      featured_courses: "courses/featured_courses"
+      courses: "courses/courses_by_type"
     })
   }
 };

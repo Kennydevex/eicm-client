@@ -20,6 +20,9 @@ export default {
   async created() {
     this.spinLoad = true;
     await this.$store.dispatch("courses/getFeaturedCourses");
+    await this.$store.dispatch("courses/getActivedCourses");
+    await this.$store.dispatch("courses/getCoursesByType", 1);
+    await this.$store.dispatch("employees/getPrincipalTeams");
     this.spinLoad = false;
   },
   components: {

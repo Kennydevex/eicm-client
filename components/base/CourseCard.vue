@@ -1,6 +1,6 @@
 <template>
   <div
-    class="m-3 cursor-pointer"
+    class="cursor-pointer min-w-full"
     @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
   >
     <div class="relative pb-5/6">
