@@ -22,13 +22,11 @@
               :dragging-distance="200"
               :breakpoints="breakpoints"
             >
-              <template v-if="articles.length != 0">
+              <template>
                 <vueper-slide v-for="article in articles" :key="article.id">
                   <template v-slot:content>
                     <div class="flex justify-center items-center">
-                      <featured-post-card
-                        :article="article"
-                      ></featured-post-card>
+                      Parceiros
                     </div>
                   </template>
                 </vueper-slide>
@@ -36,10 +34,6 @@
             </vueper-slides>
           </div>
         </Col>
-
-        <!--<Col v-for="(article, a) in articles" :key="a" :xs="24" :sm="12">
-          <featured-post-card :article="article"></featured-post-card>
-        </Col>-->
       </Row>
     </div>
   </div>
@@ -53,7 +47,7 @@ export default {
   name: "HomeFeaturedCourses",
 
   props: {
-    articles: {
+    partners: {
       type: Array,
       default: () => {
         return [];
