@@ -41,7 +41,7 @@
 
               <template slot-scope="{ row }" slot="type">
                 <span>{{
-                  row.type == 1 ? "Prata" : row.type == 2 ? "Desativo" : "Oro"
+                  row.type == 1 ? "Prata" : row.type == 2 ? "Ouro" : "Diamante"
                 }}</span>
               </template>
 

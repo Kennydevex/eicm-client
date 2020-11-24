@@ -50,7 +50,7 @@
           >
             <Select v-model="formData.type">
               <Option value="1">Prata</Option>
-              <Option value="2">Oro</Option>
+              <Option value="2">Ouro</Option>
               <Option value="3">Diamante</Option>
             </Select>
           </FormItem>

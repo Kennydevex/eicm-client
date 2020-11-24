@@ -96,6 +96,7 @@ module.exports = {
     borderWidth: ["responsive", "hover", "focus", "active"],
     borderColor: ["responsive", "hover", "focus", "active"],
     display: ["responsive", "hover", "focus", "active", "group-hover"],
+    boxShadow: ["responsive", "hover", "focus", "active", "group-hover"],
     borderRadius: ["hover", "focus"]
   },
   future: {

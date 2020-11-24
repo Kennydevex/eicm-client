@@ -1,30 +1,52 @@
 <template>
-  <div>
-    <!-- component -->
-    <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-      <div class="flex justify-center md:justify-end -mt-16">
-        <img
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
-          src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-        />
+  <div class=" w-full md:w-2/3  flex items-center justify-center px-5 py-12">
+    <div
+      class="w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800"
+      style="max-width: 500px"
+    >
+      <div class="w-full pt-1 pb-5">
+        <div
+          class="overflow-hidden border-2 border-white rounded-full w-20 h-20 -mt-16 mx-auto shadow-xl"
+        >
+          <img  :src="`${publicURL}/uploads/schools/testimonials/${testimonial.avatar}`" alt="" />
+        </div>
       </div>
-      <div>
-        <h2 class="text-gray-800 text-3xl font-semibold">Design Tools</h2>
-        <p class="mt-2 text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores
-          deserunt ea doloremque natus error, rerum quas odio quaerat nam ex
-          commodi hic, suscipit in a veritatis pariatur minus consequuntur!
+      <div class="w-full mb-10">
+        <div class="text-3xl text-indigo-500 text-left leading-tight h-3">
+          “
+        </div>
+        <p class="text-sm text-gray-600 text-center px-5">
+          {{ testimonial.message }}
         </p>
+        <div
+          class="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3"
+        >
+          ”
+        </div>
       </div>
-      <div class="flex justify-end mt-4">
-        <a href="#" class="text-xl font-medium text-indigo-500">John Doe</a>
+      <div class="w-full">
+        <p class="text-md text-indigo-500 font-bold text-center">
+          {{ testimonial.name }}
+        </p>
+        <p class="text-xs text-gray-500 text-center">
+          --{{ testimonial.job_title }} &bull; {{ testimonial.institution }}--
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    testimonial: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>

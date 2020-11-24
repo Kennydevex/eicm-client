@@ -23,6 +23,8 @@ export default {
     await this.$store.dispatch("courses/getActivedCourses");
     await this.$store.dispatch("courses/getCoursesByType", 1);
     await this.$store.dispatch("employees/getPrincipalTeams");
+    await this.$store.dispatch("partners/getPartners");
+    await this.$store.dispatch("testimonials/getTestimonials");
     this.spinLoad = false;
   },
   components: {
