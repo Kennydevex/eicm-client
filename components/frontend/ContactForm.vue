@@ -1,28 +1,47 @@
 <template>
-  <Form ref="formData" :model="formData" :rules="validation" :label-width="100">
-    <FormItem label="Nome" prop="name">
-      <Input v-model="formData.name" placeholder="Introduza o seu nome"></Input>
-    </FormItem>
+  <Form
+    ref="formData"
+    :model="formData"
+    :rules="validation"
+    label-position="top"
+  >
+    <Row :gutter="16">
+      <Col span="24" :md="12">
+        <FormItem label="Nome" prop="name">
+          <Input
+            v-model="formData.name"
+            placeholder="Introduza o seu nome"
+          ></Input>
+        </FormItem>
+      </Col>
+      <Col span="24" :md="12">
+        <FormItem label="E-mail" prop="mail">
+          <Input
+            v-model="formData.mail"
+            placeholder="Introduza o seu meail"
+          ></Input>
+        </FormItem>
+      </Col>
+      <Col span="24">
+        <FormItem label="Mensagem" prop="message">
+          <Input
+            v-model="formData.message"
+            type="textarea"
+            :autosize="{ minRows: 4, maxRows: 6 }"
+            placeholder="Escreva a sua mensagem..."
+          ></Input>
+        </FormItem>
+      </Col>
 
-    <FormItem label="E-mail" prop="mail">
-      <Input
-        v-model="formData.mail"
-        placeholder="Introduza o seu meail"
-      ></Input>
-    </FormItem>
-
-    <FormItem label="Mensagem" prop="message">
-      <Input
-        v-model="formData.message"
-        type="textarea"
-        :autosize="{ minRows: 4, maxRows: 6 }"
-        placeholder="Escreva a sua mensagem..."
-      ></Input>
-    </FormItem>
-    <FormItem>
-      <Button type="primary" @click="handleSubmit('formData')">Enviar</Button>
-      <Button @click="handleReset('formData')" class="ml-4">Limpar</Button>
-    </FormItem>
+      <Col span="24">
+        <FormItem>
+          <Button type="primary" @click="handleSubmit('formData')"
+            >Enviar</Button
+          >
+          <Button @click="handleReset('formData')" class="ml-4">Limpar</Button>
+        </FormItem>
+      </Col>
+    </Row>
   </Form>
 </template>
 
@@ -55,8 +74,7 @@ export default {
             trigger: "blur"
           }
         ],
-       
-     
+
         message: [
           {
             required: true,

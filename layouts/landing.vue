@@ -1,17 +1,23 @@
 <template>
   <div class="layout antialiased text-gray-900 bg-gray-200">
-    <div>
-      <NavBar></NavBar>
-    </div>
+    <template v-if="spinLoad">
+      <Spinner />
+    </template>
 
-    <div>
-      <Content>
-        <div>
-          <Nuxt />
-        </div>
-      </Content>
-      <AppFooter></AppFooter>
-    </div>
+    <template v-else>
+      <div>
+        <NavBar></NavBar>
+      </div>
+
+      <div>
+        <Content>
+          <div>
+            <Nuxt />
+          </div>
+        </Content>
+        <AppFooter></AppFooter>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -29,7 +35,8 @@ export default {
   },
   components: {
     NavBar: () => import("@/components/frontend/AppNavBar"),
-    AppFooter: () => import("@/components/frontend/AppFooter")
+    AppFooter: () => import("@/components/frontend/AppFooter"),
+    Spinner: () => import("@/components/common/Spinner")
   },
 
   data() {

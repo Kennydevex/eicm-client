@@ -8,6 +8,7 @@
     <HomeFeaturedArticles :articles="featured_articles" />
     <HomePartners />
     <HomeTestimonials />
+    <HomeContacts />
     <home-footer></home-footer>
     <!-- <HomeGuidelines />
     <principal-footer></principal-footer>
@@ -28,6 +29,7 @@ import HomeSchoolTeam from "@/components/frontend/sections/HomeSchoolTeam";
 import HomeFeaturedCourses from "@/components/frontend/sections/HomeFeaturedCourses";
 import HomeFeaturedArticles from "@/components/frontend/sections/HomeFeaturedArticles";
 import HomeTestimonials from "@/components/frontend/sections/HomeTestimonials";
+import HomeContacts from "@/components/frontend/sections/HomeContacts";
 import HomeFooter from "@/components/frontend/sections/HomeFooter";
 import PrincipalFooter from "@/components/frontend/sections/PrincipalFooter";
 import { mapGetters } from "vuex";
@@ -55,6 +57,7 @@ export default {
     HomeFeaturedCourses,
     HomeFeaturedArticles,
     HomePartners,
+    HomeContacts,
     HomeFooter,
     PrincipalFooter
   }

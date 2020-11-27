@@ -1,7 +1,7 @@
 <template>
   <div class="group">
     <a
-      class="p-5 w-40 mx-8 flex flex-col justify-center items-center  shadow-lg hover:shadow-xl rounded-lg"
+      class="p-5 w-40 mx-8 flex flex-col justify-center items-center bg-white  shadow-lg hover:shadow-xl rounded-lg"
       :href="partner.link"
       target="_blank"
     >
