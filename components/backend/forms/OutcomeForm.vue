@@ -107,6 +107,17 @@ export default {
         return {};
       }
     }
+  },
+
+  methods: {
+    cancelOutcome() {
+      if (this.creating) {
+        this.handleModal("outcomes/toggleCreateOutcomeDialog");
+        this.resetFormFields("outcomeForm");
+        return;
+      }
+      this.handleModal("outcomes/toggleUpdateOutcomeDialog");
+    }
   }
 };
 </script>

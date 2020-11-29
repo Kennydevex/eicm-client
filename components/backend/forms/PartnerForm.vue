@@ -21,7 +21,11 @@
         </Col>
 
         <Col span="24">
-          <FormItem prop="description" :error="showFormErrors('description')" label="Apresentação">
+          <FormItem
+            prop="description"
+            :error="showFormErrors('description')"
+            label="Apresentação"
+          >
             <Input
               type="textarea"
               :rows="3"
@@ -70,7 +74,7 @@
         </Col>
 
         <Col span="24">
-          <FormItem  prop="logo"  label="Logotipo do Parceiro/Empresa">
+          <FormItem prop="logo" label="Logotipo do Parceiro/Empresa">
             <base-file-upload
               ref="partnerLogo"
               :uploadMsg="'Clique ou largue a imagem aqui'"
@@ -95,14 +99,7 @@
             >Limpar</Button
           >
 
-          <Button
-            @click="
-              creating
-                ? handleModal('partners/toggleCreatePartnerDialog')
-                : handleModal('partners/toggleUpdatePartnerDialog')
-            "
-            >Cancelar</Button
-          >
+          <Button @click="cancelPartner()">Cancelar</Button>
 
           <Button
             :loading="sending"
@@ -171,6 +168,15 @@ export default {
   },
 
   methods: {
+    cancelPartner() {
+      if (this.creating) {
+        this.handleModal("partners/toggleCreatePartnerDialog");
+        this.resetFormFields("partnerForm");
+        return;
+      }
+      this.handleModal("partners/toggleUpdatePartnerDialog");
+    },
+
     handleLogoSuccess(res) {
       this.formData.logo = res;
       this.uploadLogoList = this.$refs.partnerLogo.$refs.uploadFileComponent.fileList;

@@ -4,25 +4,29 @@
       class="flex flex-row justify-center px-3 py-3 items-start border-b-2 border-gray-300"
     >
       <div
-        class="group mx-5 p-2 shadow-2xl rounded-full bg-gray-300 hover:bg-primary"
+        class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-300 hover:bg-primary w-10 h-10"
       >
-        <nuxt-link to="" class="text-primary group-hover:text-white">
+        <a
+          href="https://web.facebook.com/escolatecnicadomindeloGDC"
+          target="_blank"
+          class="text-primary group-hover:text-white"
+        >
           <Icon size="18" type="logo-facebook" />
-        </nuxt-link>
+        </a>
       </div>
       <div
-        class="group mx-5 p-2 shadow-2xl rounded-full bg-gray-300 hover:bg-primary"
+        class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-300 hover:bg-primary w-10 h-10"
       >
-        <nuxt-link to="" class="text-primary group-hover:text-white">
+        <a href="#" class="text-primary group-hover:text-white">
           <Icon size="18" type="logo-twitter" />
-        </nuxt-link>
+        </a>
       </div>
       <div
-        class="group mx-5 p-2 shadow-2xl rounded-full bg-gray-300 hover:bg-primary"
+        class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-300 hover:bg-primary w-10 h-10"
       >
-        <nuxt-link to="" class="text-primary group-hover:text-white">
+        <a href="#" class="text-primary group-hover:text-white">
           <Icon size="18" type="logo-linkedin" />
-        </nuxt-link>
+        </a>
       </div>
     </div>
     <div class="container mx-auto px-6 pt-10 pb-6">
@@ -80,24 +84,24 @@
           <h5 class="uppercase mb-6 font-bold text-gray-800">Instituição</h5>
           <ul class="mb-4">
             <li class="mt-2">
-              <a
-                href="#"
+              <nuxt-link
+                :to="{ name: 'institution-about' }"
                 class="hover:underline text-gray-600 hover:text-primary"
-                >Sobre a Instituição</a
+                >Sobre a Instituição</nuxt-link
               >
             </li>
             <li class="mt-2">
-              <a
-                href="#"
+              <nuxt-link
+                :to="{ name: 'institution-histories' }"
                 class="hover:underline text-gray-600 hover:text-primary"
-                >História e marcos históricos</a
+                >História e marcos históricos</nuxt-link
               >
             </li>
             <li class="mt-2">
-              <a
-                href="#"
+              <nuxt-link
+                :to="{ name: 'institution-team' }"
                 class="hover:underline text-gray-600 hover:text-primary"
-                >Corpo Diretivo</a
+                >Corpo Diretivo</nuxt-link
               >
             </li>
           </ul>
@@ -133,25 +137,12 @@
         <div class="w-full md:w-1/4 text-center md:text-left">
           <h5 class="uppercase mb-6 font-bold text-gray-800">Parceiros</h5>
           <ul class="mb-4">
-            <li class="mt-2">
+            <li class="mt-2" v-for="partner in partners" :key="partner.id">
               <a
-                href="#"
+                :href="partner.link"
+                target="_blank"
                 class="hover:underline text-gray-600 hover:text-primary"
-                >Unitel T+</a
-              >
-            </li>
-            <li class="mt-2">
-              <a
-                href="#"
-                class="hover:underline text-gray-600 hover:text-primary"
-                >CV Telecon</a
-              >
-            </li>
-            <li class="mt-2">
-              <a
-                href="#"
-                class="hover:underline text-gray-600 hover:text-primary"
-                >Fonceca e Santos</a
+                >{{ partner.name }}</a
               >
             </li>
           </ul>
@@ -167,7 +158,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      courses: "courses/courses_by_type"
+      courses: "courses/courses_by_type",
+      partners: "partners/partners"
     })
   }
 };

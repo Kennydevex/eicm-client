@@ -98,11 +98,7 @@
           >
 
           <Button
-            @click="
-              creating
-                ? handleModal('testimonials/toggleCreateTestimonialDialog')
-                : handleModal('testimonials/toggleUpdateTestimonialDialog')
-            "
+            @click="cancelTestimonial()"
             >Cancelar</Button
           >
 
@@ -173,6 +169,15 @@ export default {
   },
 
   methods: {
+
+      cancelTestimonial() {
+      if (this.creating) {
+        this.handleModal("testimonials/toggleCreateTestimonialDialog");
+        this.resetFormFields("testimonialForm");
+        return;
+      }
+      this.handleModal("testimonials/toggleUpdateTestimonialDialog");
+    },
     handleAvatarSuccess(res) {
       this.formData.avatar = res;
       this.uploadAvatarList = this.$refs.testimonialAvatar.$refs.uploadFileComponent.fileList;

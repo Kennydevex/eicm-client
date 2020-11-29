@@ -7,8 +7,15 @@
       label-position="right"
       :label-width="80"
     >
-      <FormItem prop="designation" label="Deseguinação" :error="showFormErrors('designation')">
-        <Input v-model="formData.designation" placeholder="Deseguinação do mural"></Input>
+      <FormItem
+        prop="designation"
+        label="Deseguinação"
+        :error="showFormErrors('designation')"
+      >
+        <Input
+          v-model="formData.designation"
+          placeholder="Deseguinação do mural"
+        ></Input>
       </FormItem>
 
       <FormItem
@@ -25,12 +32,12 @@
       </FormItem>
 
       <FormItem prop="icon" label="Icone">
-        <RadioGroup type="button" v-model="formData.icon">
-          <Radio label="1">Direção</Radio>
-          <Radio label="2">Secretaria</Radio>
-          <Radio label="3">Biblioteca</Radio>
-          <Radio label="4">Geral</Radio>
-        </RadioGroup>
+        <Select placeholder="Selecionar um ícone" v-model="formData.icon">
+          <Icon size="18" :type="formData.icon" slot="prefix"></Icon>
+          <template v-for="(icon, i) in icons">
+            <Option :key="i" :value="icon.key">{{ icon.name }}</Option>
+          </template>
+        </Select>
       </FormItem>
 
       <Row class="mt-5">
@@ -43,14 +50,7 @@
                 >Limpar</Button
               >
 
-              <Button
-                @click="
-                  creating
-                    ? handleModal('murals/toggleCreateMuralDialog')
-                    : handleModal('murals/toggleUpdateMuralDialog')
-                "
-                >Cancelar</Button
-              >
+              <Button @click="cancelMural()">Cancelar</Button>
 
               <Button
                 :loading="sending"
@@ -104,6 +104,23 @@ export default {
       default: () => {
         return {};
       }
+    }
+  },
+
+  data() {
+    return {
+      icons: [{ key: "ios-home", name: "Casa" }]
+    };
+  },
+
+  methods: {
+    cancelMural() {
+      if (this.creating) {
+        this.handleModal("murals/toggleCreateMuralDialog");
+        this.resetFormFields("muralForm");
+        return;
+      }
+      this.handleModal("murals/toggleUpdateMuralDialog");
     }
   }
 };

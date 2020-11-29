@@ -6,7 +6,7 @@
       target="_blank"
     >
       <div
-        class="p-2 inline-flex  border border-gray-200 rounded-lg overflow-hidden w-full h-full"
+        class="p-2 inline-flex  rounded-lg overflow-hidden w-full h-full"
       >
         <img
           :src="`${publicURL}/uploads/schools/partners/${partner.logo}`"

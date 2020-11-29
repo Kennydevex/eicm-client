@@ -7,31 +7,42 @@
       label-position="right"
       :label-width="80"
     >
-      <FormItem prop="name" label="Nome" :error="showFormErrors('name')">
-        <Input v-model="formData.name" placeholder="Nome da diretriz"></Input>
-      </FormItem>
+      <Row>
+        <Col span="24">
+          <FormItem prop="name" label="Nome" :error="showFormErrors('name')">
+            <Input
+              v-model="formData.name"
+              placeholder="Nome da diretriz"
+            ></Input>
+          </FormItem>
+        </Col>
 
-      <FormItem
-        prop="description"
-        label="Descrição da diretriz"
-        :error="showFormErrors('description')"
-      >
-        <Input
-          type="textarea"
-          :rows="3"
-          v-model="formData.description"
-          placeholder="Insira uma pequena descrição desta diretriz"
-        ></Input>
-      </FormItem>
+        <Col span="24">
+          <FormItem
+            prop="description"
+            label="Descrição da diretriz"
+            :error="showFormErrors('description')"
+          >
+            <Input
+              type="textarea"
+              :rows="3"
+              v-model="formData.description"
+              placeholder="Insira uma pequena descrição desta diretriz"
+            ></Input>
+          </FormItem>
+        </Col>
 
-      <FormItem prop="icon" label="Icone">
-        <RadioGroup type="button" v-model="formData.icon">
-          <Radio label="1">Direção</Radio>
-          <Radio label="2">Secretaria</Radio>
-          <Radio label="3">Biblioteca</Radio>
-          <Radio label="4">Geral</Radio>
-        </RadioGroup>
-      </FormItem>
+        <Col span="12">
+          <FormItem prop="icon" label="Icone">
+            <Select placeholder="Selecionar um ícone" v-model="formData.icon">
+              <Icon :type="formData.icon" slot="prefix"></Icon>
+              <template v-for="(icon, i) in icons">
+                <Option :key="i" :value="icon.key">{{ icon.name }}</Option>
+              </template>
+            </Select>
+          </FormItem>
+        </Col>
+      </Row>
 
       <Row class="mt-5">
         <Col span="24">
@@ -42,16 +53,7 @@
                 style="margin-right: 8px"
                 >Limpar</Button
               >
-
-              <Button
-                @click="
-                  creating
-                    ? handleModal('guidelines/toggleCreateGuidelineDialog')
-                    : handleModal('guidelines/toggleUpdateGuidelineDialog')
-                "
-                >Cancelar</Button
-              >
-
+              <Button @click="cancelGuideline()">Cancelar</Button>
               <Button
                 :loading="sending"
                 type="primary"
@@ -104,6 +106,27 @@ export default {
       default: () => {
         return {};
       }
+    }
+  },
+
+  data() {
+    return {
+      icons: [
+        { key: "ios-compass", name: "Missão" },
+        { key: "ios-eye", name: "Visão" },
+        { key: "md-checkmark-circle-outline", name: "Valores" }
+      ]
+    };
+  },
+
+  methods: {
+    cancelGuideline() {
+      if (this.creating) {
+        this.handleModal("guidelines/toggleCreateGuidelineDialog");
+        this.resetFormFields("guidelineForm");
+        return;
+      }
+      this.handleModal("guidelines/toggleUpdateGuidelineDialog");
     }
   }
 };

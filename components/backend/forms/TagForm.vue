@@ -34,14 +34,7 @@
                 >Limpar</Button
               >
 
-              <Button
-                @click="
-                  creating
-                    ? handleModal('tags/toggleCreateTagDialog')
-                    : handleModal('tags/toggleUpdateTagDialog')
-                "
-                >Cancelar</Button
-              >
+              <Button @click="cancelTag()">Cancelar</Button>
 
               <Button
                 :loading="sending"
@@ -95,6 +88,17 @@ export default {
       default: () => {
         return {};
       }
+    }
+  },
+
+  methods: {
+    cancelTag() {
+      if (this.creating) {
+        this.handleModal("tags/toggleCreateTagDialog");
+        this.resetFormFields("tagForm");
+        return;
+      }
+      this.handleModal("tags/toggleUpdateTagDialog");
     }
   }
 };

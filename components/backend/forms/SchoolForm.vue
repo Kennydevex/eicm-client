@@ -40,7 +40,11 @@
                 </FormItem>
               </Col>
             </Row>
-            <FormItem  prop="opning"  label="Inaugoração" :error="showFormErrors('opning')">
+            <FormItem
+              prop="opning"
+              label="Inaugoração"
+              :error="showFormErrors('opning')"
+            >
               <DatePicker
                 class="w-full"
                 :value="formData.opning"
@@ -50,7 +54,11 @@
               ></DatePicker>
             </FormItem>
 
-            <FormItem :error="showFormErrors('slogan')" prop="slogan" label="Lema da Escola">
+            <FormItem
+              :error="showFormErrors('slogan')"
+              prop="slogan"
+              label="Lema da Escola"
+            >
               <Input
                 v-model="formData.slogan"
                 placeholder="Introduza o lema da escola"
@@ -247,6 +255,14 @@
                   <template slot-scope="{ row }" slot="type">
                     <strong>{{ row.type == 1 ? "Tel" : "Email" }}</strong>
                   </template>
+
+                  <template slot-scope="{ row, index }" slot="contact">
+                    <span>{{ row.contact }}</span
+                    ><br />
+                    <small class="text-red-500">{{
+                      showFormErrors("contacts." + index + ".contact")
+                    }}</small>
+                  </template>
                   <template slot-scope="{ row, index }" slot="action">
                     <Button
                       type="primary"
@@ -346,7 +362,6 @@
                                 <Col span="11">
                                   <FormItem prop="begin">
                                     <DatePicker
-                                      format="dd/MM/yyyy"
                                       class="w-full"
                                       type="date"
                                       placeholder="Data Inicio"
@@ -358,10 +373,10 @@
                                 <Col span="11">
                                   <FormItem prop="end">
                                     <DatePicker
-                                      format="dd/MM/yyyy"
                                       class="w-full"
                                       type="date"
                                       placeholder="Data Fim"
+                                      :value="temp_marks.end"
                                       v-model="temp_marks.end"
                                     ></DatePicker>
                                   </FormItem>
@@ -423,11 +438,33 @@
                           :columns="mark_header"
                           :data="formData.marks"
                         >
-                          <template slot-scope="{ row }" slot="begin">
-                            <span>{{ $moment(row.begin).format("l") }}</span>
+                          <template
+                            slot-scope="{ row, index }"
+                            slot="designation"
+                          >
+                            <span>{{ row.designation }}</span
+                            ><br />
+                            <small class="text-red-500">{{
+                              showFormErrors("marks." + index + ".designation")
+                            }}</small>
                           </template>
-                          <template slot-scope="{ row }" slot="end">
-                            <span>{{ $moment(row.end).format("l") }}</span>
+                          <template slot-scope="{ row, index }" slot="begin">
+                            <span>{{ $moment(row.begin).format("l") }}</span>
+                            <br />
+                            <small class="text-red-500">{{
+                              showFormErrors("marks." + index + ".begin")
+                            }}</small>
+                          </template>
+                          <template slot-scope="{ row, index }" slot="end">
+                            <span>{{
+                              row.end
+                                ? $moment(row.end).format("l")
+                                : "Por Determinar"
+                            }}</span>
+                            <br />
+                            <small class="text-red-500">{{
+                              showFormErrors("marks." + index + ".end")
+                            }}</small>
                           </template>
                           <template slot-scope="{ row, index }" slot="action">
                             <Button
@@ -504,7 +541,7 @@
                                     :type="temp_guidelines.icon"
                                     slot="prefix"
                                   ></Icon
-                                  >>
+                                  >
                                   <Option value="ios-compass">Missão</Option>
                                   <Option value="ios-eye">Visão</Option>
                                   <Option value="md-checkmark-circle-outline"
@@ -571,6 +608,14 @@
                         >
                           <template slot-scope="{ row }" slot="icon">
                             <Icon size="16" :type="row.icon" />
+                          </template>
+
+                          <template slot-scope="{ row, index }" slot="name">
+                            <span>{{ row.name }}</span
+                            ><br />
+                            <small class="text-red-500">{{
+                              showFormErrors("guidelines." + index + ".name")
+                            }}</small>
                           </template>
                           <template slot-scope="{ row, index }" slot="action">
                             <Button
@@ -715,6 +760,16 @@
                           <template slot-scope="{ row }" slot="icon">
                             <Icon size="16" :type="row.icon" />
                           </template>
+                          <template
+                            slot-scope="{ row, index }"
+                            slot="designation"
+                          >
+                            <span>{{ row.designation }}</span
+                            ><br />
+                            <small class="text-red-500">{{
+                              showFormErrors("murals." + index + ".designation")
+                            }}</small>
+                          </template>
                           <template slot-scope="{ row, index }" slot="action">
                             <Button
                               type="primary"
@@ -815,8 +870,20 @@
             style="margin-left: 8px"
             @click.stop="
               creating
-                ? addData('schoolForm', 'schools', 'Instituição Registado', 'APP_UPDATE_SCHOOLS_DATA', 'schools/toggleCreateSchoolDialog',)
-                : updateData('schoolForm', 'schools', 'Instituição Atualizado', 'APP_UPDATE_SCHOOLS_DATA', 'schools/toggleUpdateSchoolDialog',)
+                ? addData(
+                    'schoolForm',
+                    'schools',
+                    'Instituição Registado',
+                    'APP_UPDATE_SCHOOLS_DATA',
+                    'schools/toggleCreateSchoolDialog'
+                  )
+                : updateData(
+                    'schoolForm',
+                    'schools',
+                    'Instituição Atualizado',
+                    'APP_UPDATE_SCHOOLS_DATA',
+                    'schools/toggleUpdateSchoolDialog'
+                  )
             "
             ><span v-if="!sending">{{
               creating ? "Registar" : "Atualizar"
@@ -935,7 +1002,7 @@ export default {
         },
         {
           title: "Contacto",
-          key: "contact"
+          slot: "contact"
         },
         {
           title: "Descrição",
@@ -952,7 +1019,7 @@ export default {
       mark_header: [
         {
           title: "Designação",
-          key: "designation"
+          slot: "designation"
         },
         {
           title: "Data Inicio",
@@ -979,7 +1046,7 @@ export default {
         },
         {
           title: "Nome",
-          key: "name"
+          slot: "name"
         },
         {
           title: "Descrição",
@@ -1003,7 +1070,7 @@ export default {
         },
         {
           title: "Deseguinação",
-          key: "designation"
+          slot: "designation"
         },
         {
           title: "Descrição",
@@ -1158,52 +1225,74 @@ export default {
     },
 
     onEditContact(index) {
-      this.selected_contact = "";
-      this.repeated_contact = false;
-      let aux_contact = this.formData.contacts[index];
-      this.temp_contacts.contact = aux_contact.contact;
-      this.temp_contacts.type = aux_contact.type;
-      this.temp_contacts.description = aux_contact.description;
-      this.selected_contact = index;
-      this.on_edit_contact = true;
-      this.adding_contact = false;
+      if (this.formData.contacts.length > 0) {
+        this.selected_contact = "";
+        this.repeated_contact = false;
+        let aux_contact = this.formData.contacts[index];
+        this.temp_contacts.id = aux_contact.id;
+        this.temp_contacts.contact = aux_contact.contact;
+        this.temp_contacts.type = aux_contact.type;
+        this.temp_contacts.description = aux_contact.description;
+        this.selected_contact = index;
+        this.on_edit_contact = true;
+        this.adding_contact = false;
+        return;
+      }
+      return;
     },
 
     onEditMark(index) {
-      this.selected_mark = "";
-      this.repeated_mark = false;
-      let aux_mark = this.formData.marks[index];
-      this.temp_marks.designation = aux_mark.designation;
-      this.temp_marks.begin = aux_mark.begin;
-      this.temp_marks.end = aux_mark.end;
-      this.temp_marks.content = aux_mark.content;
-      this.selected_mark = index;
-      this.on_edit_mark = true;
-      this.adding_mark = false;
+      if (this.formData.marks.length > 0) {
+        this.selected_mark = "";
+        this.repeated_mark = false;
+        let aux_mark = this.formData.marks[index];
+
+        this.$set(this.temp_marks, "id", aux_mark.id);
+        this.$set(this.temp_marks, "designation", aux_mark.designation);
+        this.$set(this.temp_marks, "content", aux_mark.content);
+        this.$set(this.temp_marks, "begin", aux_mark.begin);
+        this.$set(this.temp_marks, "end", aux_mark.end);
+
+        this.selected_mark = index;
+        this.on_edit_mark = true;
+        this.adding_mark = false;
+        return;
+      }
+      return;
     },
 
     onEditGuideline(index) {
-      this.selected_guideline = "";
-      this.repeated_guideline = false;
-      let aux_guideline = this.formData.guidelines[index];
-      this.temp_guidelines.name = aux_guideline.name;
-      this.temp_guidelines.description = aux_guideline.description;
-      this.temp_guidelines.icon = aux_guideline.icon;
-      this.selected_guideline = index;
-      this.on_edit_guideline = true;
-      this.adding_guideline = false;
+      if (this.formData.guidelines.length > 0) {
+        this.selected_guideline = "";
+        this.repeated_guideline = false;
+        let aux_guideline = this.formData.guidelines[index];
+        this.temp_guidelines.id = aux_guideline.id;
+        this.temp_guidelines.name = aux_guideline.name;
+        this.temp_guidelines.description = aux_guideline.description;
+        this.temp_guidelines.icon = aux_guideline.icon;
+        this.selected_guideline = index;
+        this.on_edit_guideline = true;
+        this.adding_guideline = false;
+        return;
+      }
+      return;
     },
 
     onEditMural(index) {
-      this.selected_mural = "";
-      this.repeated_mural = false;
-      let aux_mural = this.formData.murals[index];
-      this.temp_murals.designation = aux_mural.designation;
-      this.temp_murals.description = aux_mural.description;
-      this.temp_murals.icon = aux_mural.icon;
-      this.selected_mural = index;
-      this.on_edit_mural = true;
-      this.adding_mural = false;
+      if (this.formData.murals.length > 0) {
+        this.selected_mural = "";
+        this.repeated_mural = false;
+        let aux_mural = this.formData.murals[index];
+        this.temp_murals.id = aux_mural.id;
+        this.temp_murals.designation = aux_mural.designation;
+        this.temp_murals.description = aux_mural.description;
+        this.temp_murals.icon = aux_mural.icon;
+        this.selected_mural = index;
+        this.on_edit_mural = true;
+        this.adding_mural = false;
+        return;
+      }
+      return;
     },
 
     clearAllContacts() {
@@ -1332,7 +1421,7 @@ export default {
         formRef,
         this.repeated_mark,
         "marks",
-        this.selected_contact,
+        this.selected_mark,
         this.temp_marks,
         this.clearTempMark
       );

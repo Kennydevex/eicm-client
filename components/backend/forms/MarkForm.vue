@@ -78,14 +78,7 @@
                 >Limpar</Button
               >
 
-              <Button
-                @click="
-                  creating
-                    ? handleModal('marks/toggleCreateMarkDialog')
-                    : handleModal('marks/toggleUpdateMarkDialog')
-                "
-                >Cancelar</Button
-              >
+              <Button @click="cancelMark()">Cancelar</Button>
 
               <Button
                 :loading="sending"
@@ -139,6 +132,17 @@ export default {
       default: () => {
         return {};
       }
+    }
+  },
+
+  methods: {
+    cancelMark() {
+      if (this.creating) {
+        this.handleModal("marks/toggleCreateMarkDialog");
+        this.resetFormFields("markForm");
+        return;
+      }
+      this.handleModal("marks/toggleUpdateMarkDialog");
     }
   }
 };

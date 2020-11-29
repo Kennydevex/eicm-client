@@ -11,14 +11,14 @@
             Contactos
           </div>-->
           <Row type="flex" justify="center" align="middle" :gutter="16">
-            <Col span="24" :md="12">
+            <Col :xs="{ span: 24, order: 2 }" :md="{ span: 12, order: 1 }">
               <div
                 class=" rounded-lg bg-white shadow-xl overflow-hidden border-4 border-white"
               >
                 <AppMaps />
               </div>
             </Col>
-            <Col span="24" :md="12">
+            <Col :xs="{ span: 24, order: 1 }" :md="{ span: 12, order: 2 }">
               <div class=" p-5 rounded-lg border  mt-3  md:m-5">
                 <ContactForm />
               </div>

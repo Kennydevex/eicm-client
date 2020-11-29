@@ -7,11 +7,7 @@
       label-position="right"
       :label-width="80"
     >
-      <FormItem
-        prop="name"
-        label="Nome"
-        :error="showFormErrors('name')"
-      >
+      <FormItem prop="name" label="Nome" :error="showFormErrors('name')">
         <Input v-model="formData.name" placeholder="Nome da família"></Input>
       </FormItem>
 
@@ -28,7 +24,6 @@
         ></Input>
       </FormItem>
 
-
       <Row class="mt-5">
         <Col span="24">
           <FormItem>
@@ -39,14 +34,7 @@
                 >Limpar</Button
               >
 
-              <Button
-                @click="
-                  creating
-                    ? handleModal('families/toggleCreateFamilyDialog')
-                    : handleModal('families/toggleUpdateFamilyDialog')
-                "
-                >Cancelar</Button
-              >
+              <Button @click="cancelFamily()">Cancelar</Button>
 
               <Button
                 :loading="sending"
@@ -100,6 +88,17 @@ export default {
       default: () => {
         return {};
       }
+    }
+  },
+
+  methods: {
+    cancelFamily() {
+      if (this.creating) {
+        this.handleModal("families/toggleCreateFamilyDialog");
+        this.resetFormFields("familyForm");
+        return;
+      }
+      this.handleModal("families/toggleUpdateFamilyDialog");
     }
   }
 };
