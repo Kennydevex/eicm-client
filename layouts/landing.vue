@@ -25,6 +25,7 @@
 export default {
   async created() {
     this.spinLoad = true;
+    await this.$store.dispatch("schools/getSchools");
     await this.$store.dispatch("courses/getFeaturedCourses");
     await this.$store.dispatch("courses/getActivedCourses");
     await this.$store.dispatch("courses/getCoursesByType", 1);

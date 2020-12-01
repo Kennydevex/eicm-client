@@ -1436,7 +1436,7 @@ export default {
         formRef,
         this.repeated_guideline,
         "guidelines",
-        this.selected_contact,
+        this.selected_guideline,
         this.temp_guidelines,
         this.clearTempGuideline
       );
@@ -1451,7 +1451,7 @@ export default {
         formRef,
         this.repeated_mural,
         "murals",
-        this.selected_contact,
+        this.selected_mural,
         this.temp_murals,
         this.clearTempMural
       );
