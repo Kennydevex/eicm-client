@@ -5,6 +5,7 @@
         <vueper-slides
           autoplay
           ref="coursesSlider"
+          fade
           :slide-ratio="1 / 2"
           fixed-height="500px"
           :pause-on-hover="pauseOnHover"
@@ -12,16 +13,18 @@
           @autoplay-resume="internalAutoPlaying = true"
         >
           <vueper-slide
-          class="course_slider"
-            v-for="i in 10"
-            :key="i"
+            v-for="course in courses"
+            :key="course.id"
+            :class="compareDate(course.release) ? 'course_slider' : ''"
             :image="'/sliders/slide.jpg'"
           >
             <!--:image="`${publicURL}/uploads/articles/covers/${article.cover}`"-->
             <template v-slot:content>
-              cursos
-              <!--<nuxt-link
-                :to="{ name: 'blog-ler-slug', params: { slug: article.slug } }"
+              <nuxt-link
+                :to="{
+                  name: 'courses-ver-slug',
+                  params: { slug: course.slug }
+                }"
                 class="p-8 w-full h-full relative inline-block"
               >
                 <div
@@ -29,39 +32,42 @@
                   style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"
                 ></div>
 
-                <div class="p-4 absolute bottom-0 left-0 z-20">
+                <div class="p-8 absolute bottom-0 left-0 z-20 w-full md:w-1/2">
                   <span
-                    class="px-4 py-1 bg-primary rounded-md text-gray-200 uppercase inline-flex items-center justify-center mb-2"
-                    >{{ article.category }}</span
+                    class="px-4 py-1 rounded-md text-gray-400 font-semibold inline-flex items-center justify-center mb-2"
+                    :style="{ backgroundColor: course.color }"
+                    >{{ cousesType(course.type) }}</span
                   >
                   <h2
-                    class="text-4xl font-semibold text-gray-100 leading-tight"
+                    class="text-4xl font-semibold text-gray-400 leading-tight"
                   >
-                    {{ article.title }}
+                    {{ course.name }}
                   </h2>
                   <p
-                    class="my-3 pl-6 border-l-4 border-gray-700 tracking-wide leading-relaxed text-gray-300 text-lg"
+                    class="my-3 tracking-wide leading-relaxed text-gray-400 text-base"
                   >
-                    {{ article.summary | truncate(150) }}
+                    {{ course.presentation | truncate(130) }}
                   </p>
                   <div class="flex mt-3">
-                    <img
+                    <!--<img
                       :src="
                         `${publicURL}/uploads/avatars/${article.user_avatar}`
                       "
                       class="h-10 w-10 rounded-full mr-2 object-cover"
-                    />
+                    />-->
                     <div>
-                      <p class="font-semibold text-gray-200 text-sm">
-                        {{ article.user }}
-                      </p>
                       <p class="font-semibold text-gray-400 text-xs">
-                        {{ $moment(article.created_at).fromNow() }}
+                        Curso lançado:
+                        {{
+                          compareDate(course.release)
+                            ? $moment(course.release).fromNow()
+                            : $moment(course.release).toNow()
+                        }}
                       </p>
                     </div>
                   </div>
-                </div>
-              </nuxt-link>-->
+                </div> </nuxt-link
+              >-->
             </template>
           </vueper-slide>
           <template v-slot:pause>
@@ -91,6 +97,23 @@ export default {
       internalAutoPlaying: true
     };
   },
+  methods: {
+    cousesType(type) {
+      return type == 3
+        ? "ACP"
+        : type == 2
+        ? "Formações Profissionais"
+        : type == 1
+        ? "Cursos da Via Técnica"
+        : "Outros";
+    },
+    compareDate(date) {
+      if (this.$moment(date) >= this.$moment().subtract(5, "years")) {
+        return true;
+      }
+      return false;
+    }
+  },
   components: {
     VueperSlides,
     VueperSlide
@@ -104,7 +127,7 @@ export default {
 }
 
 .course_slider:before {
-  content: 'Curso Novo';
+  content: "Curso Novo";
   position: absolute;
   top: -18px;
   right: -18px;

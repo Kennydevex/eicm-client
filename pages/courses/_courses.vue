@@ -21,9 +21,22 @@
           </div>
         </div>
 
-        <template v-for="course in courses">
-          <div class="my-4" :key="course.id">
-            <GeneralCourseCard :course="course" />
+        <template v-if="courses.length > 0">
+          <template v-for="course in courses">
+            <div class="my-4" :key="course.id">
+              <GeneralCourseCard :course="course" />
+            </div>
+          </template>
+        </template>
+
+        <template v-else>
+          <div>
+            <Alert show-icon class="shadow-xl">
+              Sem registo de cursos
+              <template slot="desc"
+                >Nenhum cursos desta categoria registado.
+              </template>
+            </Alert>
           </div>
         </template>
       </Col>
@@ -35,10 +48,12 @@
       </Col>
     </Row>
 
-    <Row class="p-5 mb-8 m-2 bg-white shadow-xl rounded-lg">
+    <Row class="p-5 mb-8 m-2 bg-white shadow-xl rounded-lg" v-if="courses.length > 0">
       <Col span="24">
         <div>
-          <h2 class="text-gray-600 font-semibold tracking-wide text-center md:text-left">
+          <h2
+            class="text-gray-600 font-semibold tracking-wide text-center md:text-left"
+          >
             Partilha estes cursos com os amigos ou familiares
           </h2>
         </div>
