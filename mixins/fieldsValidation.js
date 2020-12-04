@@ -570,8 +570,44 @@ export const mark_validation = {
             message: "Campo necessário",
             trigger: "change"
           }
+        ]
+      }
+    };
+  }
+};
+
+export const slider_validation = {
+  data() {
+    return {
+      sliderFormValidation: {
+        title: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
         ],
 
+        link: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          },
+          {
+            type: "url",
+            message: "Insira um URL Válido (Ex: https://www.exemplo.cv)",
+            trigger: "blur"
+          }
+        ],
+
+        description: [
+          {
+            required: true,
+            message: "Campo necessário",
+            trigger: "blur"
+          }
+        ]
       }
     };
   }

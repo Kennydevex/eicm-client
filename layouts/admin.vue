@@ -65,8 +65,16 @@
                 :to="{ name: 'admin-institution-school' }"
                 >Minha Escola</MenuItem
               >
-              <MenuItem :to="{ name: 'admin-institution-partners' }" name="institution-partners">Parceiros</MenuItem>
-              <MenuItem :to="{ name: 'admin-institution-testimonials' }" name="institution-testimonials">Testemunhos</MenuItem>
+              <MenuItem
+                :to="{ name: 'admin-institution-partners' }"
+                name="institution-partners"
+                >Parceiros</MenuItem
+              >
+              <MenuItem
+                :to="{ name: 'admin-institution-testimonials' }"
+                name="institution-testimonials"
+                >Testemunhos</MenuItem
+              >
             </MenuGroup>
             <MenuGroup title="RECURSOS">
               <MenuItem
@@ -86,14 +94,26 @@
               :to="{ name: 'admin-formations-courses' }"
               >Cursos</MenuItem
             >
-           
           </Submenu>
           <Submenu name="cms">
             <template slot="title">
               <Icon type="ios-paper" />
               CMS
             </template>
-            <MenuItem :to="{ name: 'admin-cms-articles' }" name="cms-categories">Publicações</MenuItem>
+            <MenuItem :to="{ name: 'admin-cms-articles' }" name="cms-categories"
+              >Publicações</MenuItem
+            >
+          </Submenu>
+          <Submenu name="widgets">
+            <template slot="title">
+              <Icon type="md-apps" />
+              Widgets
+            </template>
+            <MenuItem
+              :to="{ name: 'admin-widgets-sliders' }"
+              name="widgets-sliders"
+              >Sliders</MenuItem
+            >
           </Submenu>
         </Menu>
       </Sider>
