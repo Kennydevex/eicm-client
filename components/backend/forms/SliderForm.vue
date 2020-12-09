@@ -139,7 +139,7 @@
 
       <Row :gutter="16">
         <Col span="24">
-          <FormItem label="Capa do curso">
+          <FormItem label="Imagem do Slider">
             <base-file-upload
               ref="sliderBackground"
               :uploadMsg="'Clique ou largue uma imagem aqui'"
