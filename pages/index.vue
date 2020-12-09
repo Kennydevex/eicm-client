@@ -1,37 +1,28 @@
 <template>
   <Layout>
-    <HomeCarousel />
+    <HomeCarousel :sliders="sliders" />
     <HomeSchoolBanner />
     <HomeSchoolSlogan />
-    <HomeSchoolTeam />
-    <HomeFeaturedCourses />
-    <HomeFeaturedArticles :articles="featured_articles" />
-    <HomePartners />
-    <HomeTestimonials />
+    <HomeSchoolTeam v-if="teams.length > 0" :teams="teams" />
+    <HomeFeaturedCourses
+      v-if="featured_courses.length > 0"
+      :featuredCourses="featured_courses"
+    />
+    <HomeFeaturedArticles
+      v-if="featured_articles.length > 0"
+      :articles="featured_articles"
+    />
+    <HomePartners v-if="partners.length > 0" :partners="partners" />
+    <HomeTestimonials
+      v-if="testimonials.length > 0"
+      :testimonials="testimonials"
+    />
     <HomeContacts />
     <home-footer></home-footer>
-    <!-- <HomeGuidelines />
-    <principal-footer></principal-footer>
-    <HomeTeams />
-
-    <HomeStudentsBanner />
-   -->
   </Layout>
 </template>
 
 <script>
-import HomeCarousel from "@/components/frontend/sections/HomeCarousel";
-import HomePartners from "@/components/frontend/sections/HomePartners";
-import HomeTeams from "@/components/frontend/sections/HomeTeams";
-import HomeSchoolBanner from "@/components/frontend/sections/HomeSchoolBanner";
-import HomeSchoolSlogan from "@/components/frontend/sections/HomeSchoolSlogan";
-import HomeSchoolTeam from "@/components/frontend/sections/HomeSchoolTeam";
-import HomeFeaturedCourses from "@/components/frontend/sections/HomeFeaturedCourses";
-import HomeFeaturedArticles from "@/components/frontend/sections/HomeFeaturedArticles";
-import HomeTestimonials from "@/components/frontend/sections/HomeTestimonials";
-import HomeContacts from "@/components/frontend/sections/HomeContacts";
-import HomeFooter from "@/components/frontend/sections/HomeFooter";
-import PrincipalFooter from "@/components/frontend/sections/PrincipalFooter";
 import { mapGetters } from "vuex";
 
 export default {
@@ -44,22 +35,33 @@ export default {
 
   computed: {
     ...mapGetters({
-      featured_articles: "articles/featured_articles"
+      featured_articles: "articles/featured_articles",
+      featured_courses: "courses/featured_courses",
+      partners: "partners/partners",
+      testimonials: "testimonials/testimonials",
+      sliders: "sliders/actived_sliders",
+      teams: "employees/principal_teams"
     })
   },
 
   components: {
-    HomeCarousel,
-    HomeTeams,
-    HomeSchoolBanner,
-    HomeSchoolSlogan,
-    HomeSchoolTeam,
-    HomeFeaturedCourses,
-    HomeFeaturedArticles,
-    HomePartners,
-    HomeContacts,
-    HomeFooter,
-    PrincipalFooter
+    HomeCarousel: () => import("@/components/frontend/sections/HomeCarousel"),
+    HomeTeams: () => import("@/components/frontend/sections/HomeTeams"),
+    HomeSchoolBanner: () =>
+      import("@/components/frontend/sections/HomeSchoolBanner"),
+    HomeSchoolSlogan: () =>
+      import("@/components/frontend/sections/HomeSchoolSlogan"),
+    HomeSchoolTeam: () =>
+      import("@/components/frontend/sections/HomeSchoolTeam"),
+    HomeFeaturedCourses: () =>
+      import("@/components/frontend/sections/HomeFeaturedCourses"),
+    HomeFeaturedArticles: () =>
+      import("@/components/frontend/sections/HomeFeaturedArticles"),
+    HomePartners: () => import("@/components/frontend/sections/HomePartners"),
+    HomeContacts: () => import("@/components/frontend/sections/HomeContacts"),
+    HomeFooter: () => import("@/components/frontend/sections/HomeFooter"),
+    PrincipalFooter: () =>
+      import("@/components/frontend/sections/PrincipalFooter")
   }
 };
 </script>

@@ -3,7 +3,7 @@
     <div class=" container px-3 mx-auto">
       <Row type="flex" :gutter="16">
         <Col span="24" class="mb-5">
-          <base-home-section-title>Contacts</base-home-section-title>
+          <base-home-section-title>Contactos</base-home-section-title>
         </Col>
 
         <Col span="24" class="mt-3">

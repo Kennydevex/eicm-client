@@ -81,11 +81,19 @@
 </template>
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 
 import "vueperslides/dist/vueperslides.css";
 export default {
   name: "HomeCarousel",
+   props: {
+    sliders: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
+  },
   data() {
     return {
       lazy_progress: true,
@@ -96,11 +104,7 @@ export default {
     };
   },
 
-  computed: {
-    ...mapGetters({
-      sliders: "sliders/actived_sliders"
-    })
-  },
+
   components: {
     VueperSlides,
     VueperSlide

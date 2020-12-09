@@ -17,15 +17,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 
 export default {
   name: "HomeTeams",
-  computed: {
-    ...mapGetters({
-      teams: "employees/principal_teams"
-    })
-  }
+   props: {
+    teams: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
+  },
+  
 };
 </script>
 

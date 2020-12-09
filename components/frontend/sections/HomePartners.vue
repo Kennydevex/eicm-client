@@ -41,18 +41,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 export default {
   name: "HomeFeaturedCourses",
 
-  computed: {
-    ...mapGetters({
-      partners: "partners/partners"
-    })
+  props: {
+    partners: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
   },
-
   data() {
     return {
       pauseOnHover: true,

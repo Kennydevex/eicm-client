@@ -22,9 +22,9 @@
               :dragging-distance="200"
               :breakpoints="breakpoints"
             >
-              <template v-if="featured_courses.length != 0">
+              <template v-if="featuredCourses.length != 0">
                 <vueper-slide
-                  v-for="course in featured_courses"
+                  v-for="course in featuredCourses"
                   :key="course.id"
                 >
                   <template v-slot:content>
@@ -37,17 +37,6 @@
             </vueper-slides>
           </div>
         </Col>
-
-        <!--<Col
-          v-for="(course, c) in featured_courses"
-          :key="c"
-          :xs="24"
-          :sm="12"
-          :md="8"
-          :lg="8"
-        >
-          <base-course-card :course="course" />
-        </Col>-->
       </Row>
     </div>
   </div>
@@ -56,9 +45,17 @@
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import { mapGetters } from "vuex";
 export default {
   name: "HomeFeaturedCourses",
+
+  props: {
+    featuredCourses: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
+  },
 
   data() {
     return {
@@ -90,12 +87,6 @@ export default {
         }
       }
     };
-  },
-
-  computed: {
-    ...mapGetters({
-      featured_courses: "courses/featured_courses"
-    })
   },
 
   components: {

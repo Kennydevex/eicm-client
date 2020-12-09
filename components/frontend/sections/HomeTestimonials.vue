@@ -24,10 +24,15 @@
               :breakpoints="breakpoints"
             >
               <template>
-                <vueper-slide v-for="testimonial in testimonials" :key="testimonial.id">
+                <vueper-slide
+                  v-for="testimonial in testimonials"
+                  :key="testimonial.id"
+                >
                   <template v-slot:content>
                     <div class="flex justify-center items-center">
-                      <testimonial-card :testimonial="testimonial"></testimonial-card>
+                      <testimonial-card
+                        :testimonial="testimonial"
+                      ></testimonial-card>
                     </div>
                   </template>
                 </vueper-slide>
@@ -45,12 +50,15 @@ import { mapGetters } from "vuex";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 export default {
-  name: "HomeFeaturedCourses",
+  name: "HomeTestimonials",
 
-  computed: {
-    ...mapGetters({
-      testimonials: "testimonials/testimonials"
-    })
+  props: {
+    testimonials: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    }
   },
 
   data() {
@@ -96,5 +104,3 @@ export default {
   }
 };
 </script>
-
-    
