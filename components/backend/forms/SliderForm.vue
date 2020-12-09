@@ -11,7 +11,12 @@
       <Row :gutter="16">
         <Col span="24">
           <FormItem prop="type" label="Slider Para">
-            <RadioGroup class="w-full" type="button" v-model="formData.type">
+            <RadioGroup
+              @on-change="resetData()"
+              class="w-full"
+              type="button"
+              v-model="formData.type"
+            >
               <Radio class="w-1/3" label="1">Cursos/Formações</Radio>
               <Radio class="w-1/3" label="2">Blog/Artigos</Radio>
               <Radio class="w-1/3" label="3">Ligações Externas</Radio>
@@ -30,6 +35,7 @@
             :label="formData.type == 1 ? 'Curso' : 'Artigo'"
           >
             <Select
+              @on-change="setSliderTitle()"
               :placeholder="
                 formData.type == 1
                   ? 'Selecione um curso em destaque'
@@ -37,7 +43,7 @@
                   ? 'Selecione um artigo em destaque'
                   : ''
               "
-              v-model="slider_dst"
+              v-model="formData.slider_dst"
             >
               <template v-if="formData.type == 1">
                 <Option
@@ -234,14 +240,14 @@ export default {
 
   data() {
     return {
-      uploadBackgroundList: [],
-      slider_dst: ""
+      uploadBackgroundList: []
     };
   },
 
   mounted() {
     this.initFilesUploaded();
   },
+
   computed: {
     ...mapGetters({
       courses: "courses/featured_courses",
@@ -250,11 +256,7 @@ export default {
   },
 
   watch: {
-    "formData.type"(newVal) {
-      this.resetData();
-    },
-
-    slider_dst(newVal) {
+    "formData.slider_dst"(newVal) {
       this.setSliderTitle(newVal);
     }
   },
@@ -290,7 +292,7 @@ export default {
     },
 
     resetData() {
-      this.slider_dst = "";
+      this.formData.slider_dst = "";
       this.formData.title = "";
       this.formData.link = "";
       this.formData.description = "";

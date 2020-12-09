@@ -1,16 +1,48 @@
 <template>
   <div>
     <Row>
-      <Col span="24">
+      <Col span="24" class="mt-5">
         <Row>
           <Col span="24">
-            <Button type="primary" @click.stop="onCreateSlider()"
-              >Criar Slider</Button
+            <Button
+              :loading="creating_slider"
+              type="primary"
+              @click.stop="onCreateSlider()"
             >
+              <span v-if="!creating_slider">Criar Novo Slider</span>
+              <span v-else>Solicitando...</span>
+            </Button>
           </Col>
+        </Row>
+        <Divider></Divider>
 
-          <Col span="24" class="mt-5">
-            Sliders
+        <Row type="flex" :gutter="16">
+          <Col
+            class="my-3"
+            v-for="slider in sliders"
+            :key="slider.id"
+            span="24"
+            :sm="12"
+            :md="8"
+            :lg="6"
+          >
+            <slider-card
+              @onUpdate="onUpdateSlider(slider.id)"
+              @onDelete="onDelete('sliders', slider.id, 'APP_UPDATE_SLIDERS_DATA')"
+              @onSliderActivation="
+                toggleStatus(
+                  'sliders/slider-activation', 
+                  slider.id,
+                  slider.status,
+                  'Slider',
+                  'APP_UPDATE_SLIDERS_DATA'
+                )
+              "
+              :slider="slider"
+              :updating="on_load_data_to_update"
+              :deleting="deleting"
+              :activating="loadAtivaction"
+            ></slider-card>
           </Col>
         </Row>
 
@@ -22,10 +54,14 @@
 </template>
 
 <script>
+import { handleActivations, deleteDatas } from "@/mixins/appRequest";
 import { mapGetters } from "vuex";
+import { requests } from "@/mixins/appRequest";
 export default {
   name: "SliderPage",
   layout: "admin",
+
+  mixins: [handleActivations, deleteDatas, requests],
 
   async fetch({ store }) {
     await store.dispatch("sliders/getSliders");
@@ -34,7 +70,10 @@ export default {
   data() {
     return {
       sending: {},
-      on_load_data_to_update: {}
+      creating_slider: false,
+      on_load_data_to_update: {},
+      on_delete_data: {},
+      selected: []
     };
   },
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Modal
-      width="640"
+      width="840"
       v-model="update_slider_dialog"
       title="Editar Slider"
       footer-hide
@@ -23,12 +23,13 @@ export default {
         id: "",
         title: "",
         description: "",
+        slider_dst: "",
         link: "",
         btn_text: "",
-        btn_style: "",
+        btn_style: "1",
         background: "default.svg",
-        color: "",
-        type: "",
+        color: "#3E4095",
+        type: "3",
         status: false
       }
     };

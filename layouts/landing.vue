@@ -32,6 +32,7 @@ export default {
     await this.$store.dispatch("employees/getPrincipalTeams");
     await this.$store.dispatch("partners/getPartners");
     await this.$store.dispatch("testimonials/getTestimonials");
+    await this.$store.dispatch("sliders/getActivedSliders");
     this.spinLoad = false;
   },
   components: {

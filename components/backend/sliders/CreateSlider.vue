@@ -23,11 +23,12 @@ export default {
         id: "",
         title: "",
         description: "",
+        slider_dst: "",
         link: "",
         btn_text: "",
         btn_style: "1",
         background: "default.svg",
-        color: '',
+        color: '#3E4095',
         type: '3',
         status: false,
       }
