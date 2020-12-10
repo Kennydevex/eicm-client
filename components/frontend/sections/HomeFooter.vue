@@ -116,7 +116,7 @@
             </li>
           </ul>
         </div>
-        <div class="w-full md:w-1/4 text-center md:text-left">
+        <!--<div class="w-full md:w-1/4 text-center md:text-left">
           <h5 class="uppercase mb-6 font-bold text-gray-400">Instituição</h5>
           <ul class="mb-4">
             <li class="mt-2">
@@ -141,7 +141,7 @@
               >
             </li>
           </ul>
-        </div>
+        </div>-->
         <div class="w-full md:w-1/4 text-center md:text-left">
           <h5 class="uppercase mb-6 font-bold text-gray-400">
             Ligações Externas
@@ -171,7 +171,7 @@
           </ul>
         </div>
         <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-800">Parceiros</h5>
+          <h5 class="uppercase mb-6 font-bold text-gray-400">Parceiros</h5>
           <ul class="mb-4">
             <li class="mt-2" v-for="partner in partners" :key="partner.id">
               <a
