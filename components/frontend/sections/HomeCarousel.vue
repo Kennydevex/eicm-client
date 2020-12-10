@@ -26,10 +26,10 @@
             <div
               class="transition duration-500 ease-in-out w-full h-full bg-black opacity-40 hover:opacity-75 group"
             >
-              <div class="container m-auto ml-8 h-full">
+              <div class="container m-auto ml-8 h-full z-10">
                 <div class="flex flex-col w-full h-full justify-center">
                   <div
-                    class=" transition duration-500 ease-in-out text-white font-sans leading-snug text-xl md:text-2xl group-hover:text-md font-medium uppercase w-2/3 md:w-1/3 tracking-widest transform group-hover:-translate-y-1"
+                    class="transition duration-500 ease-in-out text-white font-sans leading-snug text-xl md:text-2xl group-hover:text-md font-medium uppercase w-2/3 md:w-1/3 tracking-widest transform group-hover:-translate-y-1"
                   >
                     <span>{{ slider.title }}</span>
                     <div
@@ -39,9 +39,9 @@
                   </div>
 
                   <div
-                    class="transition duration-500 ease-in-out text-gray-200 group-hover:text-gray-500 mt-5 text-lg tracking-wider leading-relaxed w-3/4 sm:w-2/4 transform group-hover:translate-x-2"
+                    class="transition duration-500 ease-in-out text-gray-200 group-hover:text-gray-300 mt-5 text-lg tracking-wider leading-relaxed w-3/4 sm:w-2/4 transform group-hover:translate-x-2"
                   >
-                    {{ slider.description || truncate(100) }}
+                    {{ slider.description | truncate(200) }}
                   </div>
 
                   <div class="mt-5 mb-2 flex justify-start items-end">
@@ -86,7 +86,7 @@ import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 export default {
   name: "HomeCarousel",
-   props: {
+  props: {
     sliders: {
       type: Array,
       default: () => {
@@ -103,7 +103,6 @@ export default {
       internalAutoPlaying: true
     };
   },
-
 
   components: {
     VueperSlides,

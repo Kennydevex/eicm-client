@@ -3,15 +3,16 @@
     class="cursor-pointer min-w-full"
     @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
   >
+  
     <div class="relative pb-5/6">
       <img
-        class="absolute h-full w-full object-cover rounded-lg shadow-md"
+        class="absolute h-full w-full object-cover rounded-lg shadow-2xl"
         :src="`${publicURL}/uploads/courses/covers/${course.cover}`"
         :alt="course.abbr"
       />
     </div>
     <div class="relative px-4 -mt-16">
-      <div class="bg-white p-6 rounded-lg shadow-lg">
+      <div class="bg-white p-6 rounded-lg shadow-xl">
         <div class="flex items-baseline">
           <!--<span
             class="inline-block bg-teal-200 text-teal-800 text-xs px-2 rounded-full uppercase font-semibold tracking-wide"

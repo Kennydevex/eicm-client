@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-200 w-full py-12 justify-center">
+  <div class="bg-white w-full py-12 justify-center">
     <div class=" container px-3 mx-auto">
       <Row type="flex" :gutter="16">
         <Col span="24" class="mb-5">
@@ -19,7 +19,9 @@
               </div>
             </Col>
             <Col :xs="{ span: 24, order: 1 }" :md="{ span: 12, order: 2 }">
-              <div class=" p-5 rounded-lg border  mt-3  md:m-5">
+              <div
+                class="transition duration-500 ease-in-out transform rotate-6 hover:rotate-3 p-5 border rounded-lg shadow-lg hover:shadow-2xl  mt-3  md:m-5"
+              >
                 <ContactForm />
               </div>
             </Col>

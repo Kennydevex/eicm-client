@@ -1,5 +1,6 @@
 <template>
   <div class="bg-white">
+  
     <div class="container m-auto">
       <Row type="flex">
       <Col span="24"  :ms="{ span: 24, order: 1 }" :md="{ span: 12, order: 2 }" class="self-end pt-24">
@@ -21,6 +22,7 @@
         
       </Row>
     </div>
+    
   </div>
 </template>
 
