@@ -88,8 +88,6 @@
                     /></Button>
                   </template>
                 </Table>
-                <create-course></create-course>
-                <update-course></update-course>
               </Col>
             </Row>
           </TabPane>
@@ -122,6 +120,8 @@
             </Row>
           </TabPane>
         </Tabs>
+        <create-course></create-course>
+        <update-course></update-course>
       </Col>
 
       <Col span="24"> </Col>

@@ -37,6 +37,7 @@ export default {
     ...mapGetters({
       featured_articles: "articles/featured_articles",
       featured_courses: "courses/featured_courses",
+      courses: "courses/courses_by_type",
       partners: "partners/partners",
       testimonials: "testimonials/testimonials",
       sliders: "sliders/actived_sliders",

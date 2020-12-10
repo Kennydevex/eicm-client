@@ -1,14 +1,14 @@
 <template>
   <footer class="bg-gray-800">
     <svg
-      class="wave-top"
+      class="wave-top -mb-12"
       viewBox="0 0 1439 147"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
+        <g transform="translate(-1.000000, -10.000000)" fill-rule="nonzero">
           <g class="wave" fill="#ffffff">
             <path
               d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
@@ -38,10 +38,10 @@
 
     <div class="container mx-auto px-6 pt-10 pb-6">
       <div
-        class="flex flex-row justify-start  py-5 items-start border-b-2 border-gray-700"
+        class="flex flex-row justify-center  py-5 items-center border-b-2 border-gray-700"
       >
         <div
-          class="flex justify-center items-center group mr-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
+          class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
         >
           <a
             href="https://web.facebook.com/escolatecnicadomindeloGDC"
@@ -52,23 +52,23 @@
           </a>
         </div>
         <div
-          class="flex justify-center items-center group mr-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
+          class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
         >
           <a href="#" class="text-primary group-hover:text-gray-700">
             <Icon size="18" type="logo-twitter" />
           </a>
         </div>
         <div
-          class="flex justify-center items-center group mr-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
+          class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
         >
           <a href="#" class="text-primary group-hover:text-gray-700">
             <Icon size="18" type="logo-linkedin" />
           </a>
         </div>
       </div>
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap mt-5">
         <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-800">Contactos</h5>
+          <h5 class="uppercase mb-6 font-bold text-gray-400">Contactos</h5>
           <ul class="mb-4">
             <li class="mt-2">
               <a
@@ -103,7 +103,7 @@
           </ul>
         </div>
         <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-800">
+          <h5 class="uppercase mb-6 font-bold text-gray-400">
             Cursos da Via Técnica
           </h5>
           <ul class="mb-4">
@@ -117,7 +117,7 @@
           </ul>
         </div>
         <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-800">Instituição</h5>
+          <h5 class="uppercase mb-6 font-bold text-gray-400">Instituição</h5>
           <ul class="mb-4">
             <li class="mt-2">
               <nuxt-link
@@ -143,7 +143,7 @@
           </ul>
         </div>
         <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-800">
+          <h5 class="uppercase mb-6 font-bold text-gray-400">
             Ligações Externas
           </h5>
           <ul class="mb-4">
