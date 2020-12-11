@@ -77,6 +77,7 @@
         </template>
       </vueper-slides>
     </client-only>
+  
   </div>
 </template>
 <script>

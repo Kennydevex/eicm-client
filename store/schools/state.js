@@ -4,6 +4,7 @@ export default () => ({
   abbr: "",
   about: "",
   history: "",
+  slogan: "",
   contacts: [],
   location: [],
   marks: [],

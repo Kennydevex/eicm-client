@@ -8,6 +8,13 @@ export default {
     }
     return;
   },
+
+  slogan(state) {
+    if (state.schools.length > 0) {
+      return state.schools[0].slogan;
+    }
+    return;
+  },
   abbr(state) {
     if (state.schools.length > 0) {
       return state.schools[0].abbr;
