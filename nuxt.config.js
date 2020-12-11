@@ -29,8 +29,8 @@ export default {
   },
 
   env: {
-    PUBLIC_URL: process.env.PUBLIC_URL || "https://eicm-gdc.ga/api",
-    SITE_URL: process.env.SITE_URL || "https://eicm-gdc.ga"
+    PUBLIC_URL: process.env.PUBLIC_URL || "https://eicm-gdc.ml/api",
+    SITE_URL: process.env.SITE_URL || "https://eicm-gdc.ml"
   },
 
   robots: {
@@ -39,7 +39,7 @@ export default {
   },
 
   sitemap: {
-    hostname: process.env.SITE_URL || "https://eicm-gdc.ga",
+    hostname: process.env.SITE_URL || "https://eicm-gdc.ml",
     gzip: true,
     exclude: ["/admin/**"],
     routes: ["/courses"]
@@ -117,7 +117,7 @@ export default {
     [
       "nuxt-social-meta",
       {
-        url: process.env.SITE_URL || "https://eicm-gdc.ga",
+        url: process.env.SITE_URL || "https://eicm-gdc.ml",
         title: process.env.SITE_TITLE || "EICM-GDC",
         site_name: process.env.SITE_NAME || "EICM-GDC",
         description:
