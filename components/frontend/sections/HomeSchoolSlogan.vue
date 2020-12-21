@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-200">
+  <div class="w-full overflow-hidden bg-gray-200">
     <vueper-slides
       ref="myVueperSlides"
       :parallax="parallax"
@@ -11,18 +11,20 @@
       <vueper-slide :image="'sliders/slide.jpg'">
         <template v-slot:content>
           <div
-            class=" transform rotate-3 bg-white px-8 py-3 rounded-tl-lg rounded-br-lg shadow-lg flex flex-row justify-center items-center"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            class="flex flex-row items-center justify-center px-8 py-3 mx-8 transform rounded-tl-lg rounded-br-lg shadow-lg rotate-3"
           >
-            <div class="text-2xl text-gray-400 -mt-3 mr-12">
+            <div class="mr-12 -mt-3 text-xl text-gray-400">
               &#10077;
             </div>
             <div
-              class="text-md font-medium text-gray-700 tracking-wider antialiased leading-relaxed"
+              class="antialiased font-medium leading-relaxed tracking-wider text-gray-800 text-md"
             >
-              {{ slogan }} dff gfdgfdgfhddfgfdhgthfdgfdhgfhfhfd
+              {{ slogan }}
             </div>
 
-            <div class=" flex justify-end text-6xl text-gray-300 mt-3 ml-12">
+            <div class="flex justify-end mt-3 ml-12 text-2xl text-gray-300 ">
               &#10078;
             </div>
           </div>

@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white w-full pt-12  justify-center">
-    <div class=" container px-3 mx-auto">
+  <div class="justify-center w-full pt-12 bg-white">
+    <div class="container px-3 mx-auto ">
       <Row type="flex" :gutter="16">
         <Col span="24" class="mb-10">
           <base-home-section-title>Blog</base-home-section-title>
@@ -13,7 +13,7 @@
               fade
               :infinite="true"
               :bullets="true"
-              class="no-shadow mx-5"
+              class="mx-5 no-shadow"
               :visible-slides="2"
               fixed-height="300px"
               slide-multiple
@@ -25,7 +25,7 @@
               <template v-if="articles.length != 0">
                 <vueper-slide v-for="article in articles" :key="article.id">
                   <template v-slot:content>
-                    <div class="flex justify-center items-center">
+                    <div class="flex items-center justify-center">
                       <featured-post-card
                         :article="article"
                       ></featured-post-card>

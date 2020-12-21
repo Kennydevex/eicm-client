@@ -4,7 +4,7 @@
       <vueper-slides
         class="no-shadow"
         :slide-ratio="1 / 2"
-        fixed-height="600px"
+        fixed-height="500px"
         lazy
         lazy-load-on-drag
         fade
@@ -24,33 +24,33 @@
         >
           <template v-if="!lazy_progress" v-slot:content>
             <div
-              class="transition duration-500 ease-in-out w-full h-full bg-black opacity-40 hover:opacity-75 group"
+              class="w-full h-full transition duration-500 ease-in-out bg-black opacity-40 hover:opacity-75 group"
             >
-              <div class="container m-auto ml-8 h-full z-10">
-                <div class="flex flex-col w-full h-full justify-center">
+              <div class="container z-10 h-full m-auto">
+                <div class="flex flex-col justify-center w-full h-full">
                   <div
-                    class="transition duration-500 ease-in-out text-white font-sans leading-snug text-xl md:text-2xl group-hover:text-md font-medium uppercase w-2/3 md:w-1/3 tracking-widest transform group-hover:-translate-y-1"
+                    class="w-2/3 font-sans text-xl font-medium leading-snug tracking-widest text-white uppercase transition duration-500 ease-in-out transform md:text-2xl group-hover:text-md md:w-1/3 group-hover:-translate-y-1"
                   >
                     <span>{{ slider.title }}</span>
                     <div
-                      class="mt-2 md:mt-2 w-1/4 border-b-2 "
+                      class="w-1/4 mt-2 border-b-2 md:mt-2 "
                       :style="{ borderColor: slider.color }"
                     ></div>
                   </div>
 
                   <div
-                    class="transition duration-500 ease-in-out text-gray-200 group-hover:text-gray-300 mt-5 text-lg tracking-wider leading-relaxed w-3/4 sm:w-2/4 transform group-hover:translate-x-2"
+                    class="w-3/4 mt-5 text-sm leading-relaxed tracking-wider text-gray-200 transition duration-500 ease-in-out transform sm:text-lg group-hover:text-gray-300 sm:w-2/4 group-hover:translate-x-2"
                   >
-                    {{ slider.description | truncate(200) }}
+                    {{ slider.description | truncate(150) }}
                   </div>
 
-                  <div class="mt-5 mb-2 flex justify-start items-end">
+                  <div class="flex items-end justify-start mt-5 mb-2">
                     <nuxt-link
                       :style="{
                         borderColor: slider.color,
                         color: slider.color
                       }"
-                      class=" text-sm truncate bg-white px-4 py-2 text-center border-t-8 w-32 rounded-tr-full hover:rounded-tr-md hover:rounded-tl-full   shadow-md hover:shadow-xl focus:outline-none transform hover:translate-x-1 transition duration-500 ease-in-out"
+                      class="w-32 px-4 py-2 text-sm text-center truncate transition duration-500 ease-in-out transform bg-white border-t-8 rounded-tr-full shadow-md hover:rounded-tr-md hover:rounded-tl-full hover:shadow-xl focus:outline-none hover:translate-x-1"
                       :to="{
                         name:
                           slider.type == 1

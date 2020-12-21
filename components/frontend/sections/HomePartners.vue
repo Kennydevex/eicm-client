@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white w-full py-5 justify-center">
-    <div class=" container px-3 mx-auto">
+  <div class="justify-center w-full py-5 bg-white">
+    <div class="container px-3 mx-auto ">
       <Row type="flex" :gutter="16">
         <Col span="24" class="mb-5">
           <base-home-section-title>Parceiros</base-home-section-title>
@@ -14,7 +14,7 @@
               :infinite="true"
               :bullets="false"
               :arrows="false"
-              class="no-shadow mx-5"
+              class="mx-5 no-shadow"
               :visible-slides="4"
               fixed-height="210px"
               slide-multiple
@@ -26,7 +26,7 @@
               <template>
                 <vueper-slide v-for="partner in partners" :key="partner.id">
                   <template v-slot:content>
-                    <div class="flex justify-center items-center">
+                    <div class="flex items-center justify-center">
                       <base-partner-card :partner="partner" />
                     </div>
                   </template>

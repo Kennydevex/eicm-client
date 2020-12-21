@@ -1,5 +1,5 @@
 <template>
-  <div class="layout antialiased text-gray-900 bg-gray-200">
+  <div class="antialiased text-gray-900 bg-gray-200 layout">
     <template v-if="spinLoad">
       <Spinner />
     </template>
@@ -11,13 +11,13 @@
 
       <div>
         <Content>
-          <div>
+          <div class="w-full">
             <Nuxt />
           </div>
         </Content>
         <AppFooter></AppFooter>
       </div>
-    </template>
+    </template> 
   </div>
 </template>
 

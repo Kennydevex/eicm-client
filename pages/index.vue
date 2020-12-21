@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div>
     <HomeCarousel :sliders="sliders" />
     <HomeSchoolBanner />
     <HomeSchoolSlogan />
@@ -19,7 +19,7 @@
     />
     <HomeContacts />
     <home-footer></home-footer>
-  </Layout>
+  </div>
 </template>
 
 <script>
