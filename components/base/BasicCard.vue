@@ -1,37 +1,39 @@
 <template>
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <div
+    class="max-w-sm overflow-hidden border border-gray-200 rounded-lg shadow-lg cursor-pointer"
+    @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
+  >
     <img
-      class="w-full"
-      src="/sliders/slide.jpg"
-      alt="Sunset in the mountains"
+      class="w-full h-40"
+      :src="`${publicURL}/uploads/courses/covers/${course.cover}`"
+      :alt="course.abbr"
     />
-    <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-      <p class="text-gray-700 text-base">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-        quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-        nihil.
+    <div class="p-5 mb-2">
+      <div class="text-xl font-bold text-gray-800">{{ course.name }}</div>
+      <div class="mb-3 -mt-1">
+        <div class="text-xs font-semibold tracking-wide text-gray-500">
+          {{ course.departament.name }} &bull;
+          {{ $moment(course.release).format("l") }}
+        </div>
+      </div>
+      <p class="text-sm text-justify text-gray-700">
+        {{ course.summary | truncate(80) }}
       </p>
-    </div>
-    <div class="px-6 pt-4 pb-2">
-      <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-        >#photography</span
-      >
-      <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-        >#travel</span
-      >
-      <span
-        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-        >#winter</span
-      >
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    course: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>

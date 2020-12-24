@@ -1,32 +1,32 @@
 <template>
   <div
-    class="cursor-pointer min-w-full"
+    class="cursor-pointer w-96 h-64"
     @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
   >
   
-    <div class="relative pb-5/6">
+    <div class="relative pb-5/6 w-full">
       <img
-        class="absolute h-full w-full object-cover rounded-lg shadow-2xl"
+        class="absolute object-cover w-full h-full rounded-lg shadow-2xl"
         :src="`${publicURL}/uploads/courses/covers/${course.cover}`"
         :alt="course.abbr"
       />
     </div>
     <div class="relative px-4 -mt-16">
-      <div class="bg-white p-6 rounded-lg shadow-xl">
+      <div class="p-6 bg-white rounded-lg shadow-xl">
         <div class="flex items-baseline">
           <!--<span
-            class="inline-block bg-teal-200 text-teal-800 text-xs px-2 rounded-full uppercase font-semibold tracking-wide"
+            class="inline-block px-2 text-xs font-semibold tracking-wide text-teal-800 uppercase bg-teal-200 rounded-full"
             >Novo</span
           >-->
           <div
-            class="text-gray-600 text-xs uppercase font-semibold tracking-wide"
+            class="text-xs font-semibold tracking-wide text-gray-600 uppercase"
           >
             {{ course.departament.name }}
           </div>
         </div>
-        <h4 class="mt-1 font-semibold text-lg leading-tight truncate">
-          {{ course.name }}
-        </h4>
+        <div class="mt-1 text-lg font-semibold leading-tight truncate">
+          {{ course.name }} 
+        </div>
         <div class="mt-1">
           {{ $moment(course.release).format("ll") }}
         </div>

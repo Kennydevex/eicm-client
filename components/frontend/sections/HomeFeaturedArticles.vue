@@ -25,7 +25,7 @@
               <template v-if="articles.length != 0">
                 <vueper-slide v-for="article in articles" :key="article.id">
                   <template v-slot:content>
-                    <div class="flex items-center justify-center">
+                    <div class="flex items-start justify-center">
                       <featured-post-card
                         :article="article"
                       ></featured-post-card>
@@ -69,26 +69,25 @@ export default {
         1200: {
           slideRatio: 1 / 5,
           visibleSlides: 2,
+          arrows: true,
+          bullets: true,
           slideMultiple: 2
         },
         900: {
           slideRatio: 1 / 3,
           visibleSlides: 1,
+          arrows: true,
+          bullets: true,
           slideMultiple: 1
         },
         600: {
           slideRatio: 1 / 2,
           arrows: false,
-          bulletsOutside: true,
+          bullets: false,
           visibleSlides: 1,
           slideMultiple: 1
-        },
-        // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
-        1100: {
-          slideRatio: 1 / 4,
-          visibleSlides: 2,
-          slideMultiple: 2
         }
+        // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
       }
     };
   },

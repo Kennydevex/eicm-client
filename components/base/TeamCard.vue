@@ -1,111 +1,93 @@
 <template>
   <div
-    class="flex flex-col justify-center min-h-screen py-6 bg-gray-100 sm:py-12"
+    class="flex items-center justify-center max-w-md p-5 mx-8 bg-white border border-gray-200 rounded-lg shadow-lg sm:border-transparent sm:rounded-none sm:shadow-none"
   >
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div class="flex flex-col items-center justify-center">
       <div
-        class="absolute inset-0 transform -skew-y-6 shadow-lg bg-gradient-to-r from-cyan-400 to-light-blue-500 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
-      ></div>
-      <div
-        class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20"
+        class="inline-flex w-24 h-24 overflow-hidden border-2 border-gray-200 rounded-full shadow-none sm:shadow-lg"
       >
-        <div class="max-w-md mx-auto">
-          <div>
-            <img src="/img/logo.svg" class="h-7 sm:h-8" />
-          </div>
-          <div class="divide-y divide-gray-200">
-            <div
-              class="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7"
+        <img
+          :src="`${publicURL}/uploads/avatars/${team.avatar}`"
+          alt=""
+          class="w-full h-full"
+        />
+      </div>
+
+      <div class="w-full pb-2 text-center border-b">
+        <h2 class="mt-3 text-lg font-semibold text-gray-600">
+          {{ team.person.name }} 
+        </h2>
+        <h6 class="mt-1 text-sm font-semibold text-gray-500 ">
+          {{ team.charges[0].name }}
+        </h6>
+        <p class="mt-2 text-xs text-center text-gray-500">
+          {{ team.charges[0].description }}
+        </p>
+      </div>
+
+      <div>
+        <ul class="flex flex-row mt-3 space-x-2">
+          <li v-if="team.facebook">
+            <a
+              :href="team.facebook"
+              target="_blank"
+              class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
             >
-              <p>
-                An advanced online playground for Tailwind CSS, including
-                support for things like:
-              </p>
-              <ul class="space-y-2 list-disc">
-                <li class="flex items-start">
-                  <span class="flex items-center h-6 sm:h-7">
-                    <svg
-                      class="flex-shrink-0 w-5 h-5 text-cyan-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <p class="ml-2">
-                    Customizing your
-                    <code class="text-sm font-bold text-gray-900"
-                      >tailwind.config.js</code
-                    >
-                    file
-                  </p>
-                </li>
-                <li class="flex items-start">
-                  <span class="flex items-center h-6 sm:h-7">
-                    <svg
-                      class="flex-shrink-0 w-5 h-5 text-cyan-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <p class="ml-2">
-                    Extracting classes with
-                    <code class="text-sm font-bold text-gray-900">@apply</code>
-                  </p>
-                </li>
-                <li class="flex items-start">
-                  <span class="flex items-center h-6 sm:h-7">
-                    <svg
-                      class="flex-shrink-0 w-5 h-5 text-cyan-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <p class="ml-2">Code completion with instant preview</p>
-                </li>
-              </ul>
-              <p>
-                Perfect for learning how the framework works, prototyping a new
-                idea, or creating a demo to share online.
-              </p>
-            </div>
-            <div
-              class="pt-6 text-base font-bold leading-6 sm:text-lg sm:leading-7"
+              <Icon
+                size="16"
+                class="text-primary group-hover:text-white"
+                type="logo-facebook"
+              />
+            </a>
+          </li>
+          <li v-if="team.twitter">
+            <a
+              :href="team.twitter"
+              target="_blank"
+              class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
+
             >
-              <p>Want to dig deeper into Tailwind?</p>
-              <p>
-                <a
-                  href="https://tailwindcss.com/docs"
-                  class="text-cyan-600 hover:text-cyan-700"
-                >
-                  Read the docs &rarr;
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
+              <Icon
+                size="16"
+                class="text-primary group-hover:text-white"
+                type="logo-twitter"
+              />
+            </a>
+          </li>
+          <li v-if="team.linkedin">
+            <a
+              :href="team.linkedin"
+              target="_blank"
+              class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
+
+            >
+              <Icon
+                size="16"
+                class="text-primary group-hover:text-white"
+                type="logo-linkedin"
+              />
+            </a>
+          </li>
+          <li v-if="team.email">
+            <a
+              :href="`mailto:${team.email}`"
+              class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
+
+            >
+              <Icon
+                size="16"
+                class="text-primary group-hover:text-white"
+                type="md-mail"
+              />
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script> 
 export default {
   props: {
     team: {

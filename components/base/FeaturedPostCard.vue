@@ -1,21 +1,21 @@
 <template>
   <div class="w-full">
     <div class="py-2">
-      <div class="flex bg-white shadow-xl border rounded-lg overflow-hidden">
+      <div class="flex overflow-hidden bg-white border rounded-lg shadow-xl">
         <div
           @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
-          class="w-1/3 bg-cover cursor-pointer"
+          class="hidden w-1/3 bg-cover cursor-pointer sm:flex"
           :style="{
             backgroundImage: `url(${publicURL}/uploads/articles/covers/${article.cover})`
           }"
         ></div>
-        <div class="w-2/3 p-5">
+        <div class="w-full p-5 sm:w-2/3">
           <div class="flex items-baseline mb-1">
             <div
-              class="text-gray-600 text-xs uppercase font-semibold tracking-wide"
+              class="text-xs font-semibold tracking-wide text-gray-600 uppercase"
             >
               <span
-                class="py-1 px-2 bg-gray-300 rounded-md text-gray-700 cursor-pointer shadow-sm"
+                class="px-2 py-1 text-gray-700 bg-gray-300 rounded-md shadow-sm cursor-pointer"
               >
                 {{ article.category }}</span
               >
@@ -23,20 +23,20 @@
             </div>
           </div>
 
-          <div class=" border-b">
+          <div class="border-b ">
             <h1
               @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
-              class="text-gray-800 font-bold text-xl cursor-pointer truncate hover:text-primary"
+              class="text-xl font-bold text-gray-800 truncate cursor-pointer hover:text-primary"
             >
               {{ article.title }}
             </h1>
-            <p class="mt-2 text-gray-700 text-md tracking-wide leading-relaxed">
+            <p class="mt-2 leading-relaxed tracking-wide text-gray-700 text-md">
               {{ article.summary | truncate(100) }}
             </p>
-            <div class="flex item-center my-1">
+            <div class="flex my-1 item-center">
               <button
                 @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
-                class="px-3 py-1 text-primary text-sm font-bold rounded"
+                class="px-3 py-1 text-sm font-bold rounded text-primary"
               >
                 Ler mais
               </button>
@@ -44,11 +44,11 @@
           </div>
 
           <div class="inline-flex mt-3">
-            <div class="author flex items-center">
+            <div class="flex items-center author">
               <Icon type="md-person" class="text-gray-600" />
               <div class="ml-1">
                 <span class="text-xs tracking-tighter text-gray-700">
-                  <a href="#" class="text-gray-600 tracking-wide">{{
+                  <a href="#" class="tracking-wide text-gray-600">{{
                     article.user
                   }}</a>
                 </span>

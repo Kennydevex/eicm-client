@@ -16,7 +16,7 @@
               :arrows="false"
               class="mx-5 no-shadow"
               :visible-slides="4"
-              fixed-height="210px"
+              fixed-height="220px"
               slide-multiple
               :gap="3"
               :slide-ratio="1 / 4"

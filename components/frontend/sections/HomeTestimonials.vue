@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 w-full justify-center">
+  <div class="justify-center w-full bg-gray-300">
     <svg
       class="wave-top"
       viewBox="0 0 1439 147"
@@ -35,7 +35,7 @@
         </g>
       </g>
     </svg>
-    <div class=" container px-3 mx-auto">
+    <div class="container px-1 mx-auto ">
       <Row type="flex" :gutter="16">
         <Col span="24" class="mb-5">
           <base-home-section-title>Testemunhos</base-home-section-title>
@@ -49,7 +49,7 @@
               :infinite="true"
               :bullets="false"
               :arrows="true"
-              class="no-shadow mx-5"
+              class="mx-5 no-shadow"
               :visible-slides="1"
               fixed-height="400px"
               slide-multiple
@@ -64,7 +64,7 @@
                   :key="testimonial.id"
                 >
                   <template v-slot:content>
-                    <div class="flex justify-center items-center">
+                    <div class="flex items-center justify-center">
                       <testimonial-card
                         :testimonial="testimonial"
                       ></testimonial-card>

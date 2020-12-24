@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 w-full justify-center">
+  <div class="justify-center w-full bg-gray-300">
     <svg
       class="wave-top"
       viewBox="0 0 1439 147"
@@ -35,13 +35,13 @@
         </g>
       </g>
     </svg>
-    <div class=" container px-3 mx-auto">
+    <div class="container m-auto">
       <Row type="flex">
         <Col span="24" class="mb-10">
           <base-home-section-title>Cursos em distaque</base-home-section-title>
         </Col>
 
-        <Col span="24" class="mt-8">
+        <Col span="24" class="mt-8 mb-3">
           <div data-aos="zoom-in">
             <vueper-slides
               autoplay
@@ -49,11 +49,11 @@
               :infinite="true"
               :bullets="true"
               :arrows="false"
-              class="no-shadow mx-5"
+              class="mx-5 no-shadow"
               :visible-slides="3"
               fixed-height="400px"
               slide-multiple
-              :gap="3"
+              :gap="4"
               :slide-ratio="1 / 4"
               :dragging-distance="200"
               :breakpoints="breakpoints"
@@ -64,8 +64,8 @@
                   :key="course.id"
                 >
                   <template v-slot:content>
-                    <div class="flex justify-center items-center">
-                      <base-course-card :course="course" />
+                    <div class="flex items-center justify-center">
+                      <base-basic-card :course="course" />
                     </div>
                   </template>
                 </vueper-slide>
@@ -137,28 +137,25 @@ export default {
       pauseOnHover: true,
       internalAutoPlaying: true,
       breakpoints: {
-        1200: {
-          slideRatio: 1 / 5,
-          visibleSlides: 2,
-          slideMultiple: 2
-        },
-        900: {
-          slideRatio: 1 / 3,
-          visibleSlides: 2,
-          slideMultiple: 2
-        },
         600: {
           slideRatio: 1 / 2,
           arrows: false,
-          bulletsOutside: true,
+          bullets: false,
           visibleSlides: 1,
           slideMultiple: 1
         },
-        // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
-        1100: {
-          slideRatio: 1 / 4,
+        900: {
+          slideRatio: 1 / 2,
+          arrows: false,
           visibleSlides: 2,
-          slideMultiple: 2
+          slideMultiple: 2,
+          gap: 4
+        },
+        1200: {
+          slideRatio: 1 / 2,
+          arrows: false,
+          visibleSlides: 3,
+          slideMultiple: 3
         }
       }
     };

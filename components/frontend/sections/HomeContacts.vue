@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center w-full py-12 bg-white overflow-x-hidden">
+  <div class="justify-center w-full py-12 overflow-x-hidden bg-white">
     <div class="container px-3 mx-auto ">
       <Row type="flex" :gutter="16">
         <Col span="24" class="mb-5">

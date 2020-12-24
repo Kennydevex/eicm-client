@@ -4,11 +4,17 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   important: true,
   theme: {
-    extend: {
       container: {
         center: true,
-        padding: "1.5rem"
+         padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
       },
+      },
+    extend: {
 
       rotate: {
         "-180": "-180deg",
@@ -112,7 +118,7 @@ module.exports = {
     borderColor: ["responsive", "hover", "focus", "active"],
     display: ["responsive", "hover", "focus", "active", "group-hover"],
     boxShadow: ["responsive", "hover", "focus", "active", "group-hover"],
-    borderRadius: ["hover", "focus"]
+    borderRadius: ["responsive", "hover", "focus"]
   },
   future: {
     removeDeprecatedGapUtilities: true

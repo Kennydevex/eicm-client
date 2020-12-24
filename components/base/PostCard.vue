@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white rounded-lg overflow-hidden shadow-xl">
-    <div class="relative bg-red-500 h-48">
+  <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+    <div class="relative h-48 bg-red-500">
       <img
-        class="absolute top-0 h-full w-full object-cover object-center cursor-pointer"
+        class="absolute top-0 object-cover object-center w-full h-full cursor-pointer"
         :src="`${publicURL}/uploads/articles/covers/${article.cover}`"
         alt="Capa do artigo"
         @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
@@ -12,10 +12,10 @@
     <div class="p-6">
       <div class="flex items-baseline mb-2">
         <div
-          class="text-gray-600 text-xs uppercase font-semibold tracking-wide"
+          class="text-xs font-semibold tracking-wide text-gray-600 uppercase"
         >
           <span
-            class="py-1 px-2 bg-gray-300 rounded-md text-gray-700 cursor-pointer shadow-sm"
+            class="px-2 py-1 text-gray-700 bg-gray-300 rounded-md shadow-sm cursor-pointer"
           >
             {{ article.category }}</span
           >
@@ -24,37 +24,37 @@
       </div>
       <h4
         @click="redirectToPageWithParam('blog-ler-slug', article.slug)"
-        class="font-semibold text-lg my-1 leading-snug truncate cursor-pointer hover:text-primary"
+        class="my-1 text-lg font-semibold leading-snug truncate cursor-pointer hover:text-primary"
       >
         {{ article.title }}
       </h4>
       <div
-        class="text-gray-800 pb-1 leading-relaxed tracking-wide text-justify"
+        class="pb-1 leading-relaxed tracking-wide text-justify text-gray-800"
       >
         {{ article.summary | truncate(100) }}
       </div>
-      <!--<div class="flex items-center justify-between border-b pb-3 ">
+      <!--<div class="flex items-center justify-between pb-3 border-b ">
         <nuxt-link
           :to="{ name: 'blog-ler-slug', params: { slug: article.slug } }"
-          class="text-primary text-sm py-1 px-3 bg-white border border-gray-200 shadow-lg rounded-md hover:shadow-none hover:border-primary"
+          class="px-3 py-1 text-sm bg-white border border-gray-200 rounded-md shadow-lg text-primary hover:shadow-none hover:border-primary"
           >Ler mais</nuxt-link
         >
       </div>-->
       <div class="inline-flex mt-1">
-        <div class="author flex items-center -ml-3 my-3">
+        <div class="flex items-center my-3 -ml-3 author">
           <div class="user-logo">
             <img
-              class="w-8 h-8 object-cover rounded-full mx-4  shadow p-1 border-2"
+              class="object-cover w-8 h-8 p-1 mx-4 border-2 rounded-full shadow"
               :src="`${publicURL}/uploads/avatars/${article.user_avatar}`"
               alt="avatar"
             />
           </div>
           <div>
-            <div class="flex flex-col text-gray-600 text-xs tracking-wide">
+            <div class="flex flex-col text-xs tracking-wide text-gray-600">
               Publicado por:
             </div>
             <h2 class="text-sm tracking-tighter text-gray-900">
-              <a href="#" class="text-gray-800 tracking-wide">{{
+              <a href="#" class="tracking-wide text-gray-800">{{
                 article.user
               }}</a>
             </h2>
