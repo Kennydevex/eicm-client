@@ -2,7 +2,7 @@
   <div class="relative">
     <a
       href="#"
-      class="block uppercase text-normal px-3 py-2 mt-1 text-gray-800 font-semibold rounded active:bg-gray-300 active:text-primary hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
+      class="block px-3 py-2 mt-1 font-semibold text-gray-800 uppercase rounded text-normal active:bg-gray-300 active:text-primary hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
       @click="toggleVisibility"
       @keydown.space.exact.prevent="toggleVisibility"
       @keydown.esc.exact="hideMenu"
@@ -18,13 +18,13 @@
         v-on-clickaway="hideMenu"
         v-if="isVisible"
         ref="dropdown"
-        class="absolute normal-case font-normal bg-white shadow-lg rounded-lg overflow-hidden border w-full sm:w-160 mt-1 sm:right-0 z-10"
+        class="absolute z-10 w-full mt-1 overflow-hidden font-normal normal-case bg-white border rounded-lg shadow-lg sm:w-96 md:w-160 sm:right-0 md:-right-20 lg:right-0"
       >
-        <div class="flex flex-col lg:flex-row p-6 border-b -mx-4">
+        <div class="flex flex-col p-6 -mx-4 border-b md:flex-row">
           <template
             v-for="(item, i) in filterBy(mega_menu_items, true, 'mega')"
           >
-            <div class="w-full sm:w-1/2 p-3 sm:px-4" :key="'menu_item_' + i">
+            <div class="w-full p-3 md:w-1/2 sm:px-4" :key="'menu_item_' + i">
               <ul>
                 <li class="mb-4" @click.prevent="hideMenu()">
                   <nuxt-link
@@ -48,11 +48,11 @@
 
                     <span class="ml-3">
                       <span
-                        class="block text-base font-bold text-primary group-hover:text-gray-700 uppercase"
+                        class="block text-base font-bold uppercase text-primary group-hover:text-gray-700"
                         >{{ item.name }}</span
                       >
                       <span
-                        class="mt-2 block text-md text-gray-500 group-hover:text-gray-600"
+                        class="block mt-2 text-gray-500 text-md group-hover:text-gray-600"
                         >{{ item.description }}</span
                       >
                     </span>
@@ -62,7 +62,7 @@
             </div>
           </template>
         </div>
-        <ul class="bg-gray-200 p-5">
+        <ul class="p-5 bg-gray-200">
           <li
             class="mb-4"
             v-for="(item, i) in filterBy(mega_menu_items, false, 'mega')"
@@ -72,7 +72,7 @@
             <nuxt-link class="flex items-center group" :to="item.href">
               <Icon
                 size="16"
-                class=" text-gray-800 group-hover:text-primary"
+                class="text-gray-800 group-hover:text-primary"
                 :type="item.icon"
               />
               <span
@@ -80,7 +80,7 @@
                 >{{ item.name }}</span
               >
               <span
-                class="block ml-2 text-xs text-gray-600  group-hover:text-gray-700"
+                class="block ml-2 text-xs text-gray-600 group-hover:text-gray-700"
                 >{{ item.description }}</span
               >
             </nuxt-link>
