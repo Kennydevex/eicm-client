@@ -36,14 +36,34 @@
         </Col>
 
         <Col span="24">
-          <FormItem prop="content" :error="showFormErrors('content')" label="Conteúdo">
+          <FormItem
+            prop="content"
+            :error="showFormErrors('content')"
+            label="Conteúdo"
+          >
+            <div>
+              <client-only>
+                <editor
+                  v-model="formData.content"
+                  api-key="5e1007vyl4r8as91in5hmj3qxn2au3bgkc9n8zghrm4ad9f5"
+                  :init="initConf"
+                />
+              </client-only>
+            </div>
+          </FormItem>
+
+          <!--<FormItem
+            prop="content"
+            :error="showFormErrors('content')"
+            label="Conteúdo"
+          >
             <Input
               type="textarea"
               :rows="5"
               v-model="formData.content"
               placeholder="Desenvolva a sua publicação aqui"
             ></Input>
-          </FormItem>
+          </FormItem>-->
         </Col>
 
         <!-- <Col span="12">
@@ -176,14 +196,7 @@
             >Limpar</Button
           >
 
-          <Button
-            @click="
-              creating
-                ? handleModal('articles/toggleCreateArticleDialog')
-                : handleModal('articles/toggleUpdateArticleDialog')
-            "
-            >Cancelar</Button
-          >
+          <Button @click="cancelArticle()">Cancelar</Button>
 
           <Button
             :loading="sending"
@@ -223,15 +236,12 @@ import { requests } from "@/mixins/appRequest";
 import { uploadFeedback } from "@/mixins/handleFileUploads";
 import { article_validation } from "@/mixins/fieldsValidation";
 import { alerts } from "@/mixins/appAlerts";
+import Editor from "@tinymce/tinymce-vue";
+
 export default {
   name: "ArticleForm",
 
-  mixins: [
-    requests,
-    uploadFeedback,
-    article_validation,
-    alerts,
-  ],
+  mixins: [requests, uploadFeedback, article_validation, alerts],
 
   props: {
     creating: {
@@ -249,17 +259,32 @@ export default {
   data() {
     return {
       uploadCoverList: [],
+      initConf: {
+        height: 400,
+        selector: "textarea",
+        language: "pt_PT",
+        skin: "oxide-dark",
+        content_css: "dark",
+        menubar: true,
+        plugins: [
+          "advlist autolink lists link image charmap print preview anchor",
+          "searchreplace visualblocks code fullscreen",
+          "insertdatetime media table paste code emoticons wordcount imagetools"
+        ],
+        toolbar:
+          "undo redo | formatselect |fontselect fontsizeselect bold italic backcolor forecolor| alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image media"
+      }
     };
   },
 
   computed: {
     ...mapGetters({
       categories: "categories/categories",
-      tags: "tags/tags",
+      tags: "tags/tags"
     }),
-    availableTags(){
+    availableTags() {
       if (creating) {
-        return this.tags
+        return this.tags;
       }
     }
   },
@@ -268,8 +293,19 @@ export default {
     this.initFilesUploaded();
   },
 
-  methods: {
+  components: {
+    Editor
+  },
 
+  methods: {
+    cancelArticle() {
+      if (this.creating) {
+        this.handleModal("articles/toggleCreateArticleDialog");
+        this.resetFormFields("articleForm");
+        return;
+      }
+      this.handleModal("articles/toggleUpdateArticleDialog");
+    },
     handleCoverSuccess(res) {
       this.formData.cover = res;
       this.uploadCoverList = this.$refs.articleCover.$refs.uploadFileComponent.fileList;

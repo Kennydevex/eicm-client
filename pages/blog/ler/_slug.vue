@@ -1,24 +1,21 @@
 <template>
-  <div class="container m-auto px-3">
-    <div class="my-8 bg-white rounded-lg shadow-lg overflow-hidden">
+  <div class="container px-3 m-auto">
+    <div class="my-8 overflow-hidden bg-white rounded-lg shadow-lg">
       <div class="shadow-lg">
         <BlogInfoHeader :article="article" />
       </div>
       <div class="p-8">
         <Row>
           <Col span="18">
-            <div class="my-3 pb-3 border-b-2">
+            <div class="pb-3 my-3 border-b-2">
               <h2
-                class="text-xl font-bold text-gray-700 tracking-wide leading-relaxed"
+                class="text-lg font-semibold leading-relaxed tracking-wide text-primary"
               >
                 {{ article.summary }}
               </h2>
             </div>
-            <div
-              class="mt-5 text-lg tracking-wide leading-loose text-justify"
-            >
-              <p class="text-gray-700">{{ article.content }}</p>
-            </div>
+
+            <div v-html="article.content" class="mt-5 "></div>
           </Col>
 
           <Col span="6"> Aside</Col>
@@ -27,7 +24,7 @@
         <Row>
           <Col span="24">
             <div>
-              <h2 class="text-gray-600 font-semibold tracking-wide">
+              <h2 class="font-semibold tracking-wide text-gray-600">
                 Partilhar com os amigos
               </h2>
             </div>

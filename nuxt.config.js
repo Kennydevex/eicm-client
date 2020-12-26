@@ -1,5 +1,4 @@
 export default {
-
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -85,7 +84,7 @@ export default {
     "@/plugins/axios",
     { src: "@/plugins/g-map", ssr: false },
     { src: "@/plugins/image-lightbox", ssr: false },
-    { src: "@/plugins/aos", ssr: false }
+    { src: "@/plugins/aos", ssr: false },
   ],
   /*
    ** Auto import components
@@ -157,6 +156,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
+    transpile: ["vue-tinymce-editor"],
     // Este bloco foi adicionado por causa de erro de less ao ler arquivo de personalização de Iview
     loaders: {
       less: {
