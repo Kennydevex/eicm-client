@@ -11,7 +11,7 @@
           <img
             class="object-cover w-full h-48 md:h-56 md:w-48"
             :src="`${publicURL}/uploads/courses/covers/${course.cover}`"
-            alt="Man looking at item at a store"
+            :alt="course.abbr"
           />
         </div>
         <div class="p-5">

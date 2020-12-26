@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container m-auto">
-      <Row>
+      <Row class="-mx-4" v-if="featured_courses.length > 0">
         <Col span="24" class="my-5">
           <div class="overflow-hidden rounded-lg">
             <FeaturedCoursesSlider

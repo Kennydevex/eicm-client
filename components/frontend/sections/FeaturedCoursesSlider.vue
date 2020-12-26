@@ -25,7 +25,7 @@
                   name: 'courses-ver-slug',
                   params: { slug: course.slug }
                 }"
-                class="p-8 w-full h-full relative inline-block"
+                class="w-full h-full relative inline-block"
               >
                 <div
                   class="absolute left-0 bottom-0 w-full h-full z-10"
