@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="container m-auto">
-      <Row class="-mx-4" v-if="featured_courses.length > 0">
-        <Col span="24" class="my-5">
+      <Row class="-mx-3" v-if="featured_courses.length > 0">
+        <Col span="24" class="mt-5">
           <div class="overflow-hidden rounded-lg">
             <FeaturedCoursesSlider
               :courses="featured_courses"
@@ -11,7 +11,7 @@
         </Col>
       </Row>
 
-      <Row :gutter="16" class="p-8 mb-8 bg-white rounded-lg">
+      <Row :gutter="16" class="p-8 mt-5 mb-8 bg-white rounded-lg">
         <Col span="24" :xs="24" :lg="16">
           <div class="flex items-center justify-start w-full mb-8">
             <div
