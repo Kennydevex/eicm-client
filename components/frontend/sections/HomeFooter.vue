@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-gray-800">
     <svg
-      class="wave-top -mb-12"
+      class="-mb-12 wave-top"
       viewBox="0 0 1439 147"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,7 @@
     >
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1.000000, -10.000000)" fill-rule="nonzero">
-          <g class="wave" fill="#ffffff">
+          <g class="wave" :fill="bgColor">
             <path
               d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
             ></path>
@@ -36,12 +36,12 @@
       </g>
     </svg>
 
-    <div class="container mx-auto px-6 pt-10 pb-6">
+    <div class="container px-6 pt-10 pb-6 mx-auto">
       <div
-        class="flex flex-row justify-center  py-5 items-center border-b-2 border-gray-700"
+        class="flex flex-row items-center justify-center py-5 border-b-2 border-gray-700"
       >
         <div
-          class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
+          class="flex items-center justify-center w-10 h-10 p-2 mx-5 bg-gray-400 rounded-full shadow-2xl group hover:bg-gray-100"
         >
           <a
             href="https://web.facebook.com/escolatecnicadomindeloGDC"
@@ -52,14 +52,14 @@
           </a>
         </div>
         <div
-          class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
+          class="flex items-center justify-center w-10 h-10 p-2 mx-5 bg-gray-400 rounded-full shadow-2xl group hover:bg-gray-100"
         >
           <a href="#" class="text-primary group-hover:text-gray-700">
             <Icon size="18" type="logo-twitter" />
           </a>
         </div>
         <div
-          class="flex justify-center items-center group mx-5 p-2 shadow-2xl rounded-full bg-gray-400 hover:bg-gray-100 w-10 h-10"
+          class="flex items-center justify-center w-10 h-10 p-2 mx-5 bg-gray-400 rounded-full shadow-2xl group hover:bg-gray-100"
         >
           <a href="#" class="text-primary group-hover:text-gray-700">
             <Icon size="18" type="logo-linkedin" />
@@ -67,13 +67,13 @@
         </div>
       </div>
       <div class="flex flex-wrap mt-5">
-        <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-400">Contactos</h5>
+        <div class="w-full text-center md:w-1/4 md:text-left">
+          <h5 class="mb-6 font-bold text-gray-400 uppercase">Contactos</h5>
           <ul class="mb-4">
             <li class="mt-2">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-primary"
+                class="text-gray-600 hover:underline hover:text-primary"
               >
                 <span><Icon size="18" type="ios-call" /> (+238) 232 32 45</span>
               </a>
@@ -81,7 +81,7 @@
             <li class="mt-2">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-primary"
+                class="text-gray-600 hover:underline hover:text-primary"
               >
                 <span
                   ><Icon size="18" type="ios-mail" /> eicm-gdc@gmail.com</span
@@ -92,7 +92,7 @@
             <li class="mt-2">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-primary"
+                class="text-gray-600 hover:underline hover:text-primary"
               >
                 <span
                   ><Icon size="18" type="ios-map" /> Cabo Verde, São Vicente,
@@ -102,82 +102,82 @@
             </li>
           </ul>
         </div>
-        <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-400">
+        <div class="w-full text-center md:w-1/4 md:text-left">
+          <h5 class="mb-6 font-bold text-gray-400 uppercase">
             Cursos da Via Técnica
           </h5>
           <ul class="mb-4">
             <li class="mt-2" v-for="(course, c) in courses" :key="c">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-gray-300 leading-tight"
+                class="leading-tight text-gray-600 hover:underline hover:text-gray-300"
                 >{{ course.name }}</a
               >
             </li>
           </ul>
         </div>
-        <!--<div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-400">Instituição</h5>
+        <!--<div class="w-full text-center md:w-1/4 md:text-left">
+          <h5 class="mb-6 font-bold text-gray-400 uppercase">Instituição</h5>
           <ul class="mb-4">
             <li class="mt-2">
               <nuxt-link
                 :to="{ name: 'institution-about' }"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >Sobre a Instituição</nuxt-link
               >
             </li>
             <li class="mt-2">
               <nuxt-link
                 :to="{ name: 'institution-histories' }"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >História e marcos históricos</nuxt-link
               >
             </li>
             <li class="mt-2">
               <nuxt-link
                 :to="{ name: 'institution-team' }"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >Corpo Diretivo</nuxt-link
               >
             </li>
           </ul>
         </div>-->
-        <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-400">
+        <div class="w-full text-center md:w-1/4 md:text-left">
+          <h5 class="mb-6 font-bold text-gray-400 uppercase">
             Ligações Externas
           </h5>
           <ul class="mb-4">
             <li class="mt-2">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >Sistema Nacional de Qualificações</a
               >
             </li>
             <li class="mt-2">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >UNICV</a
               >
             </li>
             <li class="mt-2">
               <a
                 href="#"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >Ministério de Educação</a
               >
             </li>
           </ul>
         </div>
-        <div class="w-full md:w-1/4 text-center md:text-left">
-          <h5 class="uppercase mb-6 font-bold text-gray-400">Parceiros</h5>
+        <div class="w-full text-center md:w-1/4 md:text-left">
+          <h5 class="mb-6 font-bold text-gray-400 uppercase">Parceiros</h5>
           <ul class="mb-4">
             <li class="mt-2" v-for="partner in partners" :key="partner.id">
               <a
                 :href="partner.link"
                 target="_blank"
-                class="hover:underline text-gray-600 hover:text-gray-300"
+                class="text-gray-600 hover:underline hover:text-gray-300"
                 >{{ partner.name }}</a
               >
             </li>
@@ -191,7 +191,14 @@
 <script>
 import { mapGetters } from "vuex";
 
-export default {
+export default { 
+  props: {
+    bgColor: {
+      type: String,
+      default: "#ffffff"
+    },
+
+  },
   computed: {
     ...mapGetters({
       courses: "courses/courses_by_type",

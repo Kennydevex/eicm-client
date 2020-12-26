@@ -3,7 +3,7 @@
     <div>
       <history-header :title="'História da Escola'"></history-header>
     </div>
-    <div class="container m-auto px-3">
+    <div class="container m-auto">
       <div class="mt-8 flex flex-col" v-if="history">
         <div class=" bg-white shadow-xl rounded-lg p-6">
           <div
@@ -27,22 +27,25 @@
           <div v-if="marks.length > 0">
             <Timeline>
               <TimelineItem v-for="(mark, m) in marks" :key="m" color="#3E4095">
-              <Icon type="ios-cube" slot="dot"></Icon>
+                <Icon type="ios-cube" slot="dot"></Icon>
                 <div class="ml-6">
                   <p
                     class="font-bold text-base tracking-tight text-gray-600 mb-3"
                   >
                     {{ $moment(mark.begin).format("LL") }}
-                    <Icon class=" text-gray-600 mx-2" type="md-arrow-round-forward" />
+                    <Icon
+                      class=" text-gray-600 mx-2"
+                      type="md-arrow-round-forward"
+                    />
                     {{ $moment(mark.end).format("LL") }}
                   </p>
                   <div class="p-6 border-2 border-gray-300 rounded-lg">
-                    <h3
-                      class="font-semibold pb-2 text-lg text-gray-700"
-                    >
+                    <h3 class="font-semibold pb-2 text-lg text-gray-700">
                       {{ mark.designation }}
                     </h3>
-                    <p class="text-base text-gray-700 text-justify antialiased tracking-wide leading-snug">
+                    <p
+                      class="text-base text-gray-700 text-justify antialiased tracking-wide leading-snug"
+                    >
                       {{ mark.content }}
                     </p>
                   </div>
@@ -53,6 +56,7 @@
         </div>
       </div>
     </div>
+    <home-footer :bgColor="'#F3F4F6'"></home-footer>
   </div>
 </template>
 
@@ -70,7 +74,8 @@ export default {
     })
   },
   components: {
-    HistoryHeader: () => import("@/components/frontend/sections/HistoryHeader")
+    HistoryHeader: () => import("@/components/frontend/sections/HistoryHeader"),
+    HomeFooter: () => import("@/components/frontend/sections/HomeFooter")
   },
   methods: {}
 };

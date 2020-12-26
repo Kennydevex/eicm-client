@@ -1,29 +1,29 @@
 <template>
   <div>
-    <div class="relative mx-auto overflow-hidden shadow-2xl border-b">
+    <div class="relative mx-auto overflow-hidden shadow-2xl">
       <!--<div
-            class="ribbon z-10 flex items-center justify-center bg-red-500 text-sm whitespace-no-wrap px-2"
+            class="z-10 flex items-center justify-center px-2 text-sm whitespace-no-wrap bg-red-500 ribbon"
           >
             NOVO
           </div>-->
 
-      <div class="h-96 mb-4 md:mb-0 w-full mx-auto relative">
+      <div class="relative w-full h-64 mx-auto mb-4 sm:h-96 md:mb-0">
         <div
-          class="absolute left-0 bottom-0 w-full h-full"
-          style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"
+          class="absolute bottom-0 left-0 w-full h-full"
+          style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.4));"
         ></div>
         <img
           :src="`${publicURL}/uploads/courses/covers/${course.cover}`"
-          class="w-full h-full z-0 object-cover object-center"
+          class="z-0 object-cover object-center w-full h-full"
         />
 
-        <div class="absolute bottom-0 w-full flex-col justify-center pb-10">
-          <div class="w-full text-center">
+        <div class="absolute bottom-0 flex-col justify-center w-full pb-10 ml-8">
+          <div class="w-full text-left">
             <span
-              class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2 rounded-sm font-semibold"
+              class="inline-flex items-center justify-center px-4 py-1 mb-2 font-semibold text-gray-200 bg-black rounded-sm"
               >{{ course.family.name }}</span
             >
-            <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
+            <h2 class="text-4xl font-semibold leading-tight text-gray-100">
               {{ course.name }}
             </h2>
 
@@ -31,15 +31,15 @@
               <Tooltip placement="right" content="Cordenador do curso">
                 <img
                   src="/teams/default.png"
-                  class="h-10 w-10 rounded-full mr-2 object-cover bg-white p-2"
+                  class="object-cover w-10 h-10 p-2 mr-2 bg-white rounded-full"
                 />
               </Tooltip>
 
               <div>
-                <p class="font-semibold text-gray-200 text-sm">
+                <p class="text-sm font-semibold text-gray-200">
                   {{ course.teachers[0].employee.person.name }}
                 </p>
-                <p class="font-semibold text-gray-400 text-xs">
+                <p class="text-xs font-semibold text-gray-400">
                   Cordenador
                 </p>
               </div>

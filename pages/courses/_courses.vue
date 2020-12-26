@@ -1,58 +1,81 @@
 <template>
-  <div class="container m-auto px-3">
-    <Row>
-      <Col span="24" class="my-5">
-        <div class="rounded-lg overflow-hidden shadow-xl border-white border-4">
-          <FeaturedCoursesSlider
-            :courses="featured_courses"
-          ></FeaturedCoursesSlider>
-        </div>
-      </Col>
-    </Row>
-
-    <Row :gutter="16" class="p-5 mb-8 m-2 bg-white shadow-xl rounded-lg">
-      <Col span="24" :xs="24" :md="16">
-        <div class="flex justify-start items-center w-full mb-8">
-          <div
-            class="text-gray-600 text-xl uppercase tracking-wider leading-relaxed font-semibold antialiased"
-          >
-            <span> {{ cousesType }} </span>
-            <div class="text-center border-b-4 border-primary w-1/3 mt-2"></div>
+  <div>
+    <div class="container m-auto">
+      <Row>
+        <Col span="24" class="my-5">
+          <div class="overflow-hidden rounded-lg">
+            <FeaturedCoursesSlider
+              :courses="featured_courses"
+            ></FeaturedCoursesSlider>
           </div>
-        </div>
+        </Col>
+      </Row>
 
-        <template v-if="courses.length > 0">
-          <template v-for="course in courses">
-            <div class="my-4" :key="course.id">
-              <GeneralCourseCard :course="course" />
+      <Row :gutter="16" class="p-8 mb-8 bg-white rounded-lg">
+        <Col span="24" :xs="24" :lg="16">
+          <div class="flex items-center justify-start w-full mb-8">
+            <div
+              class="text-xl antialiased font-semibold leading-relaxed tracking-wider text-gray-600 uppercase"
+            >
+              <span> {{ cousesType }} </span>
+              <div
+                class="w-1/3 mt-2 text-center border-b-4 border-primary"
+              ></div>
+            </div>
+          </div>
+
+          <template v-if="courses.length > 0">
+            <template v-for="course in courses">
+              <div class="my-4" :key="course.id">
+                <base-course :course="course" />
+              </div>
+            </template>
+          </template>
+
+          <template v-else>
+            <div>
+              <Alert show-icon class="shadow-xl">
+                Sem registo de cursos
+                <template slot="desc"
+                  >Nenhum cursos desta categoria registado.
+                </template>
+              </Alert>
             </div>
           </template>
-        </template>
 
-        <template v-else>
+          <Divider></Divider>
+
           <div>
-            <Alert show-icon class="shadow-xl">
-              Sem registo de cursos
-              <template slot="desc"
-                >Nenhum cursos desta categoria registado.
-              </template>
-            </Alert>
+            <div class="mb-3">
+              <h2
+                class="text-sm tracking-wide text-center text-gray-600 md:text-left"
+              >
+                Partilhe com os amigos e familiares
+              </h2>
+            </div>
+            <div class="text-center md:text-left">
+              <social-network
+                :button="'small'"
+                :title="cousesType"
+                :description="'Cursos da via técnica'"
+                :hashtags="'Cursos e formações profissionais'"
+              ></social-network>
+            </div>
           </div>
-        </template>
-      </Col>
+        </Col>
 
-      <Col span="24" :xs="24" :md="8">
-        <div class="bg-gray-200 p-2 rounded-lg">
-          Aside
-        </div>
-      </Col>
-    </Row>
+        <Col span="24" :xs="24" :lg="8" class="mt-5 lg:mt-0">
+          <div class="p-5 text-gray-700 bg-gray-200 rounded-lg shadow-lg">
+            Publicidades
+          </div>
+        </Col>
+      </Row>
 
-    <Row class="p-5 mb-8 m-2 bg-white shadow-xl rounded-lg" v-if="courses.length > 0">
+      <!--<Row class="p-5 m-2 mb-8 bg-white rounded-lg" v-if="courses.length > 0">
       <Col span="24">
         <div>
           <h2
-            class="text-gray-600 font-semibold tracking-wide text-center md:text-left"
+            class="font-semibold tracking-wide text-center text-gray-600 md:text-left"
           >
             Partilha estes cursos com os amigos ou familiares
           </h2>
@@ -65,13 +88,14 @@
           ></social-network>
         </div>
       </Col>
-    </Row>
+    </Row>-->
+    </div>
+    <home-footer :bgColor="'#F3F4F6'"></home-footer>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import SocialNetwork from "@/components/frontend/sections/SocialNetwork";
 
 export default {
   name: "CoursesInfo",
@@ -165,7 +189,8 @@ export default {
   components: {
     FeaturedCoursesSlider: () =>
       import("@/components/frontend/sections/FeaturedCoursesSlider"),
-    SocialNetwork
+    HomeFooter: () => import("@/components/frontend/sections/HomeFooter"),
+    SocialNetwork: () => import("@/components/frontend/sections/SocialNetwork")
   }
 };
 </script>

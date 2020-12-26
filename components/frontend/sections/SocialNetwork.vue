@@ -14,8 +14,9 @@
       <span class="mr-4">
         <Button
           :style="{ backgroundColor: network.color }"
-          class="text-gray-100 rounded-lg shadow-xl my-1"
-          size="large"
+          
+          class="my-1 text-gray-100 rounded-lg"
+          :size="button"
           :icon="network.icon"
           >{{ network.name }}</Button
         >
@@ -38,6 +39,10 @@ export default {
     },
     hashtags: {
       type: String
+    },
+    button: {
+      type: String,
+      default: "large"
     }
   },
 

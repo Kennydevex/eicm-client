@@ -13,13 +13,13 @@
           <div
             data-aos="fade-up"
             data-aos-duration="2000"
-            class="flex flex-row items-center justify-center px-8 py-3 mx-8 transform rounded-tl-lg rounded-br-lg shadow-lg rotate-3"
+            class="flex flex-row items-center justify-center px-8 py-3 mx-8 "
           >
             <div class="mr-12 -mt-3 text-xl text-gray-400">
               &#10077;
             </div>
             <div
-              class="antialiased font-medium leading-relaxed tracking-wider text-gray-800 text-md"
+              class="text-xl antialiased font-semibold leading-relaxed tracking-wider text-gray-900"
             >
               {{ slogan }}
             </div>

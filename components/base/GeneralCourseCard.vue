@@ -1,21 +1,24 @@
 <template>
   <div class="w-full">
     <div class="py-2">
-      <div class="flex bg-white shadow-2xl rounded-lg overflow-hidden">
+      <div
+        class="flex flex-col overflow-hidden bg-white border border-gray-200 rounded-lg shadow-md sm:flex-row"
+      >
+       
         <div
           @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
-          class="w-1/3 bg-cover cursor-pointer"
+          class="object-cover w-full bg-cover cursor-pointer sm:w-1/3 "
           :style="{
             backgroundImage: `url(${publicURL}/uploads/courses/covers/${course.cover})`
           }"
         ></div>
-        <div class="w-2/3 p-5">
-          <div class="flex items-baseline mb-1">
+        <div class="w-full p-5 sm:w-2/3">
+          <div class="items-baseline hidden mb-1 sm:flex">
             <div
-              class="text-gray-600 text-xs uppercase font-semibold tracking-wide"
+              class="text-xs font-semibold tracking-wide text-gray-600 uppercase"
             >
               <span
-                class="py-1 px-2 bg-gray-300 rounded-md text-gray-700 cursor-pointer shadow-sm"
+                class="px-2 py-1 text-gray-700 bg-gray-300 rounded-md shadow-sm cursor-pointer"
               >
                 {{ course.departament.name }}</span
               >
@@ -23,32 +26,32 @@
             </div>
           </div>
 
-          <div class=" border-b">
+          <div class="border-b ">
             <h1
               @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
-              class="text-gray-800 font-bold text-xl cursor-pointer truncate hover:text-primary"
+              class="text-xl font-bold text-gray-800 truncate cursor-pointer hover:text-primary"
             >
               {{ course.name }}
             </h1>
-            <p class="mt-2 text-gray-700 text-md tracking-wide leading-relaxed">
+            <p class="mt-2 leading-relaxed tracking-wide text-gray-700 text-md">
               {{ course.presentation | truncate(100) }}
             </p>
-            <div class="flex item-center my-1">
+            <div class="flex my-1 item-center">
               <button
                 @click="
                   redirectToPageWithParam('courses-ver-slug', course.slug)
                 "
-                class="px-3 py-1 text-primary text-sm font-bold rounded"
+                class="my-1 text-sm font-semibold text-primary"
               >
-                Ver
+                Ver Detalhes
               </button>
             </div>
           </div>
 
-          <div class="flex mt-3 justify justify-between">
-            <div class="text-gray-700 tracking-tight">
+          <div class="flex items-center justify-between mt-3">
+            <div class="text-xs tracking-tight text-gray-600">
               <span>Duração:</span>
-              <span class="px-2 py-1 bg-gray-200 rounded-full"
+              <span
                 >{{ course.duration }}
                 {{
                   course.duration_type == 1
@@ -59,23 +62,10 @@
                 }}</span
               >
             </div>
-            <div
-              v-if="course.featured"
-              class="px-3 py-1 bg-yellow-300 text-gray-700 rounded-lg text-sm font-semibold tracking-wide border shadow-lg"
-            >
-              <Icon type="md-star" /> <span>Destaque</span>
+
+            <div class="flex text-xs tracking-tight text-gray-600 sm:hidden">
+              {{ $moment(course.created_at).format("ll") }}
             </div>
-            <!--<div class="author flex items-center">
-              <Icon type="md-person" class="text-gray-600" />
-              <div class="ml-1">
-                <span class="text-xs tracking-tighter text-gray-700">
-                  <a href="#" class="text-gray-600 tracking-wide">{{
-                    course.user
-                  }}</a>
-                </span>
-                <span> </span>
-              </div>
-            </div>-->
           </div>
         </div>
       </div>

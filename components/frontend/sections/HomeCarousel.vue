@@ -50,7 +50,7 @@
                         borderColor: slider.color,
                         color: slider.color
                       }"
-                      class="w-32 px-4 py-2 text-sm text-center truncate transition duration-500 ease-in-out transform bg-white border-t-8 rounded-tr-full shadow-md hover:rounded-tr-md hover:rounded-tl-full hover:shadow-xl focus:outline-none hover:translate-x-1"
+                      class="w-32 px-4 py-2 text-sm text-center truncate transition duration-500 ease-in-out transform bg-white border-t-8 rounded-tr-full shadow-md hover:shadow-xl focus:outline-none hover:translate-x-1"
                       :to="{
                         name:
                           slider.type == 1

@@ -2,273 +2,309 @@
   <div>
     <Row>
       <!-- Cabeçalho -->
-      <Col span="24">
+      <!--<Col span="24">
         <CourseInfoHeader :course="course" />
-      </Col>
+      </Col>-->
 
       <!-- Course Description -->
       <Col span="24">
-        <div class="container m-auto px-3">
-          <div class="my-8 bg-white p-8 rounded-lg shadow-xl border">
-            <div
-              :style="{ color: course.color }"
-              class="pt-3 pb-3 mb-5 text-xl tracking-wide leading-tight uppercase font-semibold border-b-2"
-            >
-              Descrição Geral
-            </div>
-            <div class="pl-8 pb-2 uppercase">
-              <span
-                class="inline-block bg-gray-200 rounded-lg px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                ><Icon size="18" type="md-calendar" />
-                {{ $moment(course.release).format("ll") }}</span
-              >
-              <span
-                class="inline-block bg-gray-200 rounded-lg px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                ><Icon size="18" type="md-folder" />
-                {{
-                  course.type === 1
-                    ? "Curso Via Técnica"
-                    : course.type == 2
-                    ? "Formação Profissional"
-                    : course.type == 3
-                    ? "ACP"
-                    : "Outros"
-                }}</span
-              >
-              <span
-                class="inline-block bg-gray-200 rounded-lg px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                ><Icon size="18" type="md-clock" /> {{ course.duration }}
-                {{
-                  course.duration_type == 1
-                    ? "Dias"
-                    : course.duration_type == 2
-                    ? "meses"
-                    : "Anos"
-                }}</span
-              >
-            </div>
-
-            <div>
-              <div class="ml-8 mr-3 mb-5">
-                <p
-                  class="text-gray-700 leading-loose border-l-2 border-gray-500 pl-3 text-justify tracking-wide antialiased text-lg select-none"
-                >
-                  {{ course.presentation }}
-                </p>
+        <div class="container m-auto">
+          <Row :gutter="16">
+            <Col span="24">
+              <div class="mt-8 overflow-hidden rounded-lg shadow-lg">
+                <CourseInfoHeader :course="course" />
               </div>
-            </div>
+            </Col>
 
-            <div
-              :style="{ color: course.color }"
-              class="pt-3 pb-3 text-xl tracking-wide leading-tight uppercase font-semibold"
-            >
-              Perfil
-            </div>
+            <Col span="24" :xs="24" :md="16">
+              <div class="p-8 my-8 bg-white border rounded-lg">
+                <div
+                  :style="{ color: course.color }"
+                  class="pb-3 mb-5 font-semibold leading-tight tracking-wide uppercase border-b text-md sm:text-lg"
+                >
+                  Descrição Geral
+                </div>
+                <div
+                  class="pb-2 text-xs font-normal text-gray-400 uppercase rounded-lg sm:font-semibold"
+                >
+                  <span class="inline-block py-1 mb-2 mr-2 "
+                    ><Icon size="14" type="md-calendar" />
+                    {{ $moment(course.release).format("ll") }}</span
+                  >
+                  <span class="inline-block py-1 mb-2 mr-2"
+                    ><Icon size="14" type="md-folder" />
+                    {{
+                      course.type === 1
+                        ? "Curso Via Técnica"
+                        : course.type == 2
+                        ? "Formação Profissional"
+                        : course.type == 3
+                        ? "ACP"
+                        : "Outros"
+                    }}</span
+                  >
+                  <span class="inline-block py-1 mb-2 mr-2"
+                    ><Icon size="14" type="md-clock" /> {{ course.duration }}
+                    {{
+                      course.duration_type == 1
+                        ? "Dias"
+                        : course.duration_type == 2
+                        ? "meses"
+                        : "Anos"
+                    }}</span
+                  >
+                </div>
 
-            <div class="ml-8 mb-5">
-              <Collapse accordion v-model="requirements" class="border">
-                <Panel name="requirements" class="bg-white py-3">
-                  <span class="uppercase font-semibold text-lg text-gray-800">
-                    Condições de Acesso
-                  </span>
-                  <div slot="content">
-                    <div
-                      class="text-lg tracking-wide m-5 leading-relaxed text-gray-700"
+                <div>
+                  <div class="mb-3">
+                    <p
+                      class="pl-3 text-sm antialiased leading-loose tracking-wide text-justify text-gray-700 border-l border-gray-300"
                     >
-                      {{ course.requirement }}
-                    </div>
+                      {{ course.presentation }}
+                    </p>
                   </div>
-                </Panel>
-                <Panel name="outcomes" class="bg-white py-3">
-                  <span class="uppercase font-semibold text-lg text-gray-800">
-                    Perfil de saída
-                  </span>
-                  <div slot="content">
-                    <Collapse accordion v-model="course_outcomes">
-                      <Panel name="profissional" class="bg-white py-3">
-                        <span class="uppercase text-base font-semibold"
-                          >Saídas Profissionais</span
+                </div>
+
+                <div
+                  :style="{ color: course.color }"
+                  class="pt-3 pb-3 mb-5 font-semibold leading-tight tracking-wide uppercase border-b text-md sm:text-lg"
+                >
+                  Perfil
+                </div>
+
+                <div class="mb-3 ml-0 sm:ml-8">
+                  <Collapse accordion v-model="requirements" class="border">
+                    <Panel
+                      name="requirements"
+                      class="py-1 hover:bg-gray-200 sm:py-2"
+                    >
+                      <span
+                        class="text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-sm"
+                      >
+                        Condições de Acesso
+                      </span>
+                      <div slot="content">
+                        <div
+                          class="m-1 text-sm leading-loose tracking-wide text-gray-700"
                         >
-                        <div slot="content" class="mx-3">
-                          <List>
-                            <ListItem
-                              v-for="(outcome, i) in filterBy(
-                                course.outcomes,
-                                2,
-                                'type'
-                              )"
-                              :key="i"
-                            >
-                              <div>
-                                <div
-                                  class="text-gray-800 text-base uppercase font-semibold tracking-wide"
-                                >
-                                  {{ outcome.name }}
-                                </div>
-                                <div
-                                  class="text-gray-500 text-base mt-2 leading-relaxed tracking-wide"
-                                >
-                                  {{ outcome.description }}
-                                </div>
-                              </div>
-                            </ListItem>
-                          </List>
+                          {{ course.requirement }}
                         </div>
-                      </Panel>
-                      <Panel name="academics" class="bg-white py-3">
-                        <span class="uppercase text-base font-semibold"
-                          >Saídas Académicas</span
+                      </div>
+                    </Panel>
+                    <Panel
+                      name="outcomes"
+                      class="py-1 hover:bg-gray-200 sm:py-2"
+                    >
+                      <span
+                        class="text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-sm"
+                      >
+                        Perfil de saída
+                      </span>
+                      <div slot="content">
+                        <Collapse accordion v-model="course_outcomes">
+                          <Panel
+                            name="profissional"
+                            class="py-1 hover:bg-gray-200 sm:py-2"
+                          >
+                            <span
+                              class="text-xs font-semibold tracking-wide text-gray-500 sm:text-sm"
+                              >Saídas Profissionais</span
+                            >
+                            <div slot="content" class="mx-3">
+                              <List>
+                                <ListItem
+                                  v-for="(outcome, i) in filterBy(
+                                    course.outcomes,
+                                    2,
+                                    'type'
+                                  )"
+                                  :key="i"
+                                >
+                                  <div>
+                                    <div
+                                      class="text-sm font-semibold tracking-wide text-gray-600"
+                                    >
+                                      {{ outcome.name }}
+                                    </div>
+                                    <div
+                                      class="mt-2 text-sm leading-relaxed tracking-wide text-gray-600"
+                                    >
+                                      {{ outcome.description }}
+                                    </div>
+                                  </div>
+                                </ListItem>
+                              </List>
+                            </div>
+                          </Panel>
+                          <Panel name="academics" class="py-1 bg-white sm:py-2">
+                            <span
+                              class="text-xs font-semibold tracking-wide text-gray-500 sm:text-sm"
+                              >Saídas Académicas</span
+                            >
+                            <div slot="content" class="mx-3">
+                              <List>
+                                <ListItem
+                                  v-for="(outcome, i) in filterBy(
+                                    course.outcomes,
+                                    1,
+                                    'type'
+                                  )"
+                                  :key="i"
+                                >
+                                  <div>
+                                    <div
+                                      class="text-sm font-semibold tracking-wide text-gray-600"
+                                    >
+                                      {{ outcome.name }}
+                                    </div>
+                                    <div
+                                      class="mt-2 text-sm leading-relaxed tracking-wide text-gray-600"
+                                    >
+                                      {{ outcome.description }}
+                                    </div>
+                                  </div>
+                                </ListItem>
+                              </List>
+                            </div>
+                          </Panel>
+                        </Collapse>
+                      </div>
+                    </Panel>
+                  </Collapse>
+                </div>
+
+                <template v-if="course.disciplines.length > 0">
+                  <div
+                    :style="{ color: course.color }"
+                    class="pt-3 pb-3 mb-5 font-semibold leading-tight tracking-wide uppercase border-b text-md sm:text-lg"
+                  >
+                    Disciplinas
+                  </div>
+
+                  <div class="mb-5 ml-8">
+                    <div
+                      class="mb-3 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-sm"
+                    >
+                      Disciplinas Gerais
+                    </div>
+                    <Collapse accordion v-model="course_geral_disciplines">
+                      <template
+                        v-for="(discipline, d) in orderBy(
+                          filterBy(course.disciplines, 1, 'type'),
+                          'attribution.academic_year'
+                        )"
+                      >
+                        <Panel
+                          :name="`${discipline.id}`"
+                          :key="d"
+                          class="py-1 hover:bg-gray-200 sm:py-2"
                         >
-                        <div slot="content" class="mx-3">
-                          <List>
-                            <ListItem
-                              v-for="(outcome, i) in filterBy(
-                                course.outcomes,
-                                1,
-                                'type'
-                              )"
-                              :key="i"
-                            >
-                              <div>
-                                <div
-                                  class="text-gray-800 text-base uppercase font-semibold tracking-wide"
-                                >
-                                  {{ outcome.name }}
-                                </div>
-                                <div
-                                  class="text-gray-700 mt-2 text-base leading-relaxed tracking-wide"
-                                >
-                                  {{ outcome.description }}
-                                </div>
+                          <span
+                            class="text-xs font-semibold tracking-wide text-gray-500 sm:text-sm"
+                          >
+                            {{ discipline.name }}
+                          </span>
+                          <span
+                            class="px-2 py-1 ml-2 text-xs font-semibold text-gray-400 bg-gray-100 rounded-md"
+                            >{{ discipline.attribution.academic_year }}º
+                            Ano</span
+                          >
+                          <div slot="content">
+                            <div class="flex flex-col justify-center p-2">
+                              <div
+                                class="text-sm leading-relaxed tracking-wide text-justify text-gray-600"
+                              >
+                                {{
+                                  discipline.description
+                                    ? discipline.description
+                                    : "Sem descrição"
+                                }}
                               </div>
-                            </ListItem>
-                          </List>
-                        </div>
-                      </Panel>
+                            </div>
+                          </div>
+                        </Panel>
+                      </template>
+                    </Collapse>
+
+                    <div
+                      class="mt-4 mb-3 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-sm"
+                    >
+                      Disciplinas Técnicas
+                    </div>
+                    <Collapse accordion v-model="course_tecnics_disciplines">
+                      <template
+                        v-for="(discipline, d) in orderBy(
+                          filterBy(course.disciplines, 2, 'type'),
+                          'attribution.academic_year'
+                        )"
+                      >
+                        <Panel
+                          :name="`${discipline.id}`"
+                          :key="d"
+                          class="py-1 hover:bg-gray-200 sm:py-2"
+                        >
+                          <span
+                            class="text-xs font-semibold tracking-wide text-gray-500 sm:text-sm"
+                          >
+                            {{ discipline.name }}
+                          </span>
+                          <span
+                            class="px-2 py-1 ml-2 text-xs font-semibold text-gray-400 bg-gray-100 rounded-md"
+                            >{{ discipline.attribution.academic_year }}º
+                            Ano</span
+                          >
+                          <div slot="content">
+                            <div class="flex flex-col justify-center p-2">
+                              <div
+                                class="text-sm leading-relaxed tracking-wide text-justify text-gray-600"
+                              >
+                                {{ discipline.description }}
+                              </div>
+                            </div>
+                          </div>
+                        </Panel>
+                      </template>
                     </Collapse>
                   </div>
-                </Panel>
-              </Collapse>
-            </div>
+                </template>
 
-            <template v-if="course.disciplines.length > 0">
-              <div
-                :style="{ color: course.color }"
-                class="pt-3 pb-3 text-xl tracking-wide leading-tight uppercase font-semibold"
-              >
-                Disciplinas
-              </div>
+                <Divider></Divider>
 
-              <div class="ml-8 mb-5">
-                <div
-                  class="font-semibold text-gray-700 tracking-wide pb-2 text-xl"
-                >
-                  Disciplinas Gerais
-                </div>
-                <Collapse accordion v-model="course_geral_disciplines">
-                  <template
-                    v-for="(discipline, d) in orderBy(
-                      filterBy(course.disciplines, 1, 'type'),
-                      'attribution.academic_year'
-                    )"
-                  >
-                    <Panel
-                      :name="`${discipline.id}`"
-                      :key="d"
-                      class="bg-white py-3"
+                <div>
+                  <div class="mb-3">
+                    <h2
+                      class="text-sm tracking-wide text-center text-gray-600 md:text-left"
                     >
-                      <span
-                        class="uppercase font-semibold text-base text-gray-800"
-                      >
-                        {{ discipline.name }}
-                      </span>
-                      <span
-                        class="text-xs px-3 font-semibold py-1 uppercase ml-2 bg-gray-500 text-gray-100 rounded-lg"
-                        >{{ discipline.attribution.academic_year }}º Ano</span
-                      >
-                      <div slot="content">
-                        <div class="flex flex-col justify-center p-2">
-                          <div
-                            class="text-base tracking-wide leading-relaxed text-gray-700"
-                          >
-                            {{
-                              discipline.description
-                                ? discipline.description
-                                : "Sem descrição"
-                            }}
-                          </div>
-                        </div>
-                      </div>
-                    </Panel>
-                  </template>
-                </Collapse>
-
-                <div
-                  class="font-semibold text-gray-700 tracking-wide pb-2 pt-8 text-xl"
-                >
-                  Disciplinas Técnicas
+                      Partilhe com os amigos e familiares
+                    </h2>
+                  </div>
+                  <div class="text-center md:text-left">
+                    <social-network
+                      :button="'small'"
+                      :title="cousesType"
+                      :description="'Cursos da via técnica'"
+                      :hashtags="'Cursos e formações profissionais'"
+                    ></social-network>
+                  </div>
                 </div>
-                <Collapse accordion v-model="course_tecnics_disciplines">
-                  <template
-                    v-for="(discipline, d) in orderBy(
-                      filterBy(course.disciplines, 2, 'type'),
-                      'attribution.academic_year'
-                    )"
-                  >
-                    <Panel
-                      :name="`${discipline.id}`"
-                      :key="d"
-                      class="bg-white py-3"
-                    >
-                      <span
-                        class="uppercase font-semibold text-base text-gray-800"
-                      >
-                        {{ discipline.name }}
-                      </span>
-                      <span
-                        class="text-xs px-3 font-semibold py-1 uppercase ml-2 bg-gray-500 text-gray-100 rounded-full"
-                        >{{ discipline.attribution.academic_year }}º Ano</span
-                      >
-                      <div slot="content">
-                        <div class="flex flex-col justify-center p-2">
-                          <div
-                            class="text-base tracking-wide leading-relaxed text-gray-700"
-                          >
-                            {{ discipline.description }}
-                          </div>
-                        </div>
-                      </div>
-                    </Panel>
-                  </template>
-                </Collapse>
               </div>
-            </template>
-          </div>
-        </div>
-      </Col>
-      <Col span="24">
-        <div class="container m-auto px-3">
-          <div
-            class="p-5 rounded-lg bg-white shadow-xl border flex flex-col justify-center mb-8"
-          >
-            <div
-              class="text-2xl leading-snug tracking-wide text-gray-700 border-b w-full text-center pb-5"
-            >
-              Partilhar com amigos e familiares
-            </div>
-            <div class="py-5 text-center">
-              <social-network
-                :title="course.name"
-                :description="course.presentation"
-                :hashtags="course.family.name"
-              ></social-network>
-            </div>
-          </div>
+            </Col>
+            <Col span="24" :xs="24" :md="8">
+              <Row class="mt-0 mb-5 md:mt-8">
+                <Col span="24">
+                  <div class="p-5 text-gray-600 bg-white rounded-lg shadow-md">
+                    Publicidades
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </div>
       </Col>
     </Row>
 
     <!-- component -->
+    <home-footer :bgColor="'#F3F4F6'"></home-footer>
   </div>
 </template>
 
@@ -336,7 +372,9 @@ export default {
 
   components: {
     CourseHeader: () => import("@/views/sections/CourseHeader"),
-    SocialNetwork,
+    HomeFooter: () => import("@/components/frontend/sections/HomeFooter"),
+
+    SocialNetwork: () => import("@/components/frontend/sections/SocialNetwork"),
     CourseInfoHeader
   }
 };

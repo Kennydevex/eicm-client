@@ -1,5 +1,5 @@
 <template>
-  <div class="antialiased text-gray-900 bg-gray-200 layout">
+  <div class="antialiased text-gray-900 bg-gray-100 layout">
     <template v-if="spinLoad">
       <Spinner />
     </template>

@@ -4,10 +4,10 @@
       <team-page-header :title="'Corpo Diretivo'"></team-page-header>
     </div>
 
-    <div class="container m-auto px-3">
+    <div class="container m-auto">
       <Row :gutter="16" type="flex" justify="center">
         <Col
-          class="mt-4 flex justify-center"
+          class="flex justify-center mt-4"
           :xs="24"
           :sm="12"
           :md="8"
@@ -19,6 +19,7 @@
         </Col>
       </Row>
     </div>
+    <home-footer :bgColor="'#F3F4F6'"></home-footer>
   </div>
 </template>
 
@@ -34,7 +35,8 @@ export default {
   },
   methods: {},
   components: {
-    TeamPageHeader: () => import("@/views/sections/TeamPageHeader")
+    TeamPageHeader: () => import("@/views/sections/TeamPageHeader"),
+    HomeFooter: () => import("@/components/frontend/sections/HomeFooter")
   },
   computed: {
     ...mapGetters({
