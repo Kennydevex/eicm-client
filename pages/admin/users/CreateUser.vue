@@ -1,12 +1,12 @@
 <template>
   <div>
-    Admin
-  </div>
+  Vamos criar utilizador
+    </div>
 </template>
 
 <script>
 export default {
-  name: "AdminIndex",
+  name: "CreateUser",
   layout: "admin"
 };
 </script>

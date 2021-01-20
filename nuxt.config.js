@@ -44,12 +44,14 @@ export default {
    ** Global CSS
    */
   css: [
-    "view-design/dist/styles/iview.css",
-    "~/assets/css/main.css",
-    {
-      src: "@/assets/less/index.less",
-      lang: "less"
-    }
+    "@/assets/css/main.css",
+    "element-ui/lib/theme-chalk/index.css",
+    "@/assets/styles/index.scss"
+
+    // {
+    //   src: "@/assets/less/index.less",
+    //   lang: "less"
+    // }
   ],
 
   loading: { color: "#3E4095" },
@@ -69,8 +71,8 @@ export default {
   },
 
   plugins: [
-    "@/plugins/view-design",
-    "@/plugins/base",
+    "@/plugins/element-ui",
+    "@/plugins/components",
     "@/plugins/filters",
     "@/plugins/v-mask",
     "@/plugins/vue-gates",
@@ -84,7 +86,7 @@ export default {
     "@/plugins/axios",
     { src: "@/plugins/g-map", ssr: false },
     { src: "@/plugins/image-lightbox", ssr: false },
-    { src: "@/plugins/aos", ssr: false },
+    { src: "@/plugins/aos", ssr: false }
   ],
   /*
    ** Auto import components
@@ -94,7 +96,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/tailwindcss", "@nuxtjs/moment"],
+  buildModules: ["@nuxtjs/tailwindcss", "@nuxtjs/moment", "@nuxtjs/router"],
   /*
    ** Nuxt.js modules
    */
@@ -156,7 +158,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
-    transpile: ["vue-tinymce-editor"],
+    transpile: ["vue-tinymce-editor", /^element-ui/],
     // Este bloco foi adicionado por causa de erro de less ao ler arquivo de personalização de Iview
     loaders: {
       less: {

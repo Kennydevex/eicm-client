@@ -1,15 +1,12 @@
 <template>
   <div>
-    Home page
-      <el-button type="primary">Primary</el-button>
-
+    Publicações
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomePage",
-  layout: "landing"
+  layout: "admin"
 };
 </script>
 

@@ -1,15 +1,13 @@
 <template>
   <div>
-    Home page
-      <el-button type="primary">Primary</el-button>
-
+    Dashboard
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomePage",
-  layout: "landing"
+    name: "Dashboard",
+  layout: "admin"
 };
 </script>
 

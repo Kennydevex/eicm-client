@@ -1,15 +1,15 @@
 <template>
   <div>
-    Home page
-      <el-button type="primary">Primary</el-button>
-
+    users
+    <nuxt-child></nuxt-child>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomePage",
-  layout: "landing"
+
+  name: "UsersPage",
+  layout: "admin"
 };
 </script>
 
