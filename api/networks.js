@@ -2,41 +2,42 @@ export default [
   {
     network: "email",
     name: "Email",
-    icon: "md-mail",
+    icon: "email",
     color: "#333333"
   },
   {
     network: "facebook",
     name: "Facebook",
-    icon: "logo-facebook",
+    // icon: "facebok-f",
     color: "#1877f2"
   },
 
   {
     network: "linkedin",
     name: "LinkedIn",
-    icon: "logo-linkedin",
+
+    // icon: "linkedin-in",
     color: "#007bb5"
   },
 
   {
     network: "twitter",
     name: "Twitter",
-    icon: "logo-twitter",
+    // icon: "twitter",
     color: "#1da1f2"
   },
 
   {
     network: "skype",
     name: "Skype",
-    icon: "logo-skype",
+    // icon: "skype",
     color: "#00aff0"
   },
 
   {
     network: "whatsapp",
     name: "Whatsapp",
-    icon: "logo-whatsapp",
+    // icon: "whatsapp",
     color: "#25d366"
   }
 ];

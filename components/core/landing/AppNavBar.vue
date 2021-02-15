@@ -15,16 +15,15 @@
 
       <!--Nav right-->
       <div class="sm:hidden">
-        <button
+        <el-button
           @click="isOpen = !isOpen"
           class="block px-2 py-1 text-gray-700 border-2 rounded focus:border-gray-700 hover:text-primary hover:border-primary"
         >
-          <Icon
-            size="32"
-            class="text-gray-600 hover:text-primary"
-            :type="isOpen ? 'md-close' : 'md-menu'"
-          />
-        </button>
+          <i
+            :class="isOpen ? 'el-icon-close' : 'el-icon-s-fold'"
+            class="text-lg text-gray-600 hover:text-primary"
+          ></i>
+        </el-button>
       </div>
     </div>
 
@@ -41,14 +40,14 @@
       </div>
 
       <div>
-        <my-dropdown-menu :dropdown_items="institutions"
-          >Instituição</my-dropdown-menu
+        <coreLandingSimpleDropdown :dropdown_items="institutions"
+          >Instituição</coreLandingSimpleDropdown
         >
       </div>
 
       <div>
-        <mega-menu-drop :mega_menu_items="courses"
-          >Cursos e Formações</mega-menu-drop
+        <coreLandingMegaDropdown :mega_menu_items="courses"
+          >Cursos e Formações</coreLandingMegaDropdown
         >
       </div>
 
@@ -69,7 +68,7 @@
       </div>
 
       <div v-if="authenticated">
-        <user-dropdown></user-dropdown>
+        <coreLandingAccountMenu></coreLandingAccountMenu>
       </div>
     </div>
   </header>
@@ -86,11 +85,11 @@ export default {
       isOpen: false,
 
       institutions: [
-        { name: "Sobre", href: "/institution/about", divider: false },
-        { name: "História", href: "/institution/histories", divider: false },
+        { name: "Sobre", href: "/instituicao/sobre", divider: false },
+        { name: "História", href: "/instituicao/historias", divider: false },
         {
           name: "Corpo Diretivo",
-          href: "/institution/team",
+          href: "/instituicao/equipe",
           divider: false
         }
       ],
@@ -141,13 +140,6 @@ export default {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     }
-  },
-
-  components: {
-    MegaMenuDrop: () =>
-      import("@/components/app/frontend/partials/MegaMenuDrop"),
-    MyDropdownMenu: () =>
-      import("@/components/app/frontend/partials/MyDropdownMenu")
   }
 };
 </script>

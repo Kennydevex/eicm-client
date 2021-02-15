@@ -1,12 +1,15 @@
 <template>
   <div>
-  Vamos criar utilizador
-    </div>
+    <nuxt-child></nuxt-child>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "CreateUser",
+  props: {
+  },
+
+  name: "System",
   layout: "admin"
 };
 </script>

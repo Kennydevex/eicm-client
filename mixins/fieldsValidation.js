@@ -52,6 +52,22 @@ export const user_validation = {
   }
 };
 
+export const permission_validation = {
+  data() {
+    return {
+      permissionFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Obrigatório a intrução de uma designação",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
 export const charge_validation = {
   data() {
     return {

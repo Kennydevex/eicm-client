@@ -11,7 +11,7 @@
       @keydown.down.exact.prevent="startArrowKeys"
     >
       <slot></slot>
-      <Icon :type="isVisible ? 'ios-arrow-up' : 'ios-arrow-down'" />
+      <i :class="isVisible ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
     </a>
     <transition name="fade">
       <div
@@ -70,11 +70,11 @@
             @click.prevent="hideMenu()"
           >
             <nuxt-link class="flex items-center group" :to="item.href">
-              <Icon
-                size="16"
+              <i
+                :class="item.icon"
                 class="text-gray-800 group-hover:text-primary"
-                :type="item.icon"
-              />
+              ></i>
+              
               <span
                 class="block ml-1 font-normal text-gray-800 group-hover:text-primary"
                 >{{ item.name }}</span

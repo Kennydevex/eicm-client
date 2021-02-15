@@ -20,8 +20,10 @@ export const handleFormData = {
           }
           this.formData[formDataObj].push(temp_data);
           clearTempData();
+          this.actionMsg("Registo adicionado na tabela", "success");
+
         } else {
-          this.$Message.error("Erro da validação");
+          this.actionMsg("Falha na validação de dados", "error");
         }
       });
     },
@@ -44,7 +46,8 @@ export const handleFormData = {
           clearFormData();
           return true;
         } else {
-          this.$Message.error("Erro de validação");
+          this.actionMsg("Falha na validação de dados", "error");
+
           return true;
         }
       });
@@ -65,10 +68,12 @@ export const handleFormData = {
           "Alguns dados inseridos queres ignorá-los"
         ).then(result => {
           if (result.value) {
-            this.warningNotify(
+            this.actionNotify(
               "Ignorar dados inseridos",
-              "Registos ignorados, todos os dados foram ignorados"
+              "Registos ignorados, todos os dados foram ignorados",
+              "success"
             );
+
             this.formData[formDataObj] = [];
             clearFormData();
           }
@@ -76,8 +81,6 @@ export const handleFormData = {
         return;
       }
     },
-
-   
 
     repeatedFormData: debounce(function(
       formDataObj,

@@ -19,20 +19,19 @@ export const requests = {
               .then(res => {
                 this.sending = false;
                 this.resetFormFields(formRef);
-                this.successNotify(successTitle, res.data.msg);
-                console.log(res.data.msg);
+                this.actionNotify(successTitle, res.data.msg, "success");
                 process.client ? window.getApp.$emit(updataData) : "";
                 this.handleModal(handle_modal);
               })
               .catch(err => {
                 this.sending = false;
-                this.$Message.error("Ago correu mal");
+                this.actionMsg("Ago correu mal", "error");
               });
           } catch (error) {
             this.sending = false;
           }
         } else {
-          this.$Message.error("Falha na operação, verefique os dados");
+          this.actionMsg("Falha na operação, verefique os dados", "error");
           return;
         }
       });
@@ -59,25 +58,19 @@ export const requests = {
               .then(res => {
                 this.sending = false;
                 this.resetFormFields(formRef);
-                this.successNotify(successTitle, res.data.msg);
-                // process.client
-                //   ? window.getApp.$emit("APP_UPDATE_USERS_DATA")
-                //   : "";
-                // this.handleModal("users/toggleUpdateUserDialog");
+                this.actionNotify(successTitle, res.data.msg, "success");
                 process.client ? window.getApp.$emit(updataData) : "";
                 this.handleModal(handle_modal);
               })
               .catch(err => {
                 this.sending = false;
-                this.$Message.error("Ago correu mal");
+                this.actionMsg("Ago correu mal", "error");
               });
           } catch (error) {
             this.sending = false;
           }
-
-          console.log("ok");
         } else {
-          this.$Message.error("Falha na operação, verefique os dados");
+          this.actionMsg("Falha na operação, verefique os dados", "error");
           return;
         }
       });
@@ -106,8 +99,7 @@ export const handleActivations = {
         if (result.value) {
           this.$set(this.loadAtivaction, id, true);
           this.$axios.$put(`${url}/${id}`).then(res => {
-            this.successNotify("Operação Sucedida", res.msg);
-            // this.feedback("success", res.msg);
+            this.actionNotify("Operação Sucedida", res.msg, "success");
             this.$set(this.loadAtivaction, id, false);
             process.client ? window.getApp.$emit(refresh_data) : "";
           });
@@ -128,6 +120,7 @@ export const deleteDatas = {
   },
   methods: {
     handleDeleteMultiple() {
+     
       let mthis = this;
       this.ids = [];
       // Já declarada no componente
@@ -138,9 +131,12 @@ export const deleteDatas = {
     },
 
     onDelete(url, id, refresh_data, multiple_delete = false) {
+       if (multiple_delete && this.selected.length == 0) {
+         this.actionMsg("Nenhum registo selecionado para eliminar", "warning");
+         return;
+       }
       if (multiple_delete) {
         this.handleDeleteMultiple();
-        console.log(this.ids);
       } else {
         this.ids = id;
       }
@@ -162,10 +158,7 @@ export const deleteDatas = {
       this.$set(this.deleting, id, true);
       let { msg } = await this.$axios.$delete(`/${url}/${id}`);
       this.$set(this.deleting, id, false);
-      // this.feedback("success", msg);
-      this.successNotify("Operação Sucedida", msg);
-
-      // Depois de eliminar registo, atualizar os dados
+      this.actionNotify("Operação Sucedida", msg, "success");
       process.client ? window.getApp.$emit(refresh_data) : "";
     }
   }

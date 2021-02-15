@@ -2,7 +2,7 @@
   <div>
     <!-- ============================================================== -->
     <div>
-      <NavBar />
+      <coreLandingAppNavBar />
     </div>
     <!-- ============================================================== -->
     <div class="w-full">
@@ -10,7 +10,8 @@
     </div>
     <!-- ============================================================== -->
     <div>
-      <AppFooter />
+      <coreLandingPageFooter />
+      <coreAppFooter />
     </div>
     <!-- ============================================================== -->
   </div>
@@ -29,10 +30,6 @@ export default {
     await this.$store.dispatch("testimonials/getTestimonials");
     await this.$store.dispatch("sliders/getActivedSliders");
     this.spinLoad = false;
-  },
-  components: {
-    NavBar: () => import("@/components/app/frontend/AppNavBar"),
-    AppFooter: () => import("@/components/app/frontend/AppFooter")
   },
 
   data() {

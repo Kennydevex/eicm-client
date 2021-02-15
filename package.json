@@ -33,6 +33,9 @@
     "vueperslides": "^2.10.7"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/router": "^1.5.0",
     "@nuxtjs/tailwindcss": "^3.0.1",

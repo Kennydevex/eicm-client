@@ -46,7 +46,8 @@ export default {
   css: [
     "@/assets/css/main.css",
     "element-ui/lib/theme-chalk/index.css",
-    "@/assets/styles/index.scss"
+    "@/assets/styles/index.scss",
+    "@/assets/scss/element-variables.scss"
 
     // {
     //   src: "@/assets/less/index.less",
@@ -80,6 +81,7 @@ export default {
     "@/mixins/links",
     "@/mixins/handleForm",
     "@/mixins/notifications",
+    "@/mixins/tableActions",
     "@/mixins/gates",
     "@/mixins/authentication",
     "@/mixins/validationErrors",
@@ -96,12 +98,17 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/tailwindcss", "@nuxtjs/moment", "@nuxtjs/router"],
+
+  buildModules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/moment",
+    "@nuxtjs/router",
+    "@nuxtjs/fontawesome"
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/robots",
     "@nuxtjs/auth",
@@ -175,6 +182,16 @@ export default {
     exposeConfig: true,
     config: {}
   },
+
+  fontawesome: {
+    component: "fa",
+    icons: {
+      solid: ["faPause", "faStar", "faEnvelope"],
+      brands: ["faLinkedinIn", "faTwitter", "faFacebookF", "faInstagram"]
+    }
+  },
+
+  // , "faLinkedinIn", "faWhatsapp", "faSkype", "faTwitter"
 
   moment: {
     timezone: true,

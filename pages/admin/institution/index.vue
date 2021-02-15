@@ -1,16 +1,15 @@
 <template>
   <div>
-    users
     <nuxt-child></nuxt-child>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+  },
 
-  name: "UsersPage",
+  name: "Institution",
   layout: "admin"
 };
 </script>
-
-<style lang="scss" scoped></style>

@@ -26,6 +26,11 @@ export default {
   name: "AdminLayout",
   mixins: [ResizeHandler],
 
+   created() {
+    process.client ? (window.getApp = this) : "";
+    // this.vueGates();
+  },
+
   computed: {
     // ...mapState({
     //   sidebar: "app/sidebar",
