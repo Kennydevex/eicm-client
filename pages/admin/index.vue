@@ -1,6 +1,6 @@
 <template>
   <div>
-    Escola Industrial e Comercial do Mindelo
+    Escola Industrial e Comercial do Mindelo - GDC
   </div>
 </template>
 
