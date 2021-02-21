@@ -78,7 +78,7 @@
         <el-row :gutter="20" class="my-2">
           <el-col class="mb-2" v-if="!(adding_contact || on_edit_contact)">
             <el-button type="primary" @click="adding_contact = true"
-              >Adicionar</el-button
+              >Adicionar Contacto</el-button
             >
             <el-button
               type="primary"
@@ -269,7 +269,7 @@
                 <el-row :gutter="20">
                   <el-col class="mb-2" v-if="!(adding_mark || on_edit_mark)">
                     <el-button type="primary" @click="adding_mark = true"
-                      >Adicionar</el-button
+                      >Adicionar Marcos</el-button
                     >
                     <el-button
                       type="primary"
@@ -453,7 +453,7 @@
                     v-if="!(adding_guideline || on_edit_guideline)"
                   >
                     <el-button type="primary" @click="adding_guideline = true"
-                      >Adicionar</el-button
+                      >Adicionar Diretriz</el-button
                     >
                     <el-button
                       type="primary"
@@ -601,7 +601,7 @@
                 <el-row :gutter="20">
                   <el-col class="mb-2" v-if="!(adding_mural || on_edit_mural)">
                     <el-button type="primary" @click="adding_mural = true"
-                      >Adicionar</el-button
+                      >Adicionar Mural</el-button
                     >
                     <el-button
                       type="primary"
@@ -769,7 +769,7 @@
           </el-col>
 
           <el-col :span="12">
-            <el-form-item prop="logo" label="Foto de Perfil">
+            <el-form-item prop="logo" label="Imagem de Perfil">
               <baseImageUpload
                 ref="schoolLogo"
                 :uploadMsg="'Clique ou largue o logotipo aqui'"
@@ -782,7 +782,7 @@
           </el-col>
 
           <el-col :span="12">
-            <el-form-item prop="cover" label="Foto de Capa">
+            <el-form-item prop="cover" label="Imagem de Capa">
               <baseImageUpload
                 ref="schoolCover"
                 :uploadMsg="'Clique ou largue o logotipo aqui'"
@@ -974,7 +974,7 @@ export default {
       await this.addData(
         "schoolForm",
         "schools",
-        "Instituição Registado",
+        "Instituição Registada",
         "APP_UPDATE_SCHOOLS_DATA",
         "schools/toggleCreateSchoolDialog"
       );
@@ -986,7 +986,7 @@ export default {
       this.updateData(
         "schoolForm",
         "schools",
-        "Instituição Atualizado",
+        "Instituição Atualizada",
         "APP_UPDATE_SCHOOLS_DATA",
         "schools/toggleCreateSchoolDialog"
       );

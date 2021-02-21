@@ -1,6 +1,6 @@
 <template>
   <div>
-    Admin
+    Escola Industrial e Comercial do Mindelo
   </div>
 </template>
 

@@ -6,8 +6,8 @@
           :loading_data="loading_data"
           size="medium"
           type="primary"
-          @click.stop="redirectToPageByName('create-school')"
-          ><span v-if="!loading_data">Criar Nova Instituição</span>
+          @click.stop="redirectToPageByName('create-course')"
+          ><span v-if="!loading_data">Criar Novo Curso</span>
           <span v-else>Solicitando dados...</span></el-button
         >
       </el-col>
@@ -16,14 +16,17 @@
     <el-row>
       <el-col :span="24">
         <appBackendCommonDataTable
-          :deleteEntity="'schools'"
-          :updateEntity="'APP_UPDATE_SCHOOLS_DATA'"
+          :deleteEntity="'courses'"
+          :updateEntity="'APP_UPDATE_COURSES_DATA'"
           :tableFields="tableFields"
-          :searchParams="[{ name: 'Nome', key: 'name' }]"
+          :searchParams="[
+            { name: 'Nome', key: 'name' },
+            { name: 'Abbr', key: 'abbr' }
+          ]"
           :sendingData="sending"
-          :dataSourse="schools"
-          @handleEdit="onEditSchool($event)"
-          @handleDelete="onDeleteSchool($event)"
+          :dataSourse="courses"
+          @handleEdit="onEditCourse($event)"
+          @handleDelete="onDeleteCourse($event)"
         >
         </appBackendCommonDataTable>
       </el-col>
@@ -36,11 +39,11 @@ import { handleActivations, deleteDatas } from "@/mixins/appRequest";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "SchoolsIndex",
+  name: "CoursesIndex",
   mixins: [handleActivations, deleteDatas],
 
   async fetch({ store }) {
-    await store.dispatch("schools/getSchools");
+    await store.dispatch("courses/getCourses");
   },
 
   data() {
@@ -51,43 +54,41 @@ export default {
         { label: "Nome", name: "name" }
       ],
       sending: {},
-      singleSchool: {},
+      singleCourse: {},
       loading_data: false
     };
   },
 
   computed: {
     ...mapGetters({
-      schools: "schools/schools"
+      courses: "courses/courses"
     })
   },
 
   async created() {
     if (process.client) {
-      window.getApp.$on("APP_UPDATE_SCHOOLS_DATA", () => {
-        this.getSchools(1);
+      window.getApp.$on("APP_UPDATE_COURSES_DATA", () => {
+        this.getCourses(1);
       });
     }
   },
 
   methods: {
-    async onCreateSchool() {
-      this.redirectToPageByName("create-school");
+    async onCreateCourse() {
+      this.redirectToPageByName("create-course");
     },
 
-    async onEditSchool(ev) {
-      await this.redirectToPageWithParam("edit-school", ev[1].slug);
+    async onEditCourse(ev) {
+      await this.redirectToPageWithParam("edit-course", ev[1].slug);
     },
 
-    onDeleteSchool(ev) {
-      this.onDelete("schools", ev[1].id, "APP_UPDATE_SCHOOLS_DATA");
+    onDeleteCourse(ev) {
+      this.onDelete("courses", ev[1].id, "APP_UPDATE_COURSES_DATA");
     },
 
-    async getSchools(page) {
-      await this.$store.dispatch("schools/getSchools", page);
-    },
-
-    
+    async getCourses(page) {
+      await this.$store.dispatch("courses/getCourses", page);
+    }
   }
 };
 </script>

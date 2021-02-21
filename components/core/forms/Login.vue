@@ -97,7 +97,6 @@ export default {
               .then(() => {
                 this.$router.push({
                   path: "/admin"
-                  // path: this.$router.query.redirect || "/admin"
                 });
                 this.actionMsg("Dados enviados com sucesso");
                 this.sending = false;
@@ -106,6 +105,7 @@ export default {
                 this.actionMsg("Algo Correu mal", "error");
                 this.sending = false;
               });
+            console.log(this.$router);
             // this.resetFormFields(formRef);
           } catch (error) {
             this.actionMsg("Algo Correu mal", "error");

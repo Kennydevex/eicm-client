@@ -24,7 +24,7 @@
         <span slot="title">{{ item.meta.title }}</span>
       </template>
       <el-menu-item
-        v-for="subMenu in item.children"
+        v-for="subMenu in item.children.filter(item => !item.hidden)"
         :index="subMenu.name"
         :route="{ path: subMenu.path }"
         :key="subMenu.name"
@@ -41,8 +41,24 @@ export default {
       type: Object,
       required: true
     }
+  },
+
+  computed: {
+    searchData() {
+      if (!this.searchTerm) {
+        return this.dataSourse;
+      }
+      let mthis = this;
+      return this.dataSourse.filter(
+        data =>
+          !mthis.search ||
+          data[this.searchTerm]
+            .toLowerCase()
+            .includes(mthis.search.toLowerCase())
+      );
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .icon {

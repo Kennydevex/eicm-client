@@ -11,7 +11,7 @@
         <div class="fixed-header">
           <coreHeader />
         </div>
-       
+
         <coreMain />
       </div>
     </div>
@@ -24,9 +24,12 @@ import ResizeHandler from "@/utils/mixins/ResizeHandler";
 
 export default {
   name: "AdminLayout",
+
+  middleware: ["auth"],
+
   mixins: [ResizeHandler],
 
-   created() {
+  created() {
     process.client ? (window.getApp = this) : "";
     // this.vueGates();
   },

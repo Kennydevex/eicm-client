@@ -20,7 +20,31 @@ import Permissions from "@/pages/admin/system/permissions";
 import Roles from "@/pages/admin/system/roles";
 import Institution from "@/pages/admin/institution/index";
 import School from "@/pages/admin/institution/school";
-import Posts from "@/pages/admin/posts/index";
+import CreateSchool from "@/pages/admin/institution/create-school";
+import EditSchool from "@/pages/admin/institution/edit-school";
+import Employees from "@/pages/admin/institution/employees";
+import Charges from "@/pages/admin/institution/charges";
+import Partners from "@/pages/admin/institution/partners";
+import Testimonials from "@/pages/admin/institution/testimonials";
+import Marks from "@/pages/admin/institution/marks";
+import Murals from "@/pages/admin/institution/murals";
+import Guidelines from "@/pages/admin/institution/guidelines";
+import Formations from "@/pages/admin/formations/index";
+import CoursesManager from "@/pages/admin/formations/courses";
+import CreateCourse from "@/pages/admin/formations/create-course";
+import EditCourse from "@/pages/admin/formations/edit-course";
+import Families from "@/pages/admin/formations/families";
+import Departaments from "@/pages/admin/formations/departaments";
+import Disciplines from "@/pages/admin/formations/disciplines";
+import Outcomes from "@/pages/admin/formations/outcomes";
+import Cms from "@/pages/admin/cms/index";
+import Articles from "@/pages/admin/cms/articles";
+import CreateArticle from "@/pages/admin/cms/create-article";
+import EditArticle from "@/pages/admin/cms/edit-article";
+import Tags from "@/pages/admin/cms/tags";
+import Categories from "@/pages/admin/cms/categories";
+import Widgets from "@/pages/admin/widgets/index";
+import Sliders from "@/pages/admin/widgets/sliders";
 
 const emptyFn = () => {};
 const originalPush = Router.prototype.push;
@@ -104,7 +128,6 @@ export const routerOptions = {
       name: "blog-ler-slug",
       hidden: true
     },
-
     {
       path: "/admin",
       component: Admin,
@@ -120,6 +143,305 @@ export const routerOptions = {
         icon: "menu",
         affix: true
       }
+    },
+
+    {
+      path: "/",
+      component: Institution,
+      name: "institution",
+      meta: {
+        title: "Instituição",
+        icon: "school",
+        affix: true
+      },
+      children: [
+        {
+          path: "/admin/institution/school",
+          component: School,
+          name: "school",
+          meta: {
+            title: "Gestão da Escola",
+            icon: "school",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/institution/schools/create",
+          component: CreateSchool,
+          name: "create-school",
+          hidden: true,
+          meta: {
+            title: "Criar Instituição",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/institution/schools/edit/:slug",
+          component: EditSchool,
+          name: "edit-school",
+          hidden: true,
+          meta: {
+            title: "Editar Instituição",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/institution/charges",
+          component: Charges,
+          name: "charges",
+          meta: {
+            title: "Gerir Cargos",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/institution/collaborators",
+          component: Employees,
+          name: "employees",
+          meta: {
+            title: "Colaboradores",
+            icon: "user",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/institution/partners",
+          component: Partners,
+          name: "partners",
+          meta: {
+            title: "Gestão de Parceiros",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/institution/testimonials",
+          component: Testimonials,
+          name: "testimonials",
+          meta: {
+            title: "Testemunhos",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/institution/marks",
+          component: Marks,
+          name: "marks",
+          meta: {
+            title: "Marcos Históricos",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/institution/murals",
+          component: Murals,
+          name: "murals",
+          meta: {
+            title: "Murals",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/institution/guidelines",
+          component: Guidelines,
+          name: "guidelines",
+          meta: {
+            title: "Diretrizes",
+            icon: "tag",
+            affix: true
+          }
+        }
+      ]
+    },
+
+    {
+      path: "/",
+      component: Formations,
+      name: "formations",
+      meta: {
+        title: "Formações",
+        icon: "s-cooperation",
+        affix: true
+      },
+      children: [
+        {
+          path: "/admin/formations/disciplines",
+          component: Disciplines,
+          name: "disciplines",
+          meta: {
+            title: "Disciplinas",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/formations/courses",
+          component: CoursesManager,
+          name: "courses",
+          meta: {
+            title: "Gestão de Cursos",
+            icon: "school",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/formations/courses/create",
+          component: CreateCourse,
+          name: "create-course",
+          hidden: true,
+          meta: {
+            title: "Criar Curso",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/formations/courses/edit/:slug",
+          component: EditCourse,
+          name: "edit-course",
+          hidden: true,
+          meta: {
+            title: "Editar Curso",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/formations/outcomes",
+          component: Outcomes,
+          name: "outcomes",
+          meta: {
+            title: "Gerir Perfis de Saída",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/formations/departaments",
+          component: Departaments,
+          name: "departaments",
+          meta: {
+            title: "Departamentos",
+            icon: "tag",
+            affix: true
+          }
+        },
+        {
+          path: "/admin/formations/families",
+          component: Families,
+          name: "families",
+          meta: {
+            title: "Família dos Cursos",
+            icon: "tag",
+            affix: true
+          }
+        }
+      ]
+    },
+
+    {
+      path: "/",
+      component: Cms,
+      name: "comments",
+      meta: {
+        title: "Publicações",
+        icon: "document",
+        affix: true
+      },
+      children: [
+        {
+          path: "/admin/cms/articles",
+          component: Articles,
+          name: "articles",
+          meta: {
+            title: "Artigos",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/cms/articles/create",
+          component: CreateArticle,
+          name: "create-article",
+          hidden: true,
+          meta: {
+            title: "Criar Artigo",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/cms/articles/edit/:slug",
+          component: EditArticle,
+          name: "edit-article",
+          hidden: true,
+          meta: {
+            title: "Editar Artigo",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/cms/tags",
+          component: Tags,
+          name: "tags",
+          meta: {
+            title: "Gerir Marcadores",
+            icon: "tag",
+            affix: true
+          }
+        },
+
+        {
+          path: "/admin/cms/categories",
+          component: Categories,
+          name: "categories",
+          meta: {
+            title: "Gerir Categorias",
+            icon: "tag",
+            affix: true
+          }
+        }
+      ]
+    },
+
+    {
+      path: "/",
+      component: Widgets,
+      name: "widgets",
+      meta: {
+        title: "Widgets",
+        icon: "data-board",
+        affix: true
+      },
+      children: [
+        {
+          path: "/admin/widgets/sliders",
+          component: Sliders,
+          name: "sliders",
+          meta: {
+            title: "Sliders",
+            icon: "tag",
+            affix: true
+          }
+        }
+      ]
     },
 
     {
@@ -163,73 +485,7 @@ export const routerOptions = {
           }
         }
       ]
-    },
-
-    {
-      path: "/",
-      component: Institution,
-      name: "institution",
-      meta: {
-        title: "Instituição",
-        icon: "school",
-        affix: true
-      },
-      children: [
-        {
-          path: "/admin/institution/school",
-          component: School,
-          name: "school",
-          meta: {
-            title: "Gestão da Escola",
-            icon: "school",
-            affix: true
-          }
-        }
-        //  {
-        //    path: "/admin/institution/permissions",
-        //    component: Permissions,
-        //    name: "permissions",
-        //    meta: {
-        //      title: "Permissões",
-        //      icon: "lock",
-        //      affix: true
-        //    }
-        //  },
-        //  {
-        //    path: "/admin/institution/roles",
-        //    component: Roles,
-        //    name: "roles",
-        //    meta: {
-        //      title: "Papeis",
-        //      icon: "lock",
-        //      affix: true
-        //    }
-        //  }
-      ]
     }
-
-    //  {
-    //    path: "/",
-    //    component: Users,
-    //    name: "users",
-    //    meta: {
-    //      title: "Utilizadores",
-    //      icon: "user",
-    //      affix: true
-    //    },
-    //    children: [
-    //      {
-    //        path: "/admin/users/criar",
-    //        component: CreateUser,
-    //        name: "create-user",
-    //        meta: {
-    //          title: "Criar Utilizador",
-    //          icon: "user",
-    //          affix: true
-    //        }
-    //      }
-    //    ]
-    //  }
   ],
   fallback: false,
   scrollBehavior: () => ({ y: 0 })

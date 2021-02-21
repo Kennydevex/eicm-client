@@ -29,6 +29,8 @@
     <el-row>
       <el-col :span="24">
         <appBackendCommonDataTable
+        :deleteEntity="'permissions'"
+          :updateEntity="'APP_UPDATE_PERMISSIONS_DATA'"
           :tableFields="tableFields"
           :searchParams="[{ name: 'Nome', key: 'name' }]"
           :sendingData="sending"

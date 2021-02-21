@@ -3,8 +3,8 @@
     ref="permissionForm"
     :model="formData"
     :rules="permissionFormValidation"
-    label-position="left"
-    label-width="80"
+    label-width="120px"
+    :label-position="device == 'mobile' ? 'top' : 'left'"
   >
     <el-form-item
       prop="name"
@@ -61,7 +61,11 @@ export default {
   computed: {
     ...mapGetters({
       roles: "permissions/roles"
-    })
+    }),
+
+    device() {
+      return this.$store.state.app.device;
+    }
   },
 
   methods: {

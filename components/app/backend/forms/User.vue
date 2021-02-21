@@ -44,10 +44,10 @@
           </el-col>
           <el-col :xs="24" :md="12">
             <el-form-item label="Sexo" prop="person.gender">
-              <el-radio border v-model="formData.person.gender" label="0"
+              <el-radio border v-model="formData.person.gender" label="m"
                 >Masculino</el-radio
               >
-              <el-radio border v-model="formData.person.gender" label="1"
+              <el-radio border v-model="formData.person.gender" label="f"
                 >Feminino</el-radio
               >
             </el-form-item>

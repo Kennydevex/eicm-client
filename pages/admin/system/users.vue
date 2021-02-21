@@ -26,6 +26,8 @@
     <el-row>
       <el-col :span="24">
         <appBackendCommonDataTable
+          :deleteEntity="'users'"
+          :updateEntity="'APP_UPDATE_USERS_DATA'"
           :tableFields="tableFields"
           :searchParams="[
             { name: 'Nome', key: 'name' },

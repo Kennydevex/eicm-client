@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <el-col class="my-1" :xs="24" :sm="12" :md="16" :offset="0">
         <el-button
-          @click.stop="onDelete('users', '', 'APP_UPDATE_USERS_DATA', true)"
+          @click.stop="onDelete(deleteEntity, '', updateEntity, true)"
           size="mini"
           plain
           type="danger"
@@ -104,6 +104,16 @@ export default {
   },
 
   props: {
+    deleteEntity: {
+      type: String,
+      default: '',
+      required: true
+    },
+    updateEntity: {
+      type: String,
+      default: '',
+      required: true
+    },
     dataSourse: {
       type: Array,
       default: () => {

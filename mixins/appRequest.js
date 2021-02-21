@@ -9,7 +9,15 @@ export const requests = {
   },
 
   methods: {
-    async addData(formRef, url, successTitle, updataData, handle_modal) {
+    async addData(
+      formRef,
+      url,
+      successTitle,
+      updataData,
+      handle_modal,
+      dialog = true,
+      save_and_new = false
+    ) {
       this.$refs[formRef].validate(valid => {
         if (valid) {
           this.sending = true;
@@ -20,8 +28,12 @@ export const requests = {
                 this.sending = false;
                 this.resetFormFields(formRef);
                 this.actionNotify(successTitle, res.data.msg, "success");
+                if (save_and_new) {
+                  return;
+                }
                 process.client ? window.getApp.$emit(updataData) : "";
-                this.handleModal(handle_modal);
+                if (dialog) this.handleModal(handle_modal);
+                else this.redirectToPageByName(handle_modal);
               })
               .catch(err => {
                 this.sending = false;
@@ -37,18 +49,26 @@ export const requests = {
       });
     },
 
-    onUpdateData(id, entity, updateData, updateModal) {
+    onUpdateData(id, entity, updateData, handle_modal, dialog = true) {
       try {
         this.$set(this.on_load_data, id, true);
         this.$axios.$get(`${entity}/${id}`).then(res => {
           process.client ? window.getApp.$emit(updateData, res.data) : "";
           this.$set(this.on_load_data, id, false);
-          this.handleModal(updateModal);
+          if (dialog) this.handleModal(handle_modal);
+          else this.redirectToPageByName(handle_modal);
         });
       } catch (error) {}
     },
 
-    async updateData(formRef, url, successTitle, updataData, handle_modal) {
+    async updateData(
+      formRef,
+      url,
+      successTitle,
+      updataData,
+      handle_modal,
+      dialog = true
+    ) {
       this.$refs[formRef].validate(valid => {
         if (valid) {
           this.sending = true;
@@ -60,7 +80,8 @@ export const requests = {
                 this.resetFormFields(formRef);
                 this.actionNotify(successTitle, res.data.msg, "success");
                 process.client ? window.getApp.$emit(updataData) : "";
-                this.handleModal(handle_modal);
+                if (dialog) this.handleModal(handle_modal);
+                else this.redirectToPageByName(handle_modal);
               })
               .catch(err => {
                 this.sending = false;
@@ -120,7 +141,6 @@ export const deleteDatas = {
   },
   methods: {
     handleDeleteMultiple() {
-     
       let mthis = this;
       this.ids = [];
       // Já declarada no componente
@@ -131,10 +151,10 @@ export const deleteDatas = {
     },
 
     onDelete(url, id, refresh_data, multiple_delete = false) {
-       if (multiple_delete && this.selected.length == 0) {
-         this.actionMsg("Nenhum registo selecionado para eliminar", "warning");
-         return;
-       }
+      if (multiple_delete && this.selected.length == 0) {
+        this.actionMsg("Nenhum registo selecionado para eliminar", "warning");
+        return;
+      }
       if (multiple_delete) {
         this.handleDeleteMultiple();
       } else {

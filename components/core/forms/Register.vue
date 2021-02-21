@@ -10,7 +10,7 @@
       
         size="medium"
         prefix-icon="el-icon-user"
-        placeholder="Email"
+        placeholder="Username"
         v-model="formData.name"
       ></el-input>
     </el-form-item>
