@@ -15,7 +15,7 @@ const redirectPage = {
 
         frontNavegation(link) {
           this.$router.push({ path: link });
-        },
+        }, 
 
         redirectToPageWithParam(name, slug) {
           this.$router.push({

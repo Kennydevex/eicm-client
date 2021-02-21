@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+  <div class="overflow-hidden bg-white rounded-lg">
     <div class="relative h-48 bg-red-500">
       <img
         class="absolute top-0 object-cover object-center w-full h-full cursor-pointer"
@@ -29,7 +29,7 @@
         {{ article.title }}
       </h4>
       <div
-        class="pb-1 leading-relaxed tracking-wide text-justify text-gray-800"
+        class="pb-1 text-sm antialiased leading-relaxed tracking-normal text-justify text-gray-800"
       >
         {{ article.summary | truncate(100) }}
       </div>

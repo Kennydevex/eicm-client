@@ -1,23 +1,19 @@
 <template>
-  <div class="antialiased text-gray-900 bg-gray-100 layout">
-    <template v-if="spinLoad">
-      <Spinner />
-    </template>
-
-    <template v-else>
-      <div>
-        <NavBar></NavBar>
-      </div>
-
-      <div>
-        <Content>
-          <div class="w-full">
-            <Nuxt />
-          </div>
-        </Content>
-        <AppFooter></AppFooter>
-      </div>
-    </template> 
+  <div>
+    <!-- ============================================================== -->
+    <div>
+      <coreLandingAppNavBar />
+    </div>
+    <!-- ============================================================== -->
+    <div class="w-full">
+      <Nuxt />
+    </div>
+    <!-- ============================================================== -->
+    <div>
+      <coreLandingPageFooter />
+      <coreAppFooter />
+    </div>
+    <!-- ============================================================== -->
   </div>
 </template>
 
@@ -34,11 +30,6 @@ export default {
     await this.$store.dispatch("testimonials/getTestimonials");
     await this.$store.dispatch("sliders/getActivedSliders");
     this.spinLoad = false;
-  },
-  components: {
-    NavBar: () => import("@/components/frontend/AppNavBar"),
-    AppFooter: () => import("@/components/frontend/AppFooter"),
-    Spinner: () => import("@/components/common/Spinner")
   },
 
   data() {

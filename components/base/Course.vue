@@ -57,9 +57,9 @@
               v-if="course.featured"
               class="flex text-2xl tracking-tight text-yellow-400"
             >
-              <Tooltip placement="top" content="Curso em Destaque">
-                <Icon type="ios-star" />
-              </Tooltip>
+              <el-tooltip placement="top" content="Curso em Destaque">
+                <fa class="text-base text-primary" icon="star" />
+              </el-tooltip>
             </div>
           </div>
         </div>
@@ -80,5 +80,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

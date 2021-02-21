@@ -44,12 +44,15 @@ export default {
    ** Global CSS
    */
   css: [
-    "view-design/dist/styles/iview.css",
-    "~/assets/css/main.css",
-    {
-      src: "@/assets/less/index.less",
-      lang: "less"
-    }
+    "@/assets/css/main.css",
+    "element-ui/lib/theme-chalk/index.css",
+    "@/assets/styles/index.scss",
+    "@/assets/scss/element-variables.scss"
+
+    // {
+    //   src: "@/assets/less/index.less",
+    //   lang: "less"
+    // }
   ],
 
   loading: { color: "#3E4095" },
@@ -69,8 +72,8 @@ export default {
   },
 
   plugins: [
-    "@/plugins/view-design",
-    "@/plugins/base",
+    "@/plugins/element-ui",
+    "@/plugins/components",
     "@/plugins/filters",
     "@/plugins/v-mask",
     "@/plugins/vue-gates",
@@ -78,6 +81,7 @@ export default {
     "@/mixins/links",
     "@/mixins/handleForm",
     "@/mixins/notifications",
+    "@/mixins/tableActions",
     "@/mixins/gates",
     "@/mixins/authentication",
     "@/mixins/validationErrors",
@@ -94,12 +98,17 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ["@nuxtjs/tailwindcss", "@nuxtjs/moment"],
+
+  buildModules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/moment",
+    "@nuxtjs/router",
+    "@nuxtjs/fontawesome"
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/robots",
     "@nuxtjs/auth",
@@ -156,7 +165,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
-    transpile: ["vue-tinymce-editor"],
+    transpile: ["vue-tinymce-editor", /^element-ui/],
     // Este bloco foi adicionado por causa de erro de less ao ler arquivo de personalização de Iview
     loaders: {
       less: {
@@ -173,6 +182,16 @@ export default {
     exposeConfig: true,
     config: {}
   },
+
+  fontawesome: {
+    component: "fa",
+    icons: {
+      solid: ["faPause", "faStar", "faEnvelope"],
+      brands: ["faLinkedinIn", "faTwitter", "faFacebookF", "faInstagram"]
+    }
+  },
+
+  // , "faLinkedinIn", "faWhatsapp", "faSkype", "faTwitter"
 
   moment: {
     timezone: true,

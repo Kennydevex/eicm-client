@@ -1,24 +1,27 @@
 <template>
   <div>
-    <HomeCarousel :sliders="sliders" />
-    <HomeSchoolBanner />
-    <HomeSchoolSlogan />
-    <HomeSchoolTeam v-if="teams.length > 0" :teams="teams" />
-    <HomeFeaturedCourses
+    <appLandingCarousel v-if="sliders.length > 0" :sliders="sliders" />
+    <appLandingSchoolBanner />
+    <appLandingSchoolSlogan />
+    <appLandingTeams v-if="teams.length > 0" :teams="teams" />
+    <appLandingCourses
       v-if="featured_courses.length > 0"
       :featuredCourses="featured_courses"
     />
-    <HomeFeaturedArticles
+
+    <appLandingArticles
       v-if="featured_articles.length > 0"
       :articles="featured_articles"
     />
-    <HomePartners v-if="partners.length > 0" :partners="partners" />
-    <HomeTestimonials
+
+    <appLandingPartners v-if="partners.length > 0" :partners="partners" />
+    <appLandingTestimonials
       v-if="testimonials.length > 0"
       :testimonials="testimonials"
     />
-    <HomeContacts />
-    <home-footer></home-footer>
+
+    <appLandingContact/>
+
   </div>
 </template>
 
@@ -43,26 +46,6 @@ export default {
       sliders: "sliders/actived_sliders",
       teams: "employees/principal_teams"
     })
-  },
-
-  components: {
-    HomeCarousel: () => import("@/components/frontend/sections/HomeCarousel"),
-    HomeTeams: () => import("@/components/frontend/sections/HomeTeams"),
-    HomeSchoolBanner: () =>
-      import("@/components/frontend/sections/HomeSchoolBanner"),
-    HomeSchoolSlogan: () =>
-      import("@/components/frontend/sections/HomeSchoolSlogan"),
-    HomeSchoolTeam: () =>
-      import("@/components/frontend/sections/HomeSchoolTeam"),
-    HomeFeaturedCourses: () =>
-      import("@/components/frontend/sections/HomeFeaturedCourses"),
-    HomeFeaturedArticles: () =>
-      import("@/components/frontend/sections/HomeFeaturedArticles"),
-    HomePartners: () => import("@/components/frontend/sections/HomePartners"),
-    HomeContacts: () => import("@/components/frontend/sections/HomeContacts"),
-    HomeFooter: () => import("@/components/frontend/sections/HomeFooter"),
-    PrincipalFooter: () =>
-      import("@/components/frontend/sections/PrincipalFooter")
   }
 };
 </script>

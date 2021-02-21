@@ -1,280 +1,107 @@
 <template>
-  <div class="border-white bored-1 bg-gray-200 relative overflow-hidden">
-    <Layout class="h-screen">
-      <Sider
-        width="250"
-        ref="side1"
-        hide-trigger
-        collapsible
-        :collapsed-width="78"
-        v-model="isCollapsed"
-        class="bg-gray-900"
-      >
-        <div
-          class="p-3 pl-6 h-16 w-full box-border flex justify-start items-center bg-gray-800"
-        >
-          <span
-            class="text-gray-100 font-bold text-2xl"
-            :class="isCollapsed ? 'text-lg font-semibold' : ''"
-            >EICM<span v-show="!isCollapsed" class="font-light text-xl"
-              >-GDC</span
-            >
-          </span>
-          <!-- <img
-            class="w-32 text-gray-100"
-            :src="isCollapsed ? 'logo/tiny_logo.svg' : 'logo/logo.svg'"
-          />-->
+  <div id="app">
+    <div :class="classObj" class="app-wrapper">
+      <div
+        v-if="device === 'mobile' && sidebar.opened"
+        @click="handleClickOutside"
+        class="drawer-bg"
+      />
+      <coreDrawer class="sidebar-container" />
+      <div class="p-3 main-container">
+        <div class="fixed-header">
+          <coreHeader />
         </div>
-        <Menu
-          theme="light"
-          width="auto"
-          class="bg-gray-900"
-          :class="menuitemClasses"
-          accordion
-        >
-          <MenuItem name="dashboard">
-            <Icon size="20" type="ios-square" />
-            <span>Dashboard</span>
-          </MenuItem>
 
-          <Submenu name="sys">
-            <template slot="title">
-              <Icon size="20" type="ios-cog" />
-              <span :class="isCollapsed ? 'hidden' : ''">
-                Sistema
-              </span>
-            </template>
-            <MenuItem :to="{ name: 'admin-sys-users' }" name="sys-users">
-              Gestão de Utilizadores</MenuItem
-            >
-            <MenuItem :to="{ name: 'admin-sys-permissions' }" name="sys-roles"
-              >Gestão de Permissções de Acesso</MenuItem
-            >
-            <!--<MenuItem :to="{ name: 'admin-sys-roles' }" name="sys-permissions"
-              >Permissões</MenuItem
-            >-->
-          </Submenu>
-          <Submenu name="institution">
-            <template slot="title">
-              <Icon size="20" type="ios-home" />
-              Instituição
-            </template>
-            <MenuGroup title="INFORMAÇOES">
-              <MenuItem
-                name="institution-about"
-                :to="{ name: 'admin-institution-school' }"
-                >Minha Escola</MenuItem
-              >
-              <MenuItem
-                :to="{ name: 'admin-institution-partners' }"
-                name="institution-partners"
-                >Parceiros</MenuItem
-              >
-              <MenuItem
-                :to="{ name: 'admin-institution-testimonials' }"
-                name="institution-testimonials"
-                >Testemunhos</MenuItem
-              >
-            </MenuGroup>
-            <MenuGroup title="RECURSOS">
-              <MenuItem
-                name="institution-collaborators"
-                :to="{ name: 'admin-institution-collaborators' }"
-                >Colaboradores</MenuItem
-              >
-            </MenuGroup>
-          </Submenu>
-          <Submenu name="course">
-            <template slot="title">
-              <Icon size="20" type="ios-school" />
-              Cursos e Formações
-            </template>
-            <MenuItem
-              name="course-course"
-              :to="{ name: 'admin-formations-courses' }"
-              >Cursos</MenuItem
-            >
-          </Submenu>
-          <Submenu name="cms">
-            <template slot="title">
-              <Icon type="ios-paper" />
-              CMS
-            </template>
-            <MenuItem :to="{ name: 'admin-cms-articles' }" name="cms-categories"
-              >Publicações</MenuItem
-            >
-          </Submenu>
-          <Submenu name="widgets">
-            <template slot="title">
-              <Icon type="md-apps" />
-              Widgets
-            </template>
-            <MenuItem
-              :to="{ name: 'admin-widgets-sliders' }"
-              name="widgets-sliders"
-              >Sliders</MenuItem
-            >
-          </Submenu>
-        </Menu>
-      </Sider>
-      <Layout>
-        <Header class="bg-white shadow-sm p-0">
-          <div class="flex justify-between">
-            <div>
-              <Icon
-                @click.native="collapsedSider"
-                :class="rotateIcon"
-                :style="{ margin: '0 20px' }"
-                type="md-menu"
-                size="24"
-              ></Icon>
-            </div>
-            <div class="flex items-center justify-center">
-              <Icon
-                @click.native="handleFullScreen"
-                :style="{ margin: '0 20px' }"
-                type="ios-expand"
-                size="24"
-                class="cursor-pointer"
-              ></Icon>
-              <Dropdown
-                v-on:on-click="handleUserDropdownEvents($event)"
-                trigger="hover"
-                style="margin-left: 20px"
-              >
-                <a href="javascript:void(0)">
-                  <Avatar class="cursor-pointer mr-5" src="teams/team1.png" />
-                </a>
-                <DropdownMenu slot="list">
-                  <DropdownItem name="perfil"
-                    ><Icon
-                      size="20"
-                      class="mr-3"
-                      type="ios-person"
-                    />Perfil</DropdownItem
-                  >
-                  <DropdownItem name="logout"
-                    ><Icon
-                      size="20"
-                      class="mr-3"
-                      type="md-log-out"
-                    />Logout</DropdownItem
-                  >
-                </DropdownMenu>
-              </Dropdown>
-            </div>
-          </div>
-        </Header>
-        <Content class="m-5 p-3 bg-white">
-          <Nuxt />
-        </Content>
-      </Layout>
-    </Layout>
+        <coreMain />
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
-import Util from "@/utility";
+import ResizeHandler from "@/utils/mixins/ResizeHandler";
+// import { mapState } from "vuex";
 
 export default {
   name: "AdminLayout",
 
   middleware: ["auth"],
 
+  mixins: [ResizeHandler],
+
   created() {
     process.client ? (window.getApp = this) : "";
-    this.vueGates(); // Uma opção crítica, mas no caso de problema é so chama-lo em cada componente explicitamente
+    // this.vueGates();
   },
 
-  data() {
-    return {
-      isCollapsed: false,
-      visible: false
-    };
-  },
   computed: {
-    rotateIcon() {
-      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
+    // ...mapState({
+    //   sidebar: "app/sidebar",
+    //   device: "app/sidebar",
+    //   fixedHeader: "app/fixedHeader",
+    // }),
+
+    sidebar() {
+      return this.$store.state.app.sidebar;
     },
-    menuitemClasses() {
-      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+    device() {
+      return this.$store.state.app.device;
+    },
+    fixedHeader() {
+      return this.$store.state.settings.fixedHeader;
+    },
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === "mobile"
+      };
     }
   },
+
   methods: {
-    handleUserDropdownEvents(ev) {
-      switch (ev) {
-        case "perfil":
-          console.log("ver perfil");
-          break;
-        case "logout":
-          this.logout();
-          break;
-
-        default:
-          break;
-      }
-    },
-
-    collapsedSider() {
-      this.$refs.side1.toggleCollapse();
-    },
-    handleFullScreen() {
-      Util.toggleFullScreen();
-    },
-    handleOpen() {
-      this.visible = true;
-    },
-    handleClose() {
-      this.visible = false;
+    handleClickOutside() {
+      this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
     }
   }
 };
 </script>
 
-<style scoped>
-.layout {
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
+<style lang="scss" scoped>
+@import "@/assets/styles/mixin.scss";
+@import "@/assets/styles/variables.scss";
+.app-wrapper {
+  @include clearfix;
   position: relative;
-  border-radius: 4px;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  &.mobile.openSidebar {
+    position: fixed;
+    top: 0;
+  }
 }
-
-.layout-logo-left {
-  width: 90%;
-  height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
-  margin: 15px auto;
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
 }
-.menu-icon {
-  transition: all 0.3s;
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+  transition: width 0.28s;
 }
-.rotate-icon {
-  transform: rotate(-90deg);
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px);
 }
-.menu-item span {
-  display: inline-block;
-  overflow: hidden;
-  width: 69px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
-  transition: width 0.2s ease 0.2s;
-}
-.menu-item i {
-  transform: translateX(0px);
-  transition: font-size 0.2s ease, transform 0.2s ease;
-  vertical-align: middle;
-  font-size: 16px;
-}
-.collapsed-menu span {
-  width: 0px;
-  transition: width 0.2s ease;
-}
-.collapsed-menu i {
-  transform: translateX(5px);
-  transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
-  vertical-align: middle;
-  font-size: 22px;
+.mobile .fixed-header {
+  width: 100%;
 }
 </style>

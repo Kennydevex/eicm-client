@@ -1,42 +1,53 @@
 <template>
   <div
-    class="h-screen object-cover w-full bg-gray-600 flex justify-end items-center "
+    class="flex items-center justify-end object-cover w-full h-screen bg-gray-600 "
     style="background-image: url('/background/bg_login.jpg');"
   >
     <div
-      class="p-8 flex flex-col justify-center  w-96 bg-white m-5 border rounded-lg shadow-2xl"
+      class="flex flex-col justify-center p-8 m-5 bg-white border rounded-lg shadow-2xl w-96"
     >
       <div class="pb-5 text-center">
         <p
-          class="text-center font-semibold tracking-wider text-primary text-base"
+          class="text-base font-light tracking-wider text-center uppercase text-primary"
         >
           Autenticar
         </p>
       </div>
       <div class="w-full mb-3" v-if="auth_401_errors">
-        <Alert type="error" show-icon>{{auth_401_errors}}</Alert>
+        <el-alert
+          title="Verefique os dados inseridos"
+          :description="auth_401_errors"
+          type="error"
+          show-icon
+        >
+        </el-alert>
       </div>
       <div>
-        <login-form :formData="formData"></login-form>
+        <coreFormsLogin :formData="formData"></coreFormsLogin>
       </div>
-      <div class="flex justify-between">
+      <el-divider class="py-0 my-0"></el-divider>
+      <div>
         <div>
-          <Button
-            :to="'/'"
-            type="text"
-            class="text-xs text-left text-primary p-0"
-            ghost
-            >Home</Button
-          >
+          <router-link to="/">
+            <el-button
+              :to="'/'"
+              type="text"
+              class="p-0 text-xs text-left text-primary hover:outline-none"
+              plain
+              >Início</el-button
+            >
+          </router-link>
         </div>
+
         <div>
-          <Button
-            :to="'/register'"
-            type="text"
-            class="text-xs text-left text-primary tracking-wide p-0"
-            ghost
-            >Registar</Button
-          >
+          <router-link :to="'/registar'">
+            <el-button
+              type="text"
+              class="p-0 text-xs tracking-wide text-left text-primary hover:outline-none"
+              plain
+              >Quero registar uma conta</el-button
+            >
+          </router-link>
         </div>
       </div>
     </div>
@@ -53,10 +64,6 @@ export default {
         password: ""
       }
     };
-  },
-
-  components: {
-    LoginForm: () => import("@/components/forms/LoginForm")
   }
 };
 </script>

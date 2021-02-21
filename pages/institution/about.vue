@@ -2,23 +2,25 @@
   <div>
     <div class="mb-8">
       <div>
-        <general-page-header
-          :title="'Sobre a Instituição'"
-        ></general-page-header>
+        <core-landing-page-header>Sobre a Instituição</core-landing-page-header>
       </div>
 
       <div class="container m-auto">
-        <div class="flex flex-col items-center justify-center bg-white rounded-lg shadow-lg">
+        <div
+          class="flex flex-col items-center justify-center"
+        >
           <div
-            class="mt-8 text-lg font-semibold leading-tight tracking-wide text-center capitalize text-primary"
+            class="mt-8 text-2xl font-bold leading-tight tracking-wide text-center text-gray-800 uppercase"
           >
             {{ name }}
           </div>
           <div
-            class="px-3 py-1 mt-3 mb-8 text-sm font-bold tracking-widest text-center text-gray-700 uppercase bg-gray-300 rounded-md"
+            class="px-3 py-1 mt-3 mb-3 text-sm font-bold tracking-widest text-center text-gray-700 uppercase bg-gray-300 rounded-md"
           >
             {{ abbr }}
           </div>
+
+          <el-divider></el-divider>
 
           <div class="mb-8">
             <p
@@ -30,7 +32,6 @@
         </div>
       </div>
     </div>
-    <home-footer :bgColor="'#F3F4F6'"></home-footer>
   </div>
 </template>
 
@@ -52,10 +53,7 @@ export default {
       abbr: "schools/abbr"
     })
   },
-  components: {
-    GeneralPageHeader: () => import("@/views/sections/GeneralPageHeader"),
-    HomeFooter: () => import("@/components/frontend/sections/HomeFooter")
-  }
+
 };
 </script>
 

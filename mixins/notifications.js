@@ -6,32 +6,22 @@ const alerts = {
   install(Vue, options) {
     Vue.mixin({
       methods: {
-        successMsg(msg) {
-          this.$Message.success(msg);
-        },
-
-        errorMsg(msg) {
-          this.$Message.error(msg);
-        },
-
-        successNotify(title, desc) {
-          this.$Notice.success({
-            title: title ? title : "Sucesso",
-            desc: desc ? desc : "Operação efetuada com sucesso"
+        actionMsg(msg, type = "success") {
+          this.$message({
+            message: msg,
+            type: type
           });
         },
 
-        errorNotify(title, desc) {
-          this.$Notice.error({
-            title: title ? title : "Sucesso",
-            desc: desc ? desc : "Operação efetuada com sucesso"
-          });
-        },
-
-        warningNotify(title, desc) {
-          this.$Notice.warning({
-            title: title ? title : "Sucesso",
-            desc: desc ? desc : "Operação efetuada com sucesso"
+        actionNotify(
+          title = "Sucesso",
+          msg = "Operação efetuada com sucesso",
+          type = "success"
+        ) {
+          this.$notify({
+            title: title,
+            message: msg,
+            type: type
           });
         }
       }

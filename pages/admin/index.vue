@@ -1,6 +1,6 @@
 <template>
   <div>
-    Admin
+    Escola Industrial e Comercial do Mindelo
   </div>
 </template>
 
@@ -10,3 +10,5 @@ export default {
   layout: "admin"
 };
 </script>
+
+<style lang="scss" scoped></style>

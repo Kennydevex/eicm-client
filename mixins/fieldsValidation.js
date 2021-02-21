@@ -52,6 +52,22 @@ export const user_validation = {
   }
 };
 
+export const permission_validation = {
+  data() {
+    return {
+      permissionFormValidation: {
+        name: [
+          {
+            required: true,
+            message: "Obrigatório a intrução de uma designação",
+            trigger: "blur"
+          }
+        ]
+      }
+    };
+  }
+};
+
 export const charge_validation = {
   data() {
     return {
@@ -230,9 +246,9 @@ export const employee_validation = {
         "charges.0.encumbrance.activity_begin": [
           {
             required: true,
-            type: "date",
             message: "Campo necessário",
             trigger: "change"
+            // Aqui removeu-se o type: 'date' para impedir um erro
           }
         ],
 
@@ -566,7 +582,6 @@ export const mark_validation = {
         begin: [
           {
             required: true,
-            type: "date",
             message: "Campo necessário",
             trigger: "change"
           }

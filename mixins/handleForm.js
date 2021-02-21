@@ -7,7 +7,11 @@ const handleForm = {
     Vue.mixin({
       methods: {
         resetFormFields(name) {
-          this.$refs[name].resetFields();
+          try {
+            this.$refs[name].resetFields();
+          } catch (error) {
+            console.error(error);
+          }
         }
       }
     });

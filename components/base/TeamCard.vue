@@ -15,7 +15,7 @@
 
       <div class="w-full pb-2 text-center border-b">
         <h2 class="mt-3 text-lg font-semibold text-gray-600">
-          {{ team.person.name }} 
+          {{ team.person.name }}
         </h2>
         <h6 class="mt-1 text-sm font-semibold text-gray-500 ">
           {{ team.charges[0].name }}
@@ -33,10 +33,9 @@
               target="_blank"
               class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
             >
-              <Icon
-                size="16"
+              <fa
                 class="text-primary group-hover:text-white"
-                type="logo-facebook"
+                :icon="['fab', 'facebook-f']"
               />
             </a>
           </li>
@@ -45,12 +44,10 @@
               :href="team.twitter"
               target="_blank"
               class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
-
             >
-              <Icon
-                size="16"
+              <fa
                 class="text-primary group-hover:text-white"
-                type="logo-twitter"
+                :icon="['fab', 'twitter']"
               />
             </a>
           </li>
@@ -59,12 +56,10 @@
               :href="team.linkedin"
               target="_blank"
               class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
-
             >
-              <Icon
-                size="16"
+              <fa
                 class="text-primary group-hover:text-white"
-                type="logo-linkedin"
+                :icon="['fab', 'linkedin-in']"
               />
             </a>
           </li>
@@ -72,13 +67,8 @@
             <a
               :href="`mailto:${team.email}`"
               class="flex items-center justify-center w-8 h-8 text-gray-800 bg-gray-300 border-gray-600 rounded-full group hover:bg-gray-500"
-
             >
-              <Icon
-                size="16"
-                class="text-primary group-hover:text-white"
-                type="md-mail"
-              />
+              <fa class="text-primary group-hover:text-white" icon="envelope" />
             </a>
           </li>
         </ul>
@@ -87,7 +77,7 @@
   </div>
 </template>
 
-<script> 
+<script>
 export default {
   props: {
     team: {

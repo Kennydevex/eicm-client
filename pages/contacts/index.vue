@@ -3,13 +3,13 @@
     <div class="my-8 ">
       <div class="container m-auto">
         <div class="overflow-hidden bg-white rounded-lg shadow-lg">
-          <Row>
-            <Col span="24">
-              <contact-map />
-            </Col>
-          </Row>
-          <Row class="p-8 mt-5">
-            <Col :xs="{ span: 24, order: 2 }" :md="{ span: 12, order: 1 }">
+          <el-row>
+            <el-col>
+              <coreMaps />
+            </el-col>
+          </el-row>
+          <el-row class="p-8 mt-5">
+            <el-col class="order-2 md:order-1" :xs="24" :md="12">
               <div class="flex flex-col items-start justify-center p-3">
                 <div class="text-xl tracking-wide text-primary">
                   Contactos
@@ -49,8 +49,8 @@
                   </div>
                 </div>
               </div>
-            </Col>
-            <Col :xs="{ span: 24, order: 1 }" :md="{ span: 12, order: 2 }">
+            </el-col>
+            <el-col class="order-2 md:order-1" :xs="24" :md="12">
               <div class="flex flex-col items-start justify-center p-3">
                 <div class="text-xl tracking-wide text-primary">
                   Contactar a Escola
@@ -63,15 +63,14 @@
                 </div>
 
                 <div class="pt-8 border-t ">
-                  <contact-form></contact-form>
+                  <coreFormsToContact />
                 </div>
               </div>
-            </Col>
-          </Row>
+            </el-col>
+          </el-row>
         </div>
       </div>
     </div>
-    <home-footer :bgColor="'#F3F4F6'"></home-footer>
   </div>
 </template>
 
@@ -81,11 +80,6 @@ import { mapGetters } from "vuex";
 export default {
   name: "ContactPage",
   layout: "landing",
-  components: {
-    ContactForm: () => import("@/components/frontend/ContactForm"),
-    ContactMap: () => import("@/components/frontend/sections/ContactMap"),
-    HomeFooter: () => import("@/components/frontend/sections/HomeFooter")
-  },
   computed: {
     ...mapGetters({
       contacts: "schools/contacts",
