@@ -44,6 +44,7 @@
           style="width: 100%"
           height="350"
           :data="searchData"
+          @row-contextmenu="handleContextMenu()"
           @selection-change="handleSelectionChange"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
@@ -106,12 +107,12 @@ export default {
   props: {
     deleteEntity: {
       type: String,
-      default: '',
+      default: "",
       required: true
     },
     updateEntity: {
       type: String,
-      default: '',
+      default: "",
       required: true
     },
     dataSourse: {
@@ -164,6 +165,9 @@ export default {
   },
 
   methods: {
+    handleContextMenu() {
+      this.$emit("handleContextMenu", [i, row]);
+    },
     handleEdit(i, row) {
       this.$emit("handleEdit", [i, row]);
     },

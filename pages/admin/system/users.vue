@@ -26,6 +26,7 @@
     <el-row>
       <el-col :span="24">
         <appBackendCommonDataTable
+          @handleContextMenu="contextMenu()"
           :deleteEntity="'users'"
           :updateEntity="'APP_UPDATE_USERS_DATA'"
           :tableFields="tableFields"
@@ -38,6 +39,49 @@
           @handleEdit="onEditUser($event)"
           @handleDelete="onDeleteUser($event)"
         >
+          <template v-slot:column_after>
+            <el-table-column
+              header-align="center"
+              align="center"
+              label="Ativação"
+              width="80"
+            >
+              <template slot-scope="{ row }">
+                <el-popover trigger="hover" placement="top">
+                  <p>
+                    <b>Ativação:</b>
+                    <span
+                      :class="!row.status ? 'text-red-400' : 'text-green-600'"
+                    >
+                      {{ row.status ? "Utilizador Ativo" : "Utilizador I" }}
+                    </span>
+
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'users/user-activation',
+                          row.id,
+                          row.active,
+                          'Utilizador',
+                          'APP_UPDATE_USERS_DATA'
+                        )
+                      "
+                      type="text"
+                      >{{ row.active ? "Inativar" : "Ativar" }}</el-button
+                    >
+                  </p>
+
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag
+                      :type="row.status ? 'success' : 'info'"
+                      size="medium"
+                      >{{ row.status ? "Ativo" : "Inativo" }}</el-tag
+                    >
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+          </template>
         </appBackendCommonDataTable>
       </el-col>
     </el-row>
@@ -117,6 +161,9 @@ export default {
   },
 
   methods: {
+    contextMenu() {
+      console.log("context menu");
+    },
     async cancelUserForm() {
       this.$refs.userForm.cancelUserForm();
     },

@@ -2,13 +2,8 @@
   <div>
     <el-row>
       <el-col :span="24">
-        <el-button
-          :loading_data="loading_data"
-          size="medium"
-          type="primary"
-          @click.stop="onCreateSlider()"
-          ><span v-if="!loading_data">Criar Novo Slider</span>
-          <span v-else>Solicitando dados...</span></el-button
+        <el-button size="medium" type="primary" @click.stop="onCreateSlider()"
+          ><span>Criar Novo Slider</span></el-button
         >
 
         <appBackendCommonRegisterDialog
@@ -38,9 +33,53 @@
           :searchParams="[{ name: 'Título', key: 'title' }]"
           :sendingData="sending"
           :dataSourse="sliders"
+          @handleContextMenu="contextMenu($event)"
           @handleEdit="onEditSlider($event)"
           @handleDelete="onDeleteSlider($event)"
         >
+          <template v-slot:column_after>
+            <el-table-column
+              header-align="center"
+              align="center"
+              label="Ativação"
+              width="80"
+            >
+              <template slot-scope="{ row }">
+                <el-popover trigger="hover" placement="top">
+                  <p>
+                    <b>Ativação:</b>
+                    <span
+                      :class="!row.status ? 'text-red-400' : 'text-green-600'"
+                    >
+                      {{ row.status ? "Slider Ativo" : "Slider Inativo" }}
+                    </span>
+
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'sliders/slider-activation',
+                          row.id,
+                          row.status,
+                          'Slider',
+                          'APP_UPDATE_SLIDERS_DATA'
+                        )
+                      "
+                      type="text"
+                      >{{ row.status ? "Inativar" : "Ativar" }}</el-button
+                    >
+                  </p>
+
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag
+                      :type="row.status ? 'success' : 'info'"
+                      size="medium"
+                      >{{ row.status ? "Ativo" : "Inativo" }}</el-tag
+                    >
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+          </template>
         </appBackendCommonDataTable>
       </el-col>
     </el-row>
@@ -96,7 +135,7 @@ export default {
       }
     },
     slider_dialog_title() {
-      return this.creatingSlider ? "Registar Parceiro" : "Editar Parceiro";
+      return this.creatingSlider ? "Registar Slider" : "Editar Slider";
     }
   },
 
@@ -109,6 +148,9 @@ export default {
   },
 
   methods: {
+    contextMenu() {
+      console.log("context menu");
+    },
     async cancelSliderForm() {
       this.$refs.sliderForm.cancelSliderForm();
     },

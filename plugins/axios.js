@@ -19,7 +19,7 @@ export default function({ $axios, store, redirect, app }) {
 
     if (error.response.status === 403) {
       redirect("/");
-      console.log('Utilizador sem permissão');
+      // console.log('Utilizador sem permissão');
       return;
     }
     return Promise.reject(error);

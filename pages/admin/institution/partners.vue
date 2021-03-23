@@ -26,7 +26,7 @@
     <el-row>
       <el-col :span="24">
         <appBackendCommonDataTable
-        :deleteEntity="'partners'"
+          :deleteEntity="'partners'"
           :updateEntity="'APP_UPDATE_PARTNERS_DATA'"
           :tableFields="tableFields"
           :searchParams="[{ name: 'Nome', key: 'name' }]"
@@ -35,6 +35,49 @@
           @handleEdit="onEditPartner($event)"
           @handleDelete="onDeletePartner($event)"
         >
+          <template v-slot:column_after>
+            <el-table-column
+              header-align="center"
+              align="center"
+              label="Ativação"
+              width="80"
+            >
+              <template slot-scope="{ row }">
+                <el-popover trigger="hover" placement="top">
+                  <p>
+                    <b>Ativação:</b>
+                    <span
+                      :class="!row.status ? 'text-red-400' : 'text-green-600'"
+                    >
+                      {{ row.status ? "Parceiro ativo" : "Parceiro inativo" }}
+                    </span>
+
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'partners/partner-activation',
+                          row.id,
+                          row.status,
+                          'Parceiro',
+                          'APP_UPDATE_PARTNERS_DATA'
+                        )
+                      "
+                      type="text"
+                      >{{ row.status ? "Inativar" : "Ativar" }}</el-button
+                    >
+                  </p>
+
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag
+                      :type="row.status ? 'success' : 'info'"
+                      size="medium"
+                      >{{ row.status ? "Ativo" : "Inativo" }}</el-tag
+                    >
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+          </template>
         </appBackendCommonDataTable>
       </el-col>
     </el-row>
@@ -124,7 +167,6 @@ export default {
           this.$set(this.sending, ev[1].id, false);
         });
         this.$refs.partnerForm.initFilesUploaded();
-
       } catch (error) {
         this.actionMsg("Algo correu mal", "error");
       }

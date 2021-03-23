@@ -25,6 +25,65 @@
           @handleEdit="onEditArticle($event)"
           @handleDelete="onDeleteArticle($event)"
         >
+
+         <template v-slot:column_after>
+           
+
+            <el-table-column header-align="center" align="center" label="Ativação" width="80">
+              <template slot-scope="{ row }">
+                <el-popover trigger="hover" placement="top">
+                  <p>
+                    <b>Ativação:</b>
+                    <span
+                      :class="!row.status ? 'text-red-400' : 'text-green-600'"
+                    >
+                      {{
+                        row.status ? "Artigo ativo" : "Artigo inativo"
+                      }}
+                    </span>
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'articles/publish-article',
+                          row.id,
+                          row.status,
+                          'Artigo',
+                          'APP_UPDATE_ARTICLES_DATA'
+                        )
+                      "
+                      type="text"
+                      >{{ row.status ? "Inativar" : "Ativar" }}</el-button
+                    >
+                  </p>
+                  <p>
+                    <b>Destaque:</b>
+                    {{ row.featured ? "Artigo em Destaque" : "Sem Destaque" }}
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'articles/highlight-article',
+                          row.id,
+                          row.featured,
+                          'Artigo',
+                          'APP_UPDATE_ARTICLES_DATA',
+                          true
+                        )
+                      "
+                      type="text"
+                      >{{ row.featured ? "Tirar destaque" : "Destacar" }}</el-button
+                    >
+                  </p>
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag
+                      :type="row.status ? 'success' : 'info'"
+                      size="medium"
+                      >{{ row.status ? "Ativo" : "Inativo" }}</el-tag
+                    >
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+          </template>
         </appBackendCommonDataTable>
       </el-col>
     </el-row>

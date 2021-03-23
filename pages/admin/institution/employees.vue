@@ -26,7 +26,7 @@
     <el-row>
       <el-col :span="24">
         <appBackendCommonDataTable
-        :deleteEntity="'employees'"
+          :deleteEntity="'employees'"
           :updateEntity="'APP_UPDATE_EMPLOYEES_DATA'"
           :tableFields="tableFields"
           :searchParams="[{ name: 'Nome', key: 'name' }]"
@@ -35,6 +35,95 @@
           @handleEdit="onEditEmployee($event)"
           @handleDelete="onDeleteEmployee($event)"
         >
+          <template v-slot:column_after>
+            <el-table-column header-align="center" align="center" label="Responsabilidade" width="120">
+              <template slot-scope="{ row }">
+                <el-popover trigger="hover" placement="top">
+                  <p class="mb-3">
+                    <b>Propessor:</b>
+                    {{
+                      row.is_teacher ? "Tambem é professor" : "Não é Professor"
+                    }}
+                    <el-button type="text">Alterar</el-button>
+                  </p>
+                  <p>
+                    <b> Utilizador:</b>
+                    <span
+                      :class="
+                        row.person.user == null || !row.person.user
+                          ? 'text-red-400'
+                          : 'text-green-600'
+                      "
+                      >{{
+                        row.person.user == null || !row.person.user
+                          ? "Sem conta de utilizador"
+                          : "Possui conta de utilizador"
+                      }}</span
+                    >
+                  </p>
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag size="medium">{{ row.charges[0].name }}</el-tag>
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+
+            <el-table-column header-align="center" align="center" label="Ativação" width="80">
+              <template slot-scope="{ row }">
+                <el-popover trigger="hover" placement="top">
+                  <p>
+                    <b>Ativação:</b>
+                    <span
+                      :class="!row.active ? 'text-red-400' : 'text-green-600'"
+                    >
+                      {{
+                        row.active ? "Colaborador ativo" : "Colaborador inativo"
+                      }}
+                    </span>
+
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'employees/employee-activation',
+                          row.id,
+                          row.active,
+                          'Colaborador',
+                          'APP_UPDATE_EMPLOYEES_DATA'
+                        )
+                      "
+                      type="text"
+                      >{{ row.active ? "Inativar" : "Ativar" }}</el-button
+                    >
+                  </p>
+                  <p>
+                    <b>Destaque:</b>
+                    {{ row.team ? "Colaborador em destaque" : "Sem Destaque" }}
+                    <el-button
+                      @click="
+                        toggleStatus(
+                          'employees/employee-handle-team',
+                          row.id,
+                          row.team,
+                          'Colaborador',
+                          'APP_UPDATE_EMPLOYEES_DATA',
+                          true
+                        )
+                      "
+                      type="text"
+                      >{{ row.team ? "Tirar destaque" : "Destacar" }}</el-button
+                    >
+                  </p>
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag
+                      :type="row.active ? 'success' : 'info'"
+                      size="medium"
+                      >{{ row.active ? "Ativo" : "Inativo" }}</el-tag
+                    >
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+          </template>
         </appBackendCommonDataTable>
       </el-col>
     </el-row>
@@ -57,7 +146,11 @@ export default {
     return {
       creatingEmployee: false,
       selected: [],
-      tableFields: [{ label: "Nome", name: "person.name" }],
+      tableFields: [
+        { label: "Nome", name: "person.name" },
+        { label: "Email", name: "email" }
+        // { label: "Cargo", name: "charges.0.name" },
+      ],
       sending: {},
       singleEmployee: {},
       formData: {
