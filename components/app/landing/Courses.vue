@@ -1,6 +1,6 @@
 <template>
-  <div class="justify-center w-full bg-gray-100">
-    <svg
+  <div class="justify-center w-full pt-12 bg-gray-100">
+    <!--<svg
       class="wave-top"
       viewBox="0 0 1439 147"
       version="1.1"
@@ -34,7 +34,7 @@
           </g>
         </g>
       </g>
-    </svg>
+    </svg>-->
     <div class="container m-auto">
       <el-row>
         <el-col :span="24" class="mb-10">

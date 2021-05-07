@@ -88,7 +88,7 @@
             <li class="mt-2">
               <a
                 href="#"
-                class="text-gray-600 hover:underline hover:text-primary"
+                class="text-gray-500 hover:underline hover:text-gray-400"
               >
                 <span>
                   <i class="el-icon-phone"></i>
@@ -100,7 +100,7 @@
             <li class="mt-2">
               <a
                 href="#"
-                class="text-gray-600 hover:underline hover:text-primary"
+                class="text-gray-500 hover:underline hover:text-gray-400"
               >
                 <span>
                   <i class="el-icon-message"></i>
@@ -113,7 +113,7 @@
             <li class="mt-2">
               <a
                 href="#"
-                class="text-gray-600 hover:underline hover:text-primary"
+                class="text-gray-500 hover:underline hover:text-gray-400"
               >
                 <span>
                   <i class="el-icon-location"></i>
@@ -132,7 +132,7 @@
             <li class="mt-2" v-for="(course, c) in courses" :key="c">
               <a
                 href="#"
-                class="leading-tight text-gray-600 hover:underline hover:text-gray-300"
+                class="leading-tight text-gray-500 hover:underline hover:text-gray-400"
                 >{{ course.name }}</a
               >
             </li>
@@ -147,21 +147,21 @@
             <li class="mt-2">
               <a
                 href="#"
-                class="text-gray-600 hover:underline hover:text-gray-300"
+                class="text-gray-500 hover:underline hover:text-gray-400"
                 >Sistema Nacional de Qualificações</a
               >
             </li>
             <li class="mt-2">
               <a
                 href="#"
-                class="text-gray-600 hover:underline hover:text-gray-300"
+                class="text-gray-500 hover:underline hover:text-gray-400"
                 >UNICV</a
               >
             </li>
             <li class="mt-2">
               <a
                 href="#"
-                class="text-gray-600 hover:underline hover:text-gray-300"
+                class="text-gray-500 hover:underline hover:text-gray-400"
                 >Ministério de Educação</a
               >
             </li>
@@ -174,7 +174,7 @@
               <a
                 :href="partner.link"
                 target="_blank"
-                class="text-gray-600 hover:underline hover:text-gray-300"
+                class="text-gray-500 hover:underline hover:text-gray-400"
                 >{{ partner.name }}</a
               >
             </li>

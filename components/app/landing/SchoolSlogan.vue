@@ -15,16 +15,16 @@
             data-aos-duration="2000"
             class="flex flex-row items-center justify-center px-8 py-3 mx-8 "
           >
-            <div class="mr-12 -mt-3 text-xl text-gray-400">
+            <div class="mr-3 -mt-3 text-2xl text-gray-200">
               &#10077;
             </div>
             <div
-              class="text-xl antialiased font-semibold leading-relaxed tracking-wider text-gray-900"
+              class="text-xl antialiased font-semibold leading-relaxed tracking-wider text-gray-200 uppercase"
             >
               {{ slogan }}
             </div>
 
-            <div class="flex justify-end mt-3 ml-12 text-2xl text-gray-300 ">
+            <div class="flex justify-end mt-6 ml-3 text-2xl text-gray-200 ">
               &#10078;
             </div>
           </div>

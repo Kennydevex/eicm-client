@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center w-full bg-gray-100">
+  <div class="justify-center w-full pt-12 pb-5 bg-gray-100">
     <!--<svg
       class="wave-top"
       viewBox="0 0 1439 147"

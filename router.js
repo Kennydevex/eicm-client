@@ -77,7 +77,7 @@ export const routerOptions = {
       hidden: true
     },
     {
-      path: "/institution/sobre",
+      path: "/instituicao/sobre",
       component: About,
       name: "institution-about",
       hidden: true

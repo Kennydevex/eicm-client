@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center w-full py-5 bg-gray-100">
+  <div class="justify-center w-full py-5 bg-white">
     <div class="container px-3 mx-auto ">
       <el-row>
         <el-col :span="24" class="mb-5">

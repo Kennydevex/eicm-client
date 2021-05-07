@@ -1,7 +1,7 @@
 <template>
   <div class="py-8">
     <div
-      class="font-sans text-xl antialiased font-medium leading-tight tracking-wide text-center text-gray-500 uppercase md:text-left sm:text-4xl"
+      class="font-sans text-xl antialiased font-medium leading-tight tracking-wide text-center text-gray-500 uppercase md:text-left sm:text-xl"
     >
       <slot></slot>
     </div>

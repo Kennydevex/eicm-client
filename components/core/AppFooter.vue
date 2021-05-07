@@ -11,7 +11,7 @@
       <div
         class="text-right leading-tight font-sans antialiased text-gray-600 tracking-wide"
       >
-        By: DicifraKodigu
+        By: TechDecifra
       </div>
     </div>
   </footer>
