@@ -38,7 +38,7 @@
     <div class="container m-auto">
       <el-row>
         <el-col :span="24" class="mb-10">
-          <base-section-title>Cursos em distaque</base-section-title>
+          <base-section-titleq>Cursos em destaue</base-section-titleq>
         </el-col>
 
         <el-col :span="24" class="mt-8 mb-3">

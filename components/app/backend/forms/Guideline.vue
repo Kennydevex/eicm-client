@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import { requests } from "@/mixins/appRequest";
 import { guideline_validation } from "@/mixins/fieldsValidation";
 export default {

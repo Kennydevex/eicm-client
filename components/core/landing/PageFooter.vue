@@ -82,7 +82,7 @@
         </div>
       </div>
       <div class="flex flex-wrap mt-5">
-        <div class="w-full text-center md:w-1/4 md:text-left">
+        <div class="w-full px-3 text-center md:w-1/4 md:text-left ">
           <h5 class="mb-6 font-bold text-gray-400 uppercase">Contactos</h5>
           <ul class="mb-4">
             <li class="mt-2">
@@ -124,7 +124,7 @@
             </li>
           </ul>
         </div>
-        <div class="w-full text-center md:w-1/4 md:text-left">
+        <div class="w-full px-3 text-center md:w-1/4 md:text-left">
           <h5 class="mb-6 font-bold text-gray-400 uppercase">
             Cursos da Via Técnica
           </h5>
@@ -139,7 +139,7 @@
           </ul>
         </div>
 
-        <div class="w-full text-center md:w-1/4 md:text-left">
+        <div class="w-full px-3 text-center md:w-1/4 md:text-left">
           <h5 class="mb-6 font-bold text-gray-400 uppercase">
             Ligações Externas
           </h5>
@@ -167,7 +167,7 @@
             </li>
           </ul>
         </div>
-        <div class="w-full text-center md:w-1/4 md:text-left">
+        <div class="w-full px-3 text-center md:w-1/4 md:text-left ">
           <h5 class="mb-6 font-bold text-gray-400 uppercase">Parceiros</h5>
           <ul class="mb-4">
             <li class="mt-2" v-for="partner in partners" :key="partner.id">
