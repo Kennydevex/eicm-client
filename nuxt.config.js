@@ -125,7 +125,7 @@ export default {
         title: process.env.SITE_TITLE || "EICM-GDC",
         site_name: process.env.SITE_NAME || "EICM-GDC",
         description:
-          process.env.SITE_DESCRIPTION || "Escola Tecnica do Mindelo - GuilhermeDias Chantre",
+          process.env.SITE_DESCRIPTION || "Escola Tecnica do Mindelo - Guilherme Dias Chantre",
         img: process.env.SITE_LOGO || "logo/logo.png",
         locale: "pt_PT",
         twitter: "@eicm_gdc",
