@@ -6,25 +6,46 @@
           <base-section-title>Equipa</base-section-title>
         </el-col>
 
-        <div class="flex items-center justify-center w-full">
-        
-        <template v-for="(team, index) in teams">
-          <el-col :span="24" :xs="24" :sm="12" :md="8" :lg="6" :key="index" class="flex items-center justify-center mb-3">
-            <base-team-card :team="team" :key="index"/>
-          </el-col>
-        </template>
-        </div>
-
+        <el-col :span="24" class="mt-8">
+          <div data-aos="fade">
+            <vueper-slides
+              autoplay
+              fade
+              :infinite="true"
+              :bullets="true"
+              class="mx-5 no-shadow"
+              :visible-slides="3"
+              fixed-height="300px"
+              slide-multiple
+              :gap="3"
+              :slide-ratio="1 / 4"
+              :dragging-distance="200"
+              :breakpoints="breakpoints"
+            >
+              <template v-if="teams.length != 0">
+                <vueper-slide v-for="team in teams" :key="team.id">
+                  <template v-slot:content>
+                    <div class="flex items-start justify-center">
+                      <base-team-card :team="team" />
+                    </div>
+                  </template>
+                </vueper-slide>
+              </template>
+            </vueper-slides>
+          </div>
+        </el-col>
       </el-row>
     </div>
   </div>
 </template>
 
 <script>
+import { VueperSlides, VueperSlide } from "vueperslides";
+import "vueperslides/dist/vueperslides.css";
 
 export default {
   name: "HomeTeams",
-   props: {
+  props: {
     teams: {
       type: Array,
       default: () => {
@@ -32,7 +53,41 @@ export default {
       }
     }
   },
-  
+
+  data() {
+    return {
+      pauseOnHover: true,
+      internalAutoPlaying: true,
+      breakpoints: {
+        1200: {
+          slideRatio: 1 / 5,
+          visibleSlides: 3,
+          arrows: false,
+          bullets: false,
+          slideMultiple: 2
+        },
+        900: {
+          slideRatio: 1 / 3,
+          visibleSlides: 1,
+          arrows: false,
+          bullets: false,
+          slideMultiple: 1
+        },
+        600: {
+          slideRatio: 1 / 2,
+          arrows: false,
+          bullets: false,
+          visibleSlides: 1,
+          slideMultiple: 1
+        }
+        // The order you list breakpoints does not matter, Vueper Slides will sort them for you.
+      }
+    };
+  },
+  components: {
+    VueperSlides,
+    VueperSlide
+  }
 };
 </script>
 

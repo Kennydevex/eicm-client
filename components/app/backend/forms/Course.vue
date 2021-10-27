@@ -161,10 +161,12 @@
           </el-col>
 
           <el-col>
-            <div class="mb-2 text-gray-700">Selecione as saídas para este curso</div>
+            <div class="mb-2 text-gray-700">
+              Selecione as saídas para este curso
+            </div>
             <el-form-item prop="course_outcomes">
               <el-transfer
-              class="w-full"
+                class="w-full"
                 filterable
                 :filter-method="filterMethod"
                 filter-placeholder="Filtrar saídas"
@@ -226,7 +228,13 @@
                 </el-col>
 
                 <el-col :xs="12" :sm="6">
-                  <el-form-item :error="showFormErrors('teachers.0.coordination.start_date')" prop="start_date" label="Início">
+                  <el-form-item
+                    :error="
+                      showFormErrors('teachers.0.coordination.start_date')
+                    "
+                    prop="start_date"
+                    label="Início"
+                  >
                     <el-date-picker
                       value-format="yyyy-MM-dd "
                       :value="teacher.coordination.start_date"
@@ -240,7 +248,11 @@
                 </el-col>
 
                 <el-col :xs="12" :sm="6">
-                  <el-form-item :error="showFormErrors('teachers.0.coordination.end_date')" prop="end_date" label="Fim">
+                  <el-form-item
+                    :error="showFormErrors('teachers.0.coordination.end_date')"
+                    prop="end_date"
+                    label="Fim"
+                  >
                     <el-date-picker
                       value-format="yyyy-MM-dd "
                       :value="teacher.coordination.end_date"
@@ -648,7 +660,8 @@ export default {
         "courses",
         "Curso Registado",
         "APP_UPDATE_COURSES_DATA",
-        "courses/toggleCreateCourseDialog"
+        "courses",
+        false
       );
       this.courseTab = "course_info";
       this.$refs.courseCover.$refs.uploadImageComponent.clearFiles();
@@ -660,10 +673,12 @@ export default {
         "courses",
         "Curso Atualizado",
         "APP_UPDATE_COURSES_DATA",
-        "courses/toggleCreateCourseDialog"
+        "courses",
+        false
       );
       this.courseTab = "course_info";
       this.$refs.courseCover.$refs.uploadImageComponent.clearFiles();
+
     },
 
     cancelCourseForm() {
@@ -671,7 +686,7 @@ export default {
       if (this.formData.cover && this.formData.cover != "default.svg") {
         this.handleRemoveCover();
       }
-   
+
       this.courseTab = "course_info";
       this.handleModal("courses/toggleCreateCourseDialog");
     },

@@ -1,21 +1,21 @@
 <template>
   <div>
-    <appLandingCarousel v-if="sliders.length > 0" :sliders="sliders" />
+    <LazyAppLandingCarousel v-if="sliders.length > 0" :sliders="sliders" />
     <appLandingSchoolBanner />
     <appLandingSchoolSlogan />
-    <appLandingTeams v-if="teams.length > 0" :teams="teams" />
-    <appLandingCourses
+    <LazyAppLandingTeams v-if="teams.length > 0" :teams="teams" />
+    <LazyAppLandingCourses
       v-if="featured_courses.length > 0"
       :featuredCourses="featured_courses"
     />
 
-    <appLandingArticles
+    <LazyAppLandingArticles
       v-if="featured_articles.length > 0"
       :articles="featured_articles"
     />
 
-    <appLandingPartners v-if="partners.length > 0" :partners="partners" />
-    <appLandingTestimonials
+    <LazyAppLandingPartners v-if="partners.length > 0" :partners="partners" />
+    <LazyAppLandingTestimonials
       v-if="testimonials.length > 0"
       :testimonials="testimonials"
     />

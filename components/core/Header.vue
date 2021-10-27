@@ -11,7 +11,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar" class="user-avatar" />
+          <img :src="'/app/avatar.png'" class="user-avatar" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <el-dropdown-item icon="el-icon-user">
@@ -36,7 +36,7 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["sidebar", "avatar", "auth"])
+    ...mapGetters(["sidebar", "auth"])
   },
   methods: {
     toggleSideBar() {

@@ -22,7 +22,7 @@
           <div class="flex items-end justify-end">
             <el-button @click.stop="cancelCourseForm()">Cancelar</el-button>
             <el-button type="primary" @click.stop="onSaveCourse()"
-              >Guardar Artigo</el-button
+              >Registar Curso</el-button
             >
           </div>
         </el-card>

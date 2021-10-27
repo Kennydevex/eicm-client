@@ -73,7 +73,7 @@ export default {
 
   plugins: [
     "@/plugins/element-ui",
-    "@/plugins/components",
+    // "@/plugins/components",
     "@/plugins/filters",
     "@/plugins/v-mask",
     "@/plugins/vue-gates",

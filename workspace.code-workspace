@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "../zurc-client"
+		},
+		{
+			"path": "../../Projetos/zurc_api"
+		},
+		{
+			"path": "../../Projetos/eicm_api"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Projetos/alfadriving_api"
+		},
+		{
+			"path": "../alfadriving_cleint"
+		},
+		{
+			"path": "../stee_client"
+		},
+		{
+			"path": "../../Projetos/stee_api"
+		},
+		{
+			"path": "../../../Documentos/ASISBD-Preper/Python/Mark-Lutz"
+		}
+	],
+	"settings": {
+		"vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+		"i18n-ally.localesPaths": [
+			"lang",
+			"components/backend/messages"
+		]
+	}
+}

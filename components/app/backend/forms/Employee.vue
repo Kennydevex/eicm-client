@@ -240,7 +240,7 @@
             prop="person.user.email"
             label="Email de autenticação"
             :error="showFormErrors('person.user.email')"
-          >
+          > 
             <el-input
               :disabled="formData.sync_email"
               v-model="formData.person.user.email"

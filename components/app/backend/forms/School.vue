@@ -264,7 +264,7 @@
 
         <el-row>
           <el-col>
-            <el-tabs :tab-position="device==='desktop'?'left':'top'">
+            <el-tabs :tab-position="device === 'desktop' ? 'left' : 'top'">
               <el-tab-pane label="Marcos Históricos">
                 <el-row :gutter="20">
                   <el-col class="mb-2" v-if="!(adding_mark || on_edit_mark)">
@@ -545,7 +545,8 @@
                               <el-button
                                 v-if="formData.guidelines.length > 0"
                                 @click="clearAllGuidelines()"
-                              >Limpar Todos</el-button>
+                                >Limpar Todos</el-button
+                              >
                             </el-button-group>
                           </el-form-item>
                         </el-col>
@@ -555,25 +556,22 @@
                   <el-col v-if="formData.guidelines.length">
                     <el-table :data="formData.guidelines" style="width: 100%">
                       <el-table-column label="Designação" min-width="180">
-                        <template slot-scope="{row, $index}">
+                        <template slot-scope="{ row, $index }">
                           <span>{{ row.name }}</span>
                           <br />
                           <small class="text-red-500">{{
-                            showFormErrors(
-                              "guidelines." + $index + ".name"
-                            )
+                            showFormErrors("guidelines." + $index + ".name")
                           }}</small>
                         </template>
                       </el-table-column>
 
                       <el-table-column label="Operations" width="120">
-                        <template slot-scope="{$index}">
+                        <template slot-scope="{ $index }">
                           <el-button
                             type="primary"
                             icon="el-icon-edit"
                             circle
                             size="mini"
-
                             style="margin-right: 5px"
                             @click.stop="onEditGuideline($index)"
                             :disabled="on_edit_guideline"
@@ -583,7 +581,6 @@
                             type="danger"
                             icon="el-icon-delete"
                             size="mini"
-
                             circle
                             @click.stop="
                               removeFormData($index, formData.guidelines)
@@ -690,7 +687,8 @@
                               <el-button
                                 v-if="formData.murals.length > 0"
                                 @click="clearAllMurals()"
-                              >Limpar Todos</el-button>
+                                >Limpar Todos</el-button
+                              >
                             </el-button-group>
                           </el-form-item>
                         </el-col>
@@ -700,19 +698,17 @@
                   <el-col v-if="formData.murals.length">
                     <el-table :data="formData.murals" style="width: 100%">
                       <el-table-column label="Designação" min-width="180">
-                        <template slot-scope="{row, $index}">
+                        <template slot-scope="{ row, $index }">
                           <span>{{ row.designation }}</span>
                           <br />
                           <small class="text-red-500">{{
-                            showFormErrors(
-                              "murals." + $index + ".designation"
-                            )
+                            showFormErrors("murals." + $index + ".designation")
                           }}</small>
                         </template>
                       </el-table-column>
 
                       <el-table-column label="Operations" width="120">
-                        <template slot-scope="{$index}">
+                        <template slot-scope="{ $index }">
                           <el-button
                             type="primary"
                             icon="el-icon-edit"
@@ -746,7 +742,53 @@
 
       <el-tab-pane label="Apresentação e Aparência" name="presentation">
         <el-row :gutter="20">
-          <el-col>
+          <el-col :span="24">
+            <el-form-item
+              prop="director_msg"
+              label="Mensagem do Diretor"
+              :error="showFormErrors('director_msg')"
+            >
+              <el-input
+                type="textarea"
+                :autosize="{ minRows: 3, maxRows: 6 }"
+                placeholder="A mensagem do diretor para Escola e Alunos"
+                v-model="formData.director_msg"
+              ></el-input>
+            </el-form-item>
+          </el-col>
+
+          <el-col :span="24">
+            <el-form-item
+              prop="banner_msg"
+              label="Texto para Banner"
+              :error="showFormErrors('banner_msg')"
+            >
+              <el-input
+                type="textarea"
+                :autosize="{ minRows: 3, maxRows: 6 }"
+                placeholder="Apresente um texto apelativo para a abresentação do banner"
+                v-model="formData.banner_msg"
+              ></el-input>
+            </el-form-item>
+          </el-col>
+
+          <el-col :span="24">
+            <el-form-item prop="cover" label="Banner da Escola">
+              <baseImageUpload
+                ref="bannerImg"
+                :uploadMsg="'Clique ou largue uma imagem de banner'"
+                :fileActions="`${$axios.defaults.baseURL}/upload-school-banner`"
+                :fileList="uploadBannerList"
+                @onFileSuccess="handleBannerSuccess($event)"
+                @onRemoveFile="handleRemoveBanner($event)"
+              ></baseImageUpload>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-divider content-position="left">Aparencia</el-divider>
+
+        <el-row :gutter="20">
+          <el-col :span="12">
             <el-form-item
               label="Cor Principal"
               prop="primary_color"
@@ -756,7 +798,8 @@
                 v-model="formData.primary_color"
               ></el-color-picker>
             </el-form-item>
-
+          </el-col>
+          <el-col :span="12">
             <el-form-item
               label="Cor Secundária"
               prop="secundary_color"
@@ -769,7 +812,7 @@
           </el-col>
 
           <el-col :span="12">
-            <el-form-item prop="logo" label="Imagem de Perfil">
+            <el-form-item prop="logo" label="Logotipo da Escola">
               <baseImageUpload
                 ref="schoolLogo"
                 :uploadMsg="'Clique ou largue o logotipo aqui'"
@@ -900,9 +943,9 @@ export default {
       return this.formData.contacts;
     },
 
-     device() {
+    device() {
       return this.$store.state.app.device;
-    },
+    }
   },
 
   methods: {
@@ -958,7 +1001,7 @@ export default {
         return;
       }
       const res = await this.$axios.post("remove-school-logo", {
-        logo: logo 
+        logo: logo
       });
       if (res.status != 200) {
         this.formData.logo = logo;

@@ -346,7 +346,7 @@ export const course_validation = {
         release: [
           {
             required: true,
-            type: "date",
+            // type: "date",
             message: "Campo necessário",
             trigger: "change"
           }
@@ -663,7 +663,7 @@ export const mult_form_validation = {
           {
             required: true,
             message: "Insira a data de inicio",
-            type: "date",
+            // type: "date",
             trigger: "change"
           }
         ],
@@ -672,7 +672,7 @@ export const mult_form_validation = {
           {
             required: true,
             message: "Insira a data de fim",
-            type: "date",
+            // type: "date",
             trigger: "change"
           }
         ],
