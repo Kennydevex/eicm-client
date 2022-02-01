@@ -1,6 +1,6 @@
 <template>
   <div class="justify-center w-full py-5 bg-white">
-    <div class="container px-3 mx-auto ">
+    <div class="container ">
       <el-row>
         <el-col :span="24" class="mb-5">
           <base-section-title>Parceiros</base-section-title>

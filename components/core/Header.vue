@@ -15,7 +15,7 @@
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <el-dropdown-item icon="el-icon-user">
-            <span>{{ "Kenny Silva" }}</span>
+            <span>{{ user.name }}</span>
           </el-dropdown-item>
           <nuxt-link to="/" divided>
             <el-dropdown-item icon="el-icon-s-home" divided>

@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center w-full pt-12 bg-gray-100">
+  <div class="justify-center w-full pt-12 bg-gray-200 mb-10">
     <!--<svg
       class="wave-top"
       viewBox="0 0 1439 147"
@@ -38,7 +38,7 @@
     <div class="container m-auto">
       <el-row>
         <el-col :span="24" class="mb-10">
-          <base-section-titleq>Cursos em destaue</base-section-titleq>
+          <base-section-title>Cursos em Destaque</base-section-title>
         </el-col>
 
         <el-col :span="24" class="mt-8 mb-3">

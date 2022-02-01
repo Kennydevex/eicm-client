@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full overflow-hidden bg-gray-200">
+  <div class="w-full overflow-hidden bg-gray-200" v-if="slogan">
     <vueper-slides
       ref="myVueperSlides"
       :parallax="parallax"
@@ -15,16 +15,16 @@
             data-aos-duration="2000"
             class="flex flex-row items-center justify-center px-8 py-3 mx-8 "
           >
-            <div class="mr-3 -mt-3 text-2xl text-gray-200">
+            <div class="mr-3 -mt-3 text-2xl text-gray-200 font-thin">
               &#10077;
             </div>
             <div
-              class="text-xl antialiased font-semibold leading-relaxed tracking-wider text-gray-200 uppercase"
+              class="text-xl antialiased font-light leading-relaxed tracking-wider text-gray-200 capitalize"
             >
               {{ slogan }}
             </div>
 
-            <div class="flex justify-end mt-6 ml-3 text-2xl text-gray-200 ">
+            <div class="flex justify-end mt-6 ml-3 text-2xl text-gray-200 font-thin">
               &#10078;
             </div>
           </div>

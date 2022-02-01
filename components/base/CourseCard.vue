@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-sm overflow-hidden border border-gray-200 rounded-lg shadow-lg cursor-pointer"
+    class="max-w-sm overflow-hidden  bg-white  rounded-lg shadow-lg cursor-pointer"
     @click="redirectToPageWithParam('courses-ver-slug', course.slug)"
   >
     <img

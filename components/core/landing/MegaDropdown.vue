@@ -2,7 +2,7 @@
   <div class="relative">
     <a
       href="#"
-      class="block px-3 py-2 mt-1 font-semibold text-gray-800 uppercase rounded text-normal active:bg-gray-300 active:text-primary hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
+      class="block px-3 py-2 mt-1 text-gray-800 uppercase rounded text-normal border-transparent border-b-2 group-hover:text-primary group-hover:border-primary active:border-primary active:text-primary hover:border-primary transition duration-500 ease-in-out hover:text-primary sm:mt-0 sm:ml-2"
       @click="toggleVisibility"
       @keydown.space.exact.prevent="toggleVisibility"
       @keydown.esc.exact="hideMenu"

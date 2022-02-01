@@ -1,6 +1,6 @@
 <template>
   <header
-    class="z-10 w-full bg-white shadow-md sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-5"
+    class="z-10 w-full bg-white shadow-xl sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-5"
   >
     <div class="flex items-center justify-between px-4 py-5 sm:p-0">
       <!--Nav left-->
@@ -33,7 +33,7 @@
     >
       <div>
         <nuxt-link
-          class="block px-3 py-2 font-semibold text-gray-800 uppercase rounded text-normal hover:bg-gray-300 hover:text-primary active:bg-gray-300 active:text-primary"
+          class="block px-3 py-2 text-gray-800 uppercase rounded text-normal border-transparent border-b-2 hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
           to="/"
           >Início</nuxt-link
         >
@@ -53,7 +53,7 @@
 
       <div>
         <nuxt-link
-          class="block px-3 py-2 mt-1 font-semibold text-gray-800 uppercase rounded text-normal hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
+          class="block px-3 py-2 mt-1  text-gray-800 uppercase rounded text-normal border-b-2 border-transparent hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
           :to="{ name: 'contacts' }"
           >Contactos</nuxt-link
         >
@@ -61,7 +61,7 @@
 
       <div>
         <nuxt-link
-          class="block px-3 py-2 mt-1 font-semibold text-gray-800 uppercase rounded text-normal hover:bg-gray-300 hover:text-primary sm:mt-0 sm:ml-2"
+          class="block px-3 py-2 mt-1  text-gray-800 uppercase rounded text-normal border-b-2 border-transparent hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
           :to="{ name: 'blog' }"
           >EICM Blog</nuxt-link
         >
