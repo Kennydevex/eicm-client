@@ -33,7 +33,7 @@
     >
       <div>
         <nuxt-link
-          class="block px-3 py-2 text-gray-800 uppercase rounded text-normal border-transparent border-b-2 hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
+          class="block px-3 py-2 mt-1 text-gray-800 uppercase rounded text-normal border-transparent border-b-2 hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
           to="/"
           >Início</nuxt-link
         >
@@ -47,13 +47,13 @@
 
       <div>
         <coreLandingMegaDropdown :mega_menu_items="courses"
-          >Cursos e Formações</coreLandingMegaDropdown
+          >Áreas de Formação</coreLandingMegaDropdown
         >
       </div>
 
       <div>
         <nuxt-link
-          class="block px-3 py-2 mt-1  text-gray-800 uppercase rounded text-normal border-b-2 border-transparent hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
+          class="block px-3 py-2 mt-1  text-gray-800 uppercase rounded text-normal border-b-2 border-transparent hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out sm:mt-0 sm:ml-2"
           :to="{ name: 'contacts' }"
           >Contactos</nuxt-link
         >
@@ -61,10 +61,19 @@
 
       <div>
         <nuxt-link
-          class="block px-3 py-2 mt-1  text-gray-800 uppercase rounded text-normal border-b-2 border-transparent hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out"
+          class="block px-3 py-2 mt-1  text-gray-800 uppercase rounded text-normal border-b-2 border-transparent hover:border-primary hover:text-primary active:border-primary active:text-primary transition duration-500 ease-in-out sm:mt-0 sm:ml-2"
           :to="{ name: 'blog' }"
           >EICM Blog</nuxt-link
         >
+      </div>
+
+      <div v-if="!authenticated">
+        <el-button
+          @click="login"
+          icon="el-icon-lock"
+          size="small"
+          circle
+        ></el-button>
       </div>
 
       <div v-if="authenticated">
@@ -95,7 +104,7 @@ export default {
       ],
       courses: [
         {
-          name: "Cursos da Via Tecnica",
+          name: "Áreas da Via Tecnica",
           description:
             "Curso para quem pretende comcluir o ensino secubdário, com dupla certificação, podendo prosseguir com o ensino superior ou empregar-se",
           icon: "ios-school",
@@ -139,6 +148,10 @@ export default {
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+
+    login() {
+      console.log("login");
     }
   }
 };

@@ -115,17 +115,19 @@ export default {
   },
   methods: {
     beforeUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isPNG = file.type === "image/PNG";
+      const isJPEG = file.type === "image/jpeg";
+      const isPNG = file.type === "image/png";
+      const isJPG = file.type === "image/jpg";
+      const isWebp = file.type === "image/webp";
       const hasLimit = file.size / 1024 / 1024 < this.$props.fileSize;
-      if (!isJPG || isPNG) {
+      if (!isJPG || isPNG || isWebp || isJPEG) {
         this.actionNotify(
           "Formato do arquivo",
-          `Carrege um arquivo JPEG ou PNG`,
+          `O formato da imagem não é suportado`,
           "warning"
         );
       }
-      
+
       if (!hasLimit) {
         this.actionNotify(
           "Tamanho do arquivo",
@@ -133,7 +135,7 @@ export default {
           "warning"
         );
       }
-      return (isJPG || isPNG) && hasLimit;
+      return (isJPG || isPNG || isWebp || isJPEG) && hasLimit;
     },
     handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url;
