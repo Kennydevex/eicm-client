@@ -120,7 +120,7 @@ export default {
       const isJPG = file.type === "image/jpg";
       const isWebp = file.type === "image/webp";
       const hasLimit = file.size / 1024 / 1024 < this.$props.fileSize;
-      if (!isJPG || isPNG || isWebp || isJPEG) {
+      if (!isJPG || !isPNG || !isWebp || !isJPEG) {
         this.actionNotify(
           "Formato do arquivo",
           `O formato da imagem não é suportado`,
